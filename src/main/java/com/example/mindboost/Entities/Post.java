@@ -17,10 +17,12 @@ public class Post {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String Content;
+
     private Date CreatedDate;
+    private Date UpdatedDate;
     private Boolean user_visibility;
     @ManyToOne
-    private User user;
+    private Patient patient;
     @OneToMany (mappedBy = "post", cascade = CascadeType.ALL)
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private List<Comment> commentList;

@@ -15,6 +15,8 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Inheritance(strategy = InheritanceType.JOINED)
+@DiscriminatorColumn(name = "Role")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,17 +24,12 @@ public class User {
     private String UserName;
     private String Password;
     private String email;
-    @Enumerated(EnumType.STRING)
-    private Role role;
+    @Column(length = 10)
+    private String phone;
+    /*@Enumerated(EnumType.STRING)
+    private Role role;*/
     @Enumerated(EnumType.STRING)
     private Gender gender;
-    @OneToMany (mappedBy = "user", cascade = CascadeType.ALL)
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
-    List<Post> postList;
-    @OneToMany (mappedBy = "user", cascade = CascadeType.ALL)
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
-    List<Comment> comments;
-    @OneToMany (mappedBy = "user", cascade = CascadeType.ALL)
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
-    List<NotePad> notePads;
+
+
 }
