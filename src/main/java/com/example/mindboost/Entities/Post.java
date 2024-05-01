@@ -23,6 +23,8 @@ public class Post {
     private Boolean user_visibility;
     @ManyToOne
     private Patient patient;
+    @ManyToOne
+    private Therapist therapist;
     @OneToMany (mappedBy = "post", cascade = CascadeType.ALL)
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private List<Comment> commentList;

@@ -14,5 +14,5 @@ public interface NotepadRepo extends JpaRepository<NotePad,Long> {
     @Query("select n from NotePad n where n.Title like :kw")
     List<NotePad> searchByTitle(@Param("kw") String keyword);
 
-    List<String> findNotePadsByTitle();
+    //List<String> findNotePadsByTitle();
 }

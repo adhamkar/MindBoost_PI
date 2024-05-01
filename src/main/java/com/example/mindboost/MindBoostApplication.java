@@ -5,6 +5,7 @@ import com.example.mindboost.Enums.Gender;
 import com.example.mindboost.Enums.Role;
 import com.example.mindboost.Enums.TherapistRole;
 import com.example.mindboost.Repositories.*;
+import com.example.mindboost.Service.UserService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -20,10 +21,96 @@ public class MindBoostApplication {
     public static void main(String[] args) {
         SpringApplication.run(MindBoostApplication.class, args);
     }
-
-
-
     @Bean
+    CommandLineRunner commandLineRunner(UserService userService){
+
+        return args -> {
+            Random random=new Random();
+            Gender[] genders = Gender.values();
+            Role[] roles=Role.values();
+            TherapistRole[] therapistRoles=TherapistRole.values();
+
+            Stream.of("Adham","Aymane","Malika").forEach(name->{
+                Patient patient=new Patient();
+                patient.setUserName(name);
+                patient.setCity("Rabat");
+                patient.setAge(20);
+                patient.setPassword((name+random.nextInt(1000)+1));
+                patient.setProfession("Etudiant");
+                StringBuilder phoneNumber = new StringBuilder("06");
+                for (int j = 0; j < 8; j++) {
+                    phoneNumber.append(random.nextInt(10));
+                }
+                patient.setPhone(phoneNumber.toString());
+                patient.setEmail(name+"@gmail.com");
+                int i = random.nextInt(genders.length);
+                patient.setGender(genders[i]);
+                patient.setMedicalHistory("medical information");
+                userService.SavePatient(patient);
+
+                Post post=new Post();
+                post.setPatient(patient);
+                post.setCreatedDate(new Date());
+                post.setContent("this is "+patient.getUserName()+"'s post");
+                post.setUser_visibility(random.nextBoolean());
+                userService.SavePost(post);
+
+                Stream.of("comment1","comment3","comment2").forEach(c->{
+                    Comment commennt=new Comment();
+                    commennt.setComment(c);
+                    commennt.setPost(post);
+                    commennt.setCreatedDate(new Date());
+                    commennt.setPatient(patient);
+                    userService.SaveComment(commennt);
+                });
+            });
+
+            Stream.of("Ikram","Karim","Sara").forEach(name->{
+                Therapist therapist=new Therapist();
+                therapist.setUserName(name);
+                therapist.setPassword(name+random.nextInt(1000)+1);
+                therapist.setEmail(name+"@gmail.com");
+                int i = random.nextInt(genders.length);
+                therapist.setGender(genders[i]);
+                int tr= random.nextInt(therapistRoles.length);
+                therapist.setTherapistRole(therapistRoles[tr]);
+                StringBuilder phoneNumber = new StringBuilder("06");
+                for (int j = 0; j < 8; j++) {
+                    phoneNumber.append(random.nextInt(10));
+                }
+                therapist.setPhone(phoneNumber.toString());
+                therapist.setAviability(random.nextBoolean());
+                therapist.setPrice(250);
+                therapist.setLocalAddress(name+"'s local address");
+                userService.SaveTherapist(therapist);
+
+                Post post=new Post();
+                post.setTherapist(therapist);
+                post.setTherapist(therapist);
+                post.setCreatedDate(new Date());
+                post.setContent("this is "+therapist.getUserName()+"'s post");
+                post.setUser_visibility(random.nextBoolean());
+                userService.SavePost(post);
+
+            });
+            userService.Therapist_LIST().forEach(therapist -> {
+                userService.Post_LIST().forEach(post -> {
+                    Stream.of("comment4","comment5","comment6").forEach(c->{
+                        Comment commennt=new Comment();
+                        commennt.setPost(post);
+                        commennt.setComment(c);
+                        commennt.setTherapist(therapist);
+                        commennt.setCreatedDate(new Date());
+                        userService.SaveComment(commennt);
+                    });
+                });
+
+            });
+
+        };
+    }
+
+    //@Bean
     CommandLineRunner start(UserRepo userRepo,
                             PostRepo postRepo,
                             CommentRepo commentRepo,
@@ -32,6 +119,7 @@ public class MindBoostApplication {
                             PatientRepo patientRepo,
                             AdminRepo adminRepo,
                             TherapySessionRepo therapySessionRepo){
+
         Random random=new Random();
         Gender[] genders = Gender.values();
         Role[] roles=Role.values();
