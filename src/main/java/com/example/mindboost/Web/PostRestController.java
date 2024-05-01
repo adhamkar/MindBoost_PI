@@ -42,13 +42,6 @@ public class PostRestController {
     public List<Comment> getPostComments(@PathVariable(name = "id") Long postId){
         return userService.COMMENT_LIST_PERPost(postId);
     }
-    @GetMapping("/posts/patients")
-    public List<Patient> getPatients(){
-        return userService.PATIENT_LIST();
-    }
-    @GetMapping("/posts/therapsites")
-    public List<Therapist> getTherapsites(){
-        return userService.Therapist_LIST();
-    }
+
 
 }
