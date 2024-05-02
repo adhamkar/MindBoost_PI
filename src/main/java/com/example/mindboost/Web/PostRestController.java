@@ -7,10 +7,7 @@ import com.example.mindboost.Entities.Therapist;
 import com.example.mindboost.Service.UserService;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -42,6 +39,13 @@ public class PostRestController {
     public List<Comment> getPostComments(@PathVariable(name = "id") Long postId){
         return userService.COMMENT_LIST_PERPost(postId);
     }
-
+    @PostMapping("/posts")
+    public Post AddPost(@RequestBody Post post){
+        return userService.SavePost(post);
+    }
+    @DeleteMapping("/posts/{id}")
+    public void DeletePost(@PathVariable(name = "id") Long id){
+        userService.DeletePost(id);
+    }
 
 }
