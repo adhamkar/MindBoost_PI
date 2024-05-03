@@ -28,6 +28,9 @@ public interface UserService {
 
     /************** Post things *************/
     PostDTO SavePost(PostDTO postDTO);
+
+    PostDTO SavePost(PostDTO postDTO, Long Patient_id);
+
     void DeletePost(Long postID);
     Post UpdatePost(Post post);
     Post getPost(Long postID);

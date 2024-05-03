@@ -60,7 +60,7 @@ public class MindBoostApplication {
                     postDTO.setCreatedDate(new Date());
                     postDTO.setContent("this is "+patientDTO.getUserName()+"'s post");
                     postDTO.setUser_visibility(random.nextBoolean());
-                    userService.SavePost(postDTO);
+                    userService.SavePost(postDTO,patientDTO.getId());
                     System.out.println("Id du patient lié au post:"+postDTO.getPatient().getId());
 
 
@@ -132,6 +132,35 @@ public class MindBoostApplication {
             });
         };
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     //@Bean
     CommandLineRunner start(UserRepo userRepo,

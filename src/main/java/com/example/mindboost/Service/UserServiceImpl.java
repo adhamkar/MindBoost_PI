@@ -9,6 +9,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.io.Console;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -145,10 +146,19 @@ public class UserServiceImpl implements UserService {
         return therapistDTOS;
     }
 
-    /************** Post implementation *************/
     @Override
     public PostDTO SavePost(PostDTO postDTO) {
+        return null;
+    }
+
+    /************** Post implementation *************/
+    @Override
+    public PostDTO SavePost(PostDTO postDTO, Long Patient_id) {
+       Patient  pt = patientRepo.findById(Patient_id).orElse(null);
+        if (pt == null)
+             log.info("Patient not found with ID: " + Patient_id);
         Post post=mapper.FromPostDTO(postDTO);
+        post.setPatient(pt);
         Post savedPost=postRepo.save(post);
             return mapper.FromPost(savedPost);
     }
