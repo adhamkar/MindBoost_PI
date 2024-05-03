@@ -1,5 +1,6 @@
 package com.example.mindboost.Web;
 
+import com.example.mindboost.DTOs.PostDTO;
 import com.example.mindboost.Entities.Comment;
 import com.example.mindboost.Entities.Patient;
 import com.example.mindboost.Entities.Post;
@@ -20,7 +21,7 @@ public class PostRestController {
     private UserService userService;
 
     @GetMapping("/posts")
-    public List<Post> posts(){
+    public List<PostDTO> posts(){
         return userService.Post_LIST();
     }
     @GetMapping("/posts/{id}")
@@ -40,8 +41,8 @@ public class PostRestController {
         return userService.COMMENT_LIST_PERPost(postId);
     }
     @PostMapping("/posts")
-    public Post AddPost(@RequestBody Post post){
-        return userService.SavePost(post);
+    public PostDTO AddPost(@RequestBody PostDTO postDTO){
+        return userService.SavePost(postDTO);
     }
     @DeleteMapping("/posts/{id}")
     public void DeletePost(@PathVariable(name = "id") Long id){

@@ -1,6 +1,8 @@
 package com.example.mindboost.Service;
 
+import com.example.mindboost.DTOs.*;
 import com.example.mindboost.Entities.*;
+import com.example.mindboost.Mappers.MapperImpl;
 import com.example.mindboost.Repositories.*;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -8,7 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 @Transactional
@@ -22,64 +24,93 @@ public class UserServiceImpl implements UserService {
     private TherapistRepo therapistRepo;
     private TherapySessionRepo therapySessionRepo;
     private NotepadRepo notepadRepo;
+    private MapperImpl mapper;
+    private UserRepo userRepo;
     /************** Users implementation *************/
     @Override
-    public Patient SavePatient(Patient patient) {
+    public UserDTO SaveUser(UserDTO userDTo){
+        User user=mapper.FromUserDTO(userDTo);
+        User userSaved=userRepo.save(user);
+        return mapper.FromUser(userSaved);
+    }
+    @Override
+    public PatientDTO SavePatient(PatientDTO patientDTO) {
+        Patient patient=mapper.FromPatientDTO(patientDTO);
         List<Patient> allpatients = patientRepo.findAll();
+
         if(allpatients.contains(patient)){
             return null;
         }
-        return patientRepo.save(patient);
+        Patient savedPatient = patientRepo.save(patient);
+        patientDTO.setId(savedPatient.getId()); // Mise à jour de l'ID de patientDTO
+        return patientDTO;
     }
 
+
     @Override
-    public Therapist SaveTherapist(Therapist therapist) {
+    public TherapistDTO SaveTherapist(TherapistDTO therapistDTO) {
+        Therapist therapist=mapper.FromTherapistDTO(therapistDTO);
         List<Therapist> alltherapist = therapistRepo.findAll();
         if(alltherapist.contains(therapist)){
             return null;
         }
-        return therapistRepo.save(therapist);
+        Therapist savedTherapist=therapistRepo.save(therapist);
+        return mapper.FromTherapist(savedTherapist);
 
     }
 
     @Override
-    public Patient UpdatePatient(Patient patient) {
+    public PatientDTO UpdatePatient(PatientDTO patientDTO) {
+        Patient patient=mapper.FromPatientDTO(patientDTO);
         List<Patient> allpatients = patientRepo.findAll();
         if(allpatients.contains(patient)){
-            return patientRepo.save(patient);
+            Patient savedPatient=patientRepo.save(patient);
+            return mapper.FromPatient(savedPatient);
         }
         return null;
     }
 
     @Override
-    public Therapist UpdateTherapist(Therapist therapist) {
+    public TherapistDTO UpdateTherapist(TherapistDTO therapistDTO) {
+        Therapist therapist=mapper.FromTherapistDTO(therapistDTO);
         List<Therapist> alltherapist = therapistRepo.findAll();
         if(alltherapist.contains(therapist)){
-            return therapistRepo.save(therapist);
+            Therapist savedTherapist=therapistRepo.save(therapist);
+            return mapper.FromTherapist(savedTherapist);
         }
         return null;
     }
 
     @Override
-    public List<Patient> PATIENT_LIST() {
-        return patientRepo.findAll();
+    public List<PatientDTO> PATIENT_LIST() {
+        List<Patient> patients=patientRepo.findAll();
+        List<PatientDTO> patientDTOS=patients.stream()
+                .map(patient->mapper.FromPatient(patient))
+                .collect(Collectors.toList());
+        return patientDTOS;
     }
 
     @Override
-    public List<Therapist> Therapist_LIST() {
-        return therapistRepo.findAll();
+    public List<TherapistDTO> Therapist_LIST() {
+        List<Therapist> therapistes = therapistRepo.findAll();
+        List<TherapistDTO> therapistDTOS=therapistes.stream()
+                .map(therapist->mapper.FromTherapist(therapist))
+                .collect(Collectors.toList());
+        return therapistDTOS;
     }
 
     @Override
-    public Patient getpatient(Long patientID) {
-        return patientRepo.findById(patientID).orElseThrow(()->
-                new RuntimeException("patient not found"));
+    public PatientDTO getpatient(Long patientID) {
+        Patient patient=patientRepo.findById(patientID)
+                .orElseThrow(()->new RuntimeException("patient not found"));
+        return mapper.FromPatient(patient);
     }
 
     @Override
-    public Therapist getTherapist(Long therapistID) {
-        return therapistRepo.findById(therapistID).orElseThrow(()->
-                new RuntimeException("patient not found"));
+    public TherapistDTO getTherapist(Long therapistID) {
+        Therapist therapist=therapistRepo.findById(therapistID)
+                .orElseThrow(()->new RuntimeException("Therapist not found"));
+        return mapper.FromTherapist(therapist);
     }
 
     @Override
@@ -97,19 +128,29 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<Patient> SearchPatient(String name) {
-        return patientRepo.searchPatientByUserName(name);
+    public List<PatientDTO> SearchPatient(String name) {
+        List<Patient> patients=patientRepo.searchPatientByUserName(name);
+        List<PatientDTO> patientDTOS=patients.stream()
+                .map(patient->mapper.FromPatient(patient))
+                .collect(Collectors.toList());
+        return patientDTOS;
     }
 
     @Override
-    public List<Therapist> SearchTherapist(String name) {
-        return therapistRepo.searchTherapistByUserName(name);
+    public List<TherapistDTO> SearchTherapist(String name) {
+        List<Therapist> therapistes = therapistRepo.searchTherapistByUserName(name);
+        List<TherapistDTO> therapistDTOS=therapistes.stream()
+                .map(therapist->mapper.FromTherapist(therapist))
+                .collect(Collectors.toList());
+        return therapistDTOS;
     }
 
     /************** Post implementation *************/
     @Override
-    public Post SavePost(Post post) {
-            return postRepo.save(post);
+    public PostDTO SavePost(PostDTO postDTO) {
+        Post post=mapper.FromPostDTO(postDTO);
+        Post savedPost=postRepo.save(post);
+            return mapper.FromPost(savedPost);
     }
 
     @Override
@@ -136,15 +177,22 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<Post> Post_LIST() {
-        return postRepo.findAll();
+    public List<PostDTO> Post_LIST() {
+        List<Post> posts = postRepo.findAll();
+        List<PostDTO> postDTOS=posts.stream()
+                .map(post->mapper.FromPost(post))
+                .collect(Collectors.toList());
+        return postDTOS;
     }
 
     /************** Comments implementation *************/
     @Override
-    public Comment SaveComment(Comment comment) {
-        if(comment.getPost()!=null){
-            return  commentRepo.save(comment);
+    public CommentDTO SaveComment(CommentDTO commentDTO) {
+        if(commentDTO.getPostDTO()!=null){
+
+            Comment comment=mapper.FromCommentDTO(commentDTO);
+            Comment savedComment=commentRepo.save(comment);
+            return  mapper.FromComment(savedComment);
         }
         return null;
     }

@@ -1,5 +1,6 @@
 package com.example.mindboost.Service;
 
+import com.example.mindboost.DTOs.*;
 import com.example.mindboost.Entities.*;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
@@ -9,28 +10,31 @@ import java.util.List;
 
 public interface UserService {
     /************** Users things *************/
-    Patient SavePatient(Patient patient);
-    Therapist SaveTherapist(Therapist therapist);
-    Patient UpdatePatient(Patient patient);
-    Therapist UpdateTherapist(Therapist therapist);
-    List<Patient> PATIENT_LIST();
-    List<Therapist> Therapist_LIST();
-    Patient getpatient(Long patientID);
-    Therapist getTherapist(Long therapistID);
+    PatientDTO SavePatient(PatientDTO patientDTO);
+
+    UserDTO SaveUser(UserDTO userDTo);
+
+    TherapistDTO SaveTherapist(TherapistDTO therapistDTO);
+    PatientDTO UpdatePatient(PatientDTO patientDTO);
+    TherapistDTO UpdateTherapist(TherapistDTO therapistDTO);
+    List<PatientDTO> PATIENT_LIST();
+    List<TherapistDTO> Therapist_LIST();
+    PatientDTO getpatient(Long patientID);
+    TherapistDTO getTherapist(Long therapistID);
     void DeletePatient(Long patientID);
     void DeleteTherapist(Long therapistID);
-    List<Patient> SearchPatient(String name);
-    List<Therapist> SearchTherapist(String name);
+    List<PatientDTO> SearchPatient(String name);
+    List<TherapistDTO> SearchTherapist(String name);
 
     /************** Post things *************/
-    Post SavePost(Post post);
+    PostDTO SavePost(PostDTO postDTO);
     void DeletePost(Long postID);
     Post UpdatePost(Post post);
     Post getPost(Long postID);
-    List<Post> Post_LIST();
+    List<PostDTO> Post_LIST();
 
     /************** Comment things *************/
-    Comment SaveComment(Comment comment);
+    CommentDTO SaveComment(CommentDTO commentDTO);
 
     void DeleteComment(Long commentID);
     Comment UpdateComment(Comment comment);
