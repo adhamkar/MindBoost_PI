@@ -1,0 +1,30 @@
+
+  <div class="container my-5">
+    <div class="post-details">
+      <div class="post-content">
+        <h2>Post Details</h2>
+        <p>{{ post.content }}</p>
+        <div class="post-date">
+          <label>Date:</label>
+          <span>{{ post.date | date:"MMM d, y - h:mm a" }}</span>
+        </div>
+        <div class="post-actions">
+          <button mat-raised-button color="primary" (click)="gotoList()"><mat-icon>arrow_back</mat-icon>Back</button>
+        </div>
+      </div>
+
+    </div>
+    <div class="comments">
+      <h4>Comments Details</h4>
+      <button class="addComment" mat-raised-button color="primary" ><mat-icon>add</mat-icon>Add Comment</button>
+      <div class="comment-list">
+        <div *ngFor="let c of comments" class="comment">
+          <p>{{ c.content }}</p>
+          <div class="comment-date">
+            <span>{{ c.date | date:"MMM d, y - h:mm a" }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+

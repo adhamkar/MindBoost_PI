@@ -1,0 +1,33 @@
+mat-sidenav{
+  /*background-color: #3f51b5;*/
+  background: linear-gradient(to bottom, #064053, #26c6d7);
+  /*background: linear-gradient(to top, #043342, #2381a2,#37a0be);*/
+  /* background: linear-gradient(to bottom,#04789D,#4ED6DA);*/
+  width: 230px;
+  height: 100%;
+  box-shadow: 1px 5px 10px rgb(4, 51, 66);
+}
+mat-sidenav-content{
+  height: 100vh;
+  background-color: rgba(239, 238, 238, 0.61);
+  .main{
+    margin-left: 1%;
+  }
+
+}
+mat-toolbar{
+  background-color: #ffffff;
+  mat-icon{
+    margin-left: 15px;
+    color:gray
+  }
+  justify-content: space-between;
+  .box {
+    margin-top: 0;
+     /* Centrer verticalement les boutons avec les icônes */
+  }
+  .logoutButton{
+    background: linear-gradient(to right, #064053, #26c6d7);
+  }
+
+}

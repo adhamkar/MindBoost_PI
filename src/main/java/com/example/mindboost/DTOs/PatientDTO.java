@@ -1,11 +1,12 @@
 package com.example.mindboost.DTOs;
 
-import lombok.Data;
+import lombok.*;
 
 import java.util.List;
 
 
 @Data
+@Getter @Setter @NoArgsConstructor @AllArgsConstructor
 public class PatientDTO extends UserDTO {
 
     private int age;

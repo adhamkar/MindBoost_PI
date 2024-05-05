@@ -1,0 +1,26 @@
+<div class="container">
+<div class="post-header">
+  <h1 style="color: #043342; text-align: center;font-weight: bold">Read what people had <span style="color: #1bcfe3;">Experienced.</span> </h1>
+  <p style="text-align: center;">You can also share your own feelings and experiences Anonymously!</p>
+  <button class="create-button" mat-raised-button color="primary" style="display: block; margin: auto;" (click)="createPost()">Create your own Post</button>
+</div>
+
+<div class="post-container">
+  <mat-card class="card-class" *ngFor="let post of posts">
+    <mat-card-header>
+      <mat-card-title style="color: #3f51b5;">Post {{post.id}}</mat-card-title>
+      <mat-card-subtitle>{{ post.date }}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <p style="color: #333;text-align: justify;">{{ post.content }}</p>
+      <div  class="post-date">{{ post.date }}</div>
+    </mat-card-content>
+    <mat-card-actions style="align-self: center">
+      <button mat-button style="color:#064053"><mat-icon>thumb_up</mat-icon>Like</button>
+      <button mat-button style="color:#064053"><mat-icon>share</mat-icon>Share</button>
+      <button mat-button color="primary" (click)="getPost(post.id)"><mat-icon>visibility</mat-icon>Details</button>
+    </mat-card-actions>
+    <mat-card-footer></mat-card-footer>
+  </mat-card>
+</div>
+</div>

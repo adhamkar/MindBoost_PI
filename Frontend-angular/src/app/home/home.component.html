@@ -1,0 +1,57 @@
+
+
+
+<mat-toolbar color="primary">
+  <button mat-icon-button (click)="myDrawer.toggle()">
+    <mat-icon>menu</mat-icon>
+    MindBoost
+  </button>
+  <span  style="flex: auto"></span>
+  <button mat-button routerLink="/home">Home</button>
+  <button mat-button routerLink="/user/home">ChatBot</button>
+  <button mat-button routerLink="/user/posts">Posts</button>
+  <button mat-button routerLink="/user/aboutUs">About Us</button>
+  <button mat-button routerLink="/user/needHelp">Need Help?</button>
+  <button mat-raised-button color="accent" >Logout</button>
+</mat-toolbar>
+<mat-drawer-container>
+  <mat-drawer #myDrawer opened="true" mode="side" position="start">
+
+    <mat-list>
+      <mat-list-item>
+        <mat-icon>person</mat-icon>
+        <button mat-button routerLink="/admin/dashboard">Profile</button>
+      </mat-list-item>
+      <mat-list-item>
+        <mat-icon></mat-icon>
+        <button mat-button routerLink="/admin/students">My Posts</button>
+      </mat-list-item>
+      <mat-list-item>
+        <mat-icon>note</mat-icon>
+        <button mat-button routerLink="/admin/payments">My Notes</button>
+      </mat-list-item>
+    </mat-list>
+
+  </mat-drawer>
+  <mat-drawer-content>
+    <div style="min-height: 600px">
+      <router-outlet>
+        <!--le contenu de app-->
+      </router-outlet>
+
+    </div>
+  </mat-drawer-content>
+</mat-drawer-container>
+
+
+
+
+
+
+
+
+
+
+
+
+

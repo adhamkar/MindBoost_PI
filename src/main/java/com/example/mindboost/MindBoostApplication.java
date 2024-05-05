@@ -26,7 +26,7 @@ public class MindBoostApplication {
     public static void main(String[] args) {
         SpringApplication.run(MindBoostApplication.class, args);
     }
-    @Bean
+ @Bean
     CommandLineRunner commandLineRunner(UserService userService){
 
         return args -> {

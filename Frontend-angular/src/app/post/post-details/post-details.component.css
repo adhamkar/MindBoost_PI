@@ -1,0 +1,53 @@
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 20px;
+}
+
+.post-details {
+  flex: 0 0 60%;
+  margin-right: 20px;
+}
+
+.post-content {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.post-date {
+  margin-top: 10px;
+  color: #888;
+}
+
+.post-actions {
+  margin-top: 20px;
+}
+
+.comments {
+  flex: 0 0 35%;
+  background-color: #ffffff;
+  /* Bordure pour encadrer l'ensemble des commentaires */
+  border-radius: 8px; /* Coins arrondis */
+  padding: 10px; /* Espace intérieur */
+}
+
+.comment-list {
+  margin-top: 20px;
+}
+
+.comment {
+  background-color: rgba(236, 236, 236, 0.78);
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+}
+
+.comment-date {
+  color: #888;
+}
+.addComment{
+  justify-content: flex-end;
+}
