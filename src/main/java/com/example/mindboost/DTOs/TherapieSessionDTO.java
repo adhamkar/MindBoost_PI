@@ -11,14 +11,12 @@ import java.util.Date;
 @Data
 
 public class TherapieSessionDTO {
-
     private Long id;
     private String nameSession;
     private Date DateSession;
     private String patientName;
     private String TherapisteName;
 
-    private PatientDTO patient;
-
-    private TherapistDTO therapist;
+    private PatientDTO patientDTO;
+    private TherapistDTO therapistDTO;
 }

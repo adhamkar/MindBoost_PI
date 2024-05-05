@@ -26,19 +26,21 @@ public class UserServiceImpl implements UserService {
     private NotepadRepo notepadRepo;
     private MapperImpl mapper;
     private UserRepo userRepo;
+
     /************** Users implementation *************/
     @Override
-    public UserDTO SaveUser(UserDTO userDTo){
-        User user=mapper.FromUserDTO(userDTo);
-        User userSaved=userRepo.save(user);
+    public UserDTO SaveUser(UserDTO userDTo) {
+        User user = mapper.FromUserDTO(userDTo);
+        User userSaved = userRepo.save(user);
         return mapper.FromUser(userSaved);
     }
+
     @Override
     public PatientDTO SavePatient(PatientDTO patientDTO) {
-        Patient patient=mapper.FromPatientDTO(patientDTO);
+        Patient patient = mapper.FromPatientDTO(patientDTO);
         List<Patient> allpatients = patientRepo.findAll();
 
-        if(allpatients.contains(patient)){
+        if (allpatients.contains(patient)) {
             return null;
         }
         Patient savedPatient = patientRepo.save(patient);
@@ -49,22 +51,23 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public TherapistDTO SaveTherapist(TherapistDTO therapistDTO) {
-        Therapist therapist=mapper.FromTherapistDTO(therapistDTO);
+        Therapist therapist = mapper.FromTherapistDTO(therapistDTO);
         List<Therapist> alltherapist = therapistRepo.findAll();
-        if(alltherapist.contains(therapist)){
+        if (alltherapist.contains(therapist)) {
             return null;
         }
-        Therapist savedTherapist=therapistRepo.save(therapist);
-        return mapper.FromTherapist(savedTherapist);
+        Therapist savedTherapist = therapistRepo.save(therapist);
+        therapistDTO.setId((savedTherapist.getId()));
+        return therapistDTO;
 
     }
 
     @Override
     public PatientDTO UpdatePatient(PatientDTO patientDTO) {
-        Patient patient=mapper.FromPatientDTO(patientDTO);
+        Patient patient = mapper.FromPatientDTO(patientDTO);
         List<Patient> allpatients = patientRepo.findAll();
-        if(allpatients.contains(patient)){
-            Patient savedPatient=patientRepo.save(patient);
+        if (allpatients.contains(patient)) {
+            Patient savedPatient = patientRepo.save(patient);
             return mapper.FromPatient(savedPatient);
         }
         return null;
@@ -72,10 +75,10 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public TherapistDTO UpdateTherapist(TherapistDTO therapistDTO) {
-        Therapist therapist=mapper.FromTherapistDTO(therapistDTO);
+        Therapist therapist = mapper.FromTherapistDTO(therapistDTO);
         List<Therapist> alltherapist = therapistRepo.findAll();
-        if(alltherapist.contains(therapist)){
-            Therapist savedTherapist=therapistRepo.save(therapist);
+        if (alltherapist.contains(therapist)) {
+            Therapist savedTherapist = therapistRepo.save(therapist);
             return mapper.FromTherapist(savedTherapist);
         }
         return null;
@@ -83,9 +86,9 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<PatientDTO> PATIENT_LIST() {
-        List<Patient> patients=patientRepo.findAll();
-        List<PatientDTO> patientDTOS=patients.stream()
-                .map(patient->mapper.FromPatient(patient))
+        List<Patient> patients = patientRepo.findAll();
+        List<PatientDTO> patientDTOS = patients.stream()
+                .map(patient -> mapper.FromPatient(patient))
                 .collect(Collectors.toList());
         return patientDTOS;
     }
@@ -93,45 +96,45 @@ public class UserServiceImpl implements UserService {
     @Override
     public List<TherapistDTO> Therapist_LIST() {
         List<Therapist> therapistes = therapistRepo.findAll();
-        List<TherapistDTO> therapistDTOS=therapistes.stream()
-                .map(therapist->mapper.FromTherapist(therapist))
+        List<TherapistDTO> therapistDTOS = therapistes.stream()
+                .map(therapist -> mapper.FromTherapist(therapist))
                 .collect(Collectors.toList());
         return therapistDTOS;
     }
 
     @Override
     public PatientDTO getpatient(Long patientID) {
-        Patient patient=patientRepo.findById(patientID)
-                .orElseThrow(()->new RuntimeException("patient not found"));
+        Patient patient = patientRepo.findById(patientID)
+                .orElseThrow(() -> new RuntimeException("patient not found"));
         return mapper.FromPatient(patient);
     }
 
     @Override
     public TherapistDTO getTherapist(Long therapistID) {
-        Therapist therapist=therapistRepo.findById(therapistID)
-                .orElseThrow(()->new RuntimeException("Therapist not found"));
+        Therapist therapist = therapistRepo.findById(therapistID)
+                .orElseThrow(() -> new RuntimeException("Therapist not found"));
         return mapper.FromTherapist(therapist);
     }
 
     @Override
     public void DeletePatient(Long patientID) {
-        if(patientRepo.findById(patientID)!=null){
+        if (patientRepo.findById(patientID) != null) {
             patientRepo.deleteById(patientID);
         }
     }
 
     @Override
     public void DeleteTherapist(Long therapistID) {
-        if(therapistRepo.findById(therapistID)!=null){
+        if (therapistRepo.findById(therapistID) != null) {
             patientRepo.deleteById(therapistID);
         }
     }
 
     @Override
     public List<PatientDTO> SearchPatient(String name) {
-        List<Patient> patients=patientRepo.searchPatientByUserName(name);
-        List<PatientDTO> patientDTOS=patients.stream()
-                .map(patient->mapper.FromPatient(patient))
+        List<Patient> patients = patientRepo.searchPatientByUserName(name);
+        List<PatientDTO> patientDTOS = patients.stream()
+                .map(patient -> mapper.FromPatient(patient))
                 .collect(Collectors.toList());
         return patientDTOS;
     }
@@ -139,18 +142,53 @@ public class UserServiceImpl implements UserService {
     @Override
     public List<TherapistDTO> SearchTherapist(String name) {
         List<Therapist> therapistes = therapistRepo.searchTherapistByUserName(name);
-        List<TherapistDTO> therapistDTOS=therapistes.stream()
-                .map(therapist->mapper.FromTherapist(therapist))
+        List<TherapistDTO> therapistDTOS = therapistes.stream()
+                .map(therapist -> mapper.FromTherapist(therapist))
                 .collect(Collectors.toList());
         return therapistDTOS;
     }
 
     /************** Post implementation *************/
     @Override
-    public PostDTO SavePost(PostDTO postDTO) {
+    public PostDTO savePost(PostDTO postDTO){
+        PatientDTO patientDTO = postDTO.getPatientDTO();
+        Patient patient = patientRepo.findById(patientDTO.getId()).orElse(null);
+        if (patient == null) {
+            log.info("Patient not found with ID: " + patientDTO.getId());
+            return null;
+        }
         Post post=mapper.FromPostDTO(postDTO);
+        post.setPatient(patient);
         Post savedPost=postRepo.save(post);
-            return mapper.FromPost(savedPost);
+        postDTO.setId(savedPost.getId());
+        return mapper.FromPost(savedPost);
+    }
+
+
+    @Override
+    public PostDTO savePost_Therapist(PostDTO postDTO){
+        TherapistDTO therapistDTO=postDTO.getTherapistDTO();
+        Therapist therapist=therapistRepo.findById(therapistDTO.getId()).orElseThrow(null);
+        if(therapist==null){
+            log.info("Therapist not found with ID: " + therapistDTO.getId());
+            return null;
+        }
+        Post post=mapper.FromPostDTO(postDTO);
+        post.setTherapist(therapist);
+        Post savedPost=postRepo.save(post);
+        postDTO.setId(savedPost.getId());
+        return mapper.FromPost(savedPost);
+    }
+
+    @Override
+    public PostDTO SavePost(PostDTO postDTO, Long Patient_id) {
+        Patient  pt = patientRepo.findById(Patient_id).orElse(null);
+        if (pt == null)
+            log.info("Patient not found with ID: " + Patient_id);
+        Post post=mapper.FromPostDTO(postDTO);
+        post.setPatient(pt);
+        Post savedPost=postRepo.save(post);
+        return mapper.FromPost(savedPost);
     }
 
     @Override
@@ -162,18 +200,23 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public Post UpdatePost(Post post) {
-        List<Post> posts = postRepo.findAll();
+    public PostDTO UpdatePost(PostDTO postDTO) {
+       /* List<Post> posts = postRepo.findAll();
         if(posts.contains(post)){
             return postRepo.save(post);
-        }
-        return null;
+        }*/
+        Post post=mapper.FromPostDTO(postDTO);
+        Post savedPost=postRepo.save(post);
+        return mapper.FromPost(savedPost);
     }
 
     @Override
-    public Post getPost(Long postID) {
-        return postRepo.findById(postID).orElseThrow(()->
-                new RuntimeException("post not found"));
+    public PostDTO getPost(Long postID) {
+        Post post=postRepo.findById(postID).orElseThrow(null);
+        if(post!=null){
+           return mapper.FromPost(post);
+        }
+        return null;
     }
 
     @Override
@@ -186,15 +229,19 @@ public class UserServiceImpl implements UserService {
     }
 
     /************** Comments implementation *************/
-    @Override
-    public CommentDTO SaveComment(CommentDTO commentDTO) {
-        if(commentDTO.getPostDTO()!=null){
 
-            Comment comment=mapper.FromCommentDTO(commentDTO);
-            Comment savedComment=commentRepo.save(comment);
-            return  mapper.FromComment(savedComment);
+    @Override
+    public CommentDTO SaveComment(CommentDTO commentDTO,Long Post_id) {
+        Post post=postRepo.findById(Post_id).orElseThrow(null);
+        if(commentDTO==null){
+            return null;
         }
-        return null;
+        Comment comment=mapper.FromCommentDTO(commentDTO);
+        comment.setPost(post);
+        comment.setTherapist(post.getTherapist());
+        comment.setPatient(post.getPatient());
+        Comment savedComment=commentRepo.save(comment);
+        return  mapper.FromComment(savedComment);
     }
 
     @Override
@@ -218,22 +265,48 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<Comment> Comment_LIST() {
-        return commentRepo.findAll();
+    public List<CommentDTO> Comment_LIST() {
+
+        List<Comment> comments=commentRepo.findAll();
+        List<CommentDTO> commentDTOS=comments.stream()
+                .map(comment -> mapper.FromComment(comment))
+                .collect(Collectors.toList());
+        return commentDTOS;
     }
 
     @Override
-    public List<Comment> COMMENT_LIST_PERPost(Long postId) {
-        Post post=postRepo.findById(postId).get();
-        List<Comment> PostComments = commentRepo.findCommentsByPost(post);
-        return PostComments;
+    public List<CommentDTO> COMMENT_LIST_PERPost(Long postId) {
+        /*
+        List<Comment> comments=commentRepo.findAll();
+        List<CommentDTO> commentDTOS=comments.stream()
+                .map(comment -> mapper.FromComment(comment))
+                .collect(Collectors.toList());
+         */
+        Post post=postRepo.findById(postId).orElseThrow(null);
+        List<Comment> postComments = commentRepo.findCommentsByPost(post);
+        List<CommentDTO> commentDTOS=postComments.stream()
+                .map(comment -> mapper.FromComment(comment))
+                .collect(Collectors.toList());
+        return commentDTOS;
     }
 
     /************** NotePad implementation *************/
     @Override
-    public NotePad SaveNotePad(NotePad notePad) {
-        return notepadRepo.save(notePad);
+    public NotePadDTO SaveNotePad(NotePadDTO notePadDTO) {
+        PatientDTO patientDTO = notePadDTO.getPatientDTO();
+        Patient patient = patientRepo.findById(patientDTO.getId()).orElse(null);
+        if (patient == null) {
+            log.info("Patient not found with ID: " + patientDTO.getId());
+            return null;
+        }
+        NotePad notePad=mapper.FromNotePadDTO(notePadDTO);
+        notePad.setPatient(patient);
+        NotePad savedNotePad= notepadRepo.save(notePad);
+        notePadDTO.setId(savedNotePad.getId());
+        return mapper.FromNotePad(savedNotePad);
     }
+
+
 
     @Override
     public void DeleteNotePad(Long notePadID) {
@@ -265,11 +338,22 @@ public class UserServiceImpl implements UserService {
     }
     /************** TherapieSession implementation *************/
     @Override
-    public TherapieSession SaveTherapieSession(TherapieSession therapieSession) {
-        if(therapieSession.getTherapist().getAviability() && therapieSession.getPatient()!=null && therapieSession.getTherapist()!=null){
-            return therapySessionRepo.save(therapieSession);
+    public TherapieSessionDTO SaveTherapieSession(TherapieSessionDTO therapieSessionDTO) {
+        PatientDTO patientDTO = therapieSessionDTO.getPatientDTO();
+        Patient patient = patientRepo.findById(patientDTO.getId()).orElse(null);
+
+        TherapistDTO therapistDTO=therapieSessionDTO.getTherapistDTO();
+        Therapist therapist=therapistRepo.findById(therapistDTO.getId()).orElseThrow(null);
+
+        if (patient == null || therapist==null) {
+            return null;
         }
-        return null;
+
+        TherapieSession therapieSession=mapper.FromTherapySessionDTO(therapieSessionDTO);
+        therapieSession.setPatient(patient);
+        therapieSession.setTherapist(therapist);
+        TherapieSession SavedSession=therapySessionRepo.save(therapieSession);
+        return mapper.FromTherapySession(SavedSession);
     }
 
     @Override

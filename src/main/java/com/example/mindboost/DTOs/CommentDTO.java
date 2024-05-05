@@ -16,7 +16,7 @@ public class CommentDTO {
     private String Comment;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date CreatedDate;
-    private PatientDTO patient;
+    private PatientDTO patientDTO;
     private PostDTO postDTO;
-    private TherapistDTO therapist;
+    private TherapistDTO therapistDTO;
 }

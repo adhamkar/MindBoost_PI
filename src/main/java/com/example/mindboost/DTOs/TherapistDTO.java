@@ -16,7 +16,9 @@ public class TherapistDTO extends UserDTO {
     private List<TherapieSessionDTO> therapieSessionDTOS;
     private int price;
     private String LocalAddress;
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private List<CommentDTO> commentDTOS;
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private List<PostDTO> postDTOs;
 
 

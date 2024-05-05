@@ -12,8 +12,6 @@ import java.util.Date;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Inheritance(strategy = InheritanceType.JOINED)
-@DiscriminatorColumn(name = "UserComment")
 public class Comment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -26,24 +26,45 @@ public interface UserService {
     List<PatientDTO> SearchPatient(String name);
     List<TherapistDTO> SearchTherapist(String name);
 
+    //    @Override
+//    public PostDTO SavePost(PostDTO postDTO, Long Patient_id) {
+//        Patient  pt = patientRepo.findById(Patient_id).orElse(null);
+//        if (pt == null)
+//            log.info("Patient not found with ID: " + Patient_id);
+//        Post post=mapper.FromPostDTO(postDTO);
+//        post.setPatient(pt);
+//        Post savedPost=postRepo.save(post);
+//        postDTO = mapper.FromPost(savedPost);
+//        Patient patient = postRepo.getPatientByPostId(postDTO.getId());
+//        postDTO.getPatient().setId(patient.getId());
+//        //postDTO.setPatient(postRepo.getPatientByPostId(postDTO.getId()));
+//        return postDTO;
+//    }
+    PostDTO savePost(PostDTO postDTO);
+
+    PostDTO savePost_Therapist(PostDTO postDTO);
+
     /************** Post things *************/
-    PostDTO SavePost(PostDTO postDTO);
+    PostDTO SavePost(PostDTO postDTO,Long Patient_id);
     void DeletePost(Long postID);
-    Post UpdatePost(Post post);
-    Post getPost(Long postID);
+    PostDTO UpdatePost(PostDTO postDTO);
+    PostDTO getPost(Long postID);
     List<PostDTO> Post_LIST();
 
+
+
     /************** Comment things *************/
-    CommentDTO SaveComment(CommentDTO commentDTO);
+    CommentDTO SaveComment(CommentDTO commentDTO,Long Post_id);
 
     void DeleteComment(Long commentID);
     Comment UpdateComment(Comment comment);
     Comment getComment(Long commentID);
-    List<Comment> Comment_LIST();
-    List<Comment> COMMENT_LIST_PERPost(Long postId);
+    List<CommentDTO> Comment_LIST();
+    List<CommentDTO> COMMENT_LIST_PERPost(Long postId);
 
     /************** NotePad things *************/
-    NotePad SaveNotePad(NotePad notePad);
+    //NotePad SaveNotePad(NotePad notePad);
+    NotePadDTO SaveNotePad(NotePadDTO notePadDTO);
     void DeleteNotePad(Long notePadID);
     NotePad UpdateNotePad(NotePad notePad);
     NotePad getNotePad(Long notePadID);
@@ -51,7 +72,7 @@ public interface UserService {
     List<NotePad> SearchNotePad(String name);
 
     /************** TherapieSession things *************/
-    TherapieSession SaveTherapieSession(TherapieSession therapieSession);
+    TherapieSessionDTO SaveTherapieSession(TherapieSessionDTO therapieSessionDTO);
     void DeleteTherapieSession(Long therapieSessionID);
     TherapieSession UpdateTherapieSession(TherapieSession therapieSession);
     TherapieSession getTherapieSession(Long therapieSessionID);

@@ -19,6 +19,9 @@ public class MapperImpl {
         return user;
     }
     public PatientDTO FromPatient(Patient patient){
+        if (patient == null) {
+            return null;
+        }
         PatientDTO patientDTO=new PatientDTO();
         BeanUtils.copyProperties(patient,patientDTO);
         return patientDTO;
@@ -29,6 +32,9 @@ public class MapperImpl {
         return patient;
     }
     public TherapistDTO FromTherapist(Therapist therapist){
+        if (therapist == null) {
+            return null;
+        }
         TherapistDTO therapistDTO=new TherapistDTO();
         BeanUtils.copyProperties(therapist,therapistDTO);
         therapistDTO.setId(therapist.getId());
@@ -42,6 +48,8 @@ public class MapperImpl {
     public PostDTO FromPost(Post post){
         PostDTO postDTO=new PostDTO();
         BeanUtils.copyProperties(post,postDTO);
+        postDTO.setPatientDTO(FromPatient(post.getPatient()));
+        postDTO.setTherapistDTO(FromTherapist(post.getTherapist()));
         return postDTO;
     }
     public Post FromPostDTO(PostDTO postDTO){
@@ -52,6 +60,7 @@ public class MapperImpl {
     public NotePadDTO FromNotePad(NotePad notePad){
         NotePadDTO notePadDTO=new NotePadDTO();
         BeanUtils.copyProperties(notePad,notePadDTO);
+        notePadDTO.setPatientDTO(FromPatient(notePad.getPatient()));
         return notePadDTO;
     }
     public NotePad FromNotePadDTO(NotePadDTO notePadDTO){
@@ -62,6 +71,16 @@ public class MapperImpl {
     public CommentDTO FromComment(Comment comment){
         CommentDTO commentDTO=new CommentDTO();
         BeanUtils.copyProperties(comment,commentDTO);
+
+        if (comment.getPatient() != null) {
+            commentDTO.setPatientDTO(FromPatient(comment.getPatient()));
+        }
+        if (comment.getTherapist() != null) {
+            commentDTO.setTherapistDTO(FromTherapist(comment.getTherapist()));
+        }
+        if (comment.getPost() != null) {
+            commentDTO.setPostDTO(FromPost(comment.getPost()));
+        }
         return commentDTO;
     }
     public Comment FromCommentDTO(CommentDTO commentDTO){
@@ -73,6 +92,9 @@ public class MapperImpl {
     public TherapieSessionDTO FromTherapySession(TherapieSession therapieSession){
         TherapieSessionDTO therapieSessionDTO = new TherapieSessionDTO();
         BeanUtils.copyProperties(therapieSession,therapieSessionDTO);
+
+        therapieSessionDTO.setPatientDTO(FromPatient(therapieSession.getPatient()));
+        therapieSessionDTO.setTherapistDTO((FromTherapist(therapieSession.getTherapist())));
         return therapieSessionDTO;
     }
 

@@ -1,9 +1,6 @@
 package com.example.mindboost;
 
-import com.example.mindboost.DTOs.CommentDTO;
-import com.example.mindboost.DTOs.PatientDTO;
-import com.example.mindboost.DTOs.PostDTO;
-import com.example.mindboost.DTOs.TherapistDTO;
+import com.example.mindboost.DTOs.*;
 import com.example.mindboost.Entities.*;
 import com.example.mindboost.Enums.Gender;
 import com.example.mindboost.Enums.Role;
@@ -51,44 +48,31 @@ public class MindBoostApplication {
                 int i = random.nextInt(genders.length);
                 patientDTO.setGender(genders[i]);
                 patientDTO.setMedicalHistory("medical information");
+
                 userService.SavePatient(patientDTO);
 
                 System.out.println("patient id:"+patientDTO.getId());
 
-                    PostDTO postDTO=new PostDTO();
-                    postDTO.setPatient(patientDTO);
-                    postDTO.setCreatedDate(new Date());
-                    postDTO.setContent("this is "+patientDTO.getUserName()+"'s post");
-                    postDTO.setUser_visibility(random.nextBoolean());
-                    userService.SavePost(postDTO);
-                    System.out.println("Id du patient lié au post:"+postDTO.getPatient().getId());
+                PostDTO postDTO=new PostDTO();
+                postDTO.setPatientDTO(patientDTO);
+                postDTO.setCreatedDate(new Date());
+                postDTO.setContent("this is "+patientDTO.getUserName()+"'s post");
+                postDTO.setUser_visibility(random.nextBoolean());
+                userService.savePost(postDTO);
+                System.out.println("Id du patient lié au post:"+postDTO.getPatientDTO().getId());
+
+                NotePadDTO notePadDTO=new NotePadDTO();
+                notePadDTO.setPatientDTO(patientDTO);
+                notePadDTO.setContent(patientDTO.getUserName() +"'s notepad content");
+                notePadDTO.setCreatedDate(new Date());
+                notePadDTO.setTitle(patientDTO.getUserName() +"'s notepad title");
+                userService.SaveNotePad(notePadDTO);
 
 
-
-                /*
-                Stream.of("comment1","comment3","comment2").forEach(c->{
-                    CommentDTO commenntDTO=new CommentDTO();
-                    commenntDTO.setComment(c);
-                    commenntDTO.setPostDTO(postDTO);
-                    commenntDTO.setCreatedDate(new Date());
-                    commenntDTO.setPatient(patientDTO);
-                    userService.SaveComment(commenntDTO);
-                });*/
 
             });
-            /*
-            List<PatientDTO> patientDTOS = userService.PATIENT_LIST();
 
-            patientDTOS.forEach(p->{
-                PostDTO postDTO=new PostDTO();
-                postDTO.setPatient(p);
-                postDTO.setCreatedDate(new Date());
-                postDTO.setContent("this is "+p.getUserName()+"'s post");
-                postDTO.setUser_visibility(random.nextBoolean());
-                userService.SavePost(postDTO);
-            });*/
-
-            Stream.of("Ikram","Karim","Sara").forEach(name->{
+            Stream.of("Ikram","Meryem","Sara").forEach(name->{
                 TherapistDTO therapistDTO=new TherapistDTO();
                 therapistDTO.setUserName(name);
                 therapistDTO.setPassword(name+random.nextInt(1000)+1);
@@ -106,131 +90,71 @@ public class MindBoostApplication {
                 therapistDTO.setPrice(250);
                 therapistDTO.setLocalAddress(name+"'s local address");
                 userService.SaveTherapist(therapistDTO);
+                System.out.println("Therapist id :"+therapistDTO.getId());
 
                 PostDTO postDTO=new PostDTO();
-                postDTO.setTherapist(therapistDTO);
-                postDTO.setTherapist(therapistDTO);
+                postDTO.setTherapistDTO(therapistDTO);
                 postDTO.setCreatedDate(new Date());
                 postDTO.setContent("this is "+therapistDTO.getUserName()+"'s post");
                 postDTO.setUser_visibility(random.nextBoolean());
-                userService.SavePost(postDTO);
+                userService.savePost_Therapist(postDTO);
+                System.out.println("Post Therapist id :"+postDTO.getTherapistDTO().getId());
+
+
 
             });
+            System.out.println("*******************************************************");
 
-            userService.Therapist_LIST().forEach(therapist -> {
                 userService.Post_LIST().forEach(post -> {
-                    Stream.of("comment4","comment5","comment6").forEach(c->{
                         CommentDTO commentDTO=new CommentDTO();
                         commentDTO.setPostDTO(post);
-                        commentDTO.setComment(c);
-                        commentDTO.setTherapist(therapist);
+                        System.out.println("Post id :"+ commentDTO.getPostDTO().getId());
+                        if(post.getTherapistDTO()!=null && post.getPatientDTO()==null){
+                            commentDTO.setTherapistDTO(post.getTherapistDTO());
+                            commentDTO.setComment(post.getTherapistDTO().getUserName()+" therapist comment 1");
+
+                        }
+                        if(post.getTherapistDTO()==null && post.getPatientDTO()!=null){
+                            commentDTO.setPatientDTO(post.getPatientDTO());
+                            commentDTO.setComment(post.getPatientDTO().getUserName()+" patient comment 1");
+
+                        }
                         commentDTO.setCreatedDate(new Date());
-                        userService.SaveComment(commentDTO);
-                    });
+                        userService.SaveComment(commentDTO,post.getId());
+
+                        if(commentDTO.getTherapistDTO()!=null && commentDTO.getPatientDTO()==null){
+                            System.out.println("Therapist id :"+commentDTO.getTherapistDTO().getId());
+
+                        }
+                        if(post.getTherapistDTO()==null && post.getPatientDTO()!=null){
+                            System.out.println("Patient id :"+commentDTO.getPatientDTO().getId());
+                        }
+
                 });
 
+                PatientDTO patientDTO=userService.getpatient(1L);
+                TherapistDTO therapistDTO=userService.getTherapist(6L);
+                if(therapistDTO.getAviability()){
+                    TherapieSessionDTO therapieSessionDTO=new TherapieSessionDTO();
+                    therapieSessionDTO.setTherapistDTO(therapistDTO);
+                    therapieSessionDTO.setPatientDTO(patientDTO);
+                    therapieSessionDTO.setDateSession(new Date());
+                    therapieSessionDTO.setPatientName(patientDTO.getUserName());
+                    therapieSessionDTO.setTherapisteName(therapistDTO.getUserName());
+                    therapieSessionDTO.setNameSession("sessiono 1");
+                    userService.SaveTherapieSession(therapieSessionDTO);
+                    System.out.println("Therapist available, Session saved");
+                }else{
+                    System.out.println("Therapist not available");
+                }
+            PostDTO post = userService.getPost(1L);
+            List<CommentDTO> commentDTOS = userService.COMMENT_LIST_PERPost(post.getId());
+            commentDTOS.forEach(commentDTO -> {
+                System.out.println("Post avec id :"+post.getId()+" Commentaires :"+commentDTO.getComment());
             });
+
         };
     }
 
-    //@Bean
-    CommandLineRunner start(UserRepo userRepo,
-                            PostRepo postRepo,
-                            CommentRepo commentRepo,
-                            NotepadRepo notepadRepo,
-                            TherapistRepo therapistRepo,
-                            PatientRepo patientRepo,
-                            AdminRepo adminRepo,
-                            TherapySessionRepo therapySessionRepo){
 
-        Random random=new Random();
-        Gender[] genders = Gender.values();
-        Role[] roles=Role.values();
-
-        TherapistRole[] therapistRoles=TherapistRole.values();
-
-        return args -> {
-
-            Stream.of("Adham","Aymane","Malika").forEach(name->{
-                Patient patient=new Patient();
-                patient.setUserName(name);
-                patient.setCity("Rabat");
-                patient.setAge(20);
-                patient.setPassword((name+random.nextInt(1000)+1));
-                patient.setProfession("Etudiant");
-                StringBuilder phoneNumber = new StringBuilder("06");
-                for (int j = 0; j < 8; j++) {
-                    phoneNumber.append(random.nextInt(10));
-                }
-                patient.setPhone(phoneNumber.toString());
-                patient.setEmail(name+"@gmail.com");
-                int i = random.nextInt(genders.length);
-                patient.setGender(genders[i]);
-                patient.setMedicalHistory("medical information");
-                patientRepo.save(patient);
-
-            });
-            Stream.of("Ikram","Karim","Sara").forEach(name->{
-                Therapist therapist=new Therapist();
-                therapist.setUserName(name);
-                therapist.setPassword(name+random.nextInt(1000)+1);
-                therapist.setEmail(name+"@gmail.com");
-                int i = random.nextInt(genders.length);
-                therapist.setGender(genders[i]);
-                int tr= random.nextInt(therapistRoles.length);
-                therapist.setTherapistRole(therapistRoles[tr]);
-                StringBuilder phoneNumber = new StringBuilder("06");
-                for (int j = 0; j < 8; j++) {
-                    phoneNumber.append(random.nextInt(10));
-                }
-                therapist.setPhone(phoneNumber.toString());
-                therapist.setAviability(random.nextBoolean());
-                therapist.setPrice(250);
-                therapist.setLocalAddress(name+"'s local address");
-                therapistRepo.save(therapist);
-            });
-
-            patientRepo.findAll().forEach(patient -> {
-                Post post=new Post();
-                post.setPatient(patient);
-                post.setCreatedDate(new Date());
-                post.setContent("this is "+patient.getUserName()+"'s post");
-                post.setUser_visibility(random.nextBoolean());
-                postRepo.save(post);
-            });
-            postRepo.findAll().forEach(post -> {
-                Comment comment=new Comment();
-                comment.setPost(post);
-                comment.setPatient(post.getPatient());
-                comment.setComment("this is "+post.getPatient().getUserName()+"'s comment");
-                comment.setCreatedDate(new Date());
-                commentRepo.save(comment);
-            });
-            patientRepo.findAll().forEach(patient -> {
-                NotePad notePad=new NotePad();
-                notePad.setPatient(patient);
-                notePad.setContent("this is "+patient.getUserName()+"'s notes");
-                notePad.setCreatedDate(new Date());
-                notePad.setTitle(patient.getUserName()+"'s title");
-                notepadRepo.save(notePad);
-            });
-
-            Patient patient = patientRepo.findById(1L).orElse(null);
-            Therapist therapist = therapistRepo.findById(4L).orElse(null);
-
-            if(patient!=null && therapist!=null && therapist.getAviability()){
-                TherapieSession therapieSession=new TherapieSession();
-                therapieSession.setDateSession(new Date());
-                therapieSession.setPatient(patient);
-                therapieSession.setTherapist(therapist);
-                therapieSession.setPatientName(patient.getUserName());
-                therapieSession.setTherapisteName(therapist.getUserName());
-                therapieSession.setNameSession("Session test");
-                therapySessionRepo.save(therapieSession);
-            }else{
-                System.out.println("Le thérapeute sélectionné n'est pas disponible.");
-            }
-
-        };
-    }
 }
