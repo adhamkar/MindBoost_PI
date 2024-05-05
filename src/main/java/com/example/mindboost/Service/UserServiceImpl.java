@@ -214,7 +214,7 @@ public class UserServiceImpl implements UserService {
     public PostDTO getPost(Long postID) {
         Post post=postRepo.findById(postID).orElseThrow(null);
         if(post!=null){
-           return mapper.FromPost(post);
+            return mapper.FromPost(post);
         }
         return null;
     }
@@ -315,9 +315,9 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public NotePad UpdateNotePad(NotePad notePad) {
-       if(notepadRepo.findAll().contains(notePad)){
-           return notepadRepo.save(notePad);
-       }
+        if(notepadRepo.findAll().contains(notePad)){
+            return notepadRepo.save(notePad);
+        }
         return null;
     }
 

@@ -37,7 +37,7 @@ public class MapperImpl {
         }
         TherapistDTO therapistDTO=new TherapistDTO();
         BeanUtils.copyProperties(therapist,therapistDTO);
-        therapistDTO.setId(therapist.getId());
+       // therapistDTO.setId(therapist.getId());
         return therapistDTO;
     }
     public Therapist FromTherapistDTO(TherapistDTO therapistDTO){

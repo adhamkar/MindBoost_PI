@@ -105,48 +105,48 @@ public class MindBoostApplication {
             });
             System.out.println("*******************************************************");
 
-                userService.Post_LIST().forEach(post -> {
-                        CommentDTO commentDTO=new CommentDTO();
-                        commentDTO.setPostDTO(post);
-                        System.out.println("Post id :"+ commentDTO.getPostDTO().getId());
-                        if(post.getTherapistDTO()!=null && post.getPatientDTO()==null){
-                            commentDTO.setTherapistDTO(post.getTherapistDTO());
-                            commentDTO.setComment(post.getTherapistDTO().getUserName()+" therapist comment 1");
+            userService.Post_LIST().forEach(post -> {
+                CommentDTO commentDTO=new CommentDTO();
+                commentDTO.setPostDTO(post);
+                System.out.println("Post id :"+ commentDTO.getPostDTO().getId());
+                if(post.getTherapistDTO()!=null && post.getPatientDTO()==null){
+                    commentDTO.setTherapistDTO(post.getTherapistDTO());
+                    commentDTO.setComment(post.getTherapistDTO().getUserName()+" therapist comment 1");
 
-                        }
-                        if(post.getTherapistDTO()==null && post.getPatientDTO()!=null){
-                            commentDTO.setPatientDTO(post.getPatientDTO());
-                            commentDTO.setComment(post.getPatientDTO().getUserName()+" patient comment 1");
-
-                        }
-                        commentDTO.setCreatedDate(new Date());
-                        userService.SaveComment(commentDTO,post.getId());
-
-                        if(commentDTO.getTherapistDTO()!=null && commentDTO.getPatientDTO()==null){
-                            System.out.println("Therapist id :"+commentDTO.getTherapistDTO().getId());
-
-                        }
-                        if(post.getTherapistDTO()==null && post.getPatientDTO()!=null){
-                            System.out.println("Patient id :"+commentDTO.getPatientDTO().getId());
-                        }
-
-                });
-
-                PatientDTO patientDTO=userService.getpatient(1L);
-                TherapistDTO therapistDTO=userService.getTherapist(6L);
-                if(therapistDTO.getAviability()){
-                    TherapieSessionDTO therapieSessionDTO=new TherapieSessionDTO();
-                    therapieSessionDTO.setTherapistDTO(therapistDTO);
-                    therapieSessionDTO.setPatientDTO(patientDTO);
-                    therapieSessionDTO.setDateSession(new Date());
-                    therapieSessionDTO.setPatientName(patientDTO.getUserName());
-                    therapieSessionDTO.setTherapisteName(therapistDTO.getUserName());
-                    therapieSessionDTO.setNameSession("sessiono 1");
-                    userService.SaveTherapieSession(therapieSessionDTO);
-                    System.out.println("Therapist available, Session saved");
-                }else{
-                    System.out.println("Therapist not available");
                 }
+                if(post.getTherapistDTO()==null && post.getPatientDTO()!=null){
+                    commentDTO.setPatientDTO(post.getPatientDTO());
+                    commentDTO.setComment(post.getPatientDTO().getUserName()+" patient comment 1");
+
+                }
+                commentDTO.setCreatedDate(new Date());
+                userService.SaveComment(commentDTO,post.getId());
+
+                if(commentDTO.getTherapistDTO()!=null && commentDTO.getPatientDTO()==null){
+                    System.out.println("Therapist id :"+commentDTO.getTherapistDTO().getId());
+
+                }
+                if(post.getTherapistDTO()==null && post.getPatientDTO()!=null){
+                    System.out.println("Patient id :"+commentDTO.getPatientDTO().getId());
+                }
+
+            });
+
+            PatientDTO patientDTO=userService.getpatient(1L);
+            TherapistDTO therapistDTO=userService.getTherapist(6L);
+            if(therapistDTO.getAviability()){
+                TherapieSessionDTO therapieSessionDTO=new TherapieSessionDTO();
+                therapieSessionDTO.setTherapistDTO(therapistDTO);
+                therapieSessionDTO.setPatientDTO(patientDTO);
+                therapieSessionDTO.setDateSession(new Date());
+                therapieSessionDTO.setPatientName(patientDTO.getUserName());
+                therapieSessionDTO.setTherapisteName(therapistDTO.getUserName());
+                therapieSessionDTO.setNameSession("sessiono 1");
+                userService.SaveTherapieSession(therapieSessionDTO);
+                System.out.println("Therapist available, Session saved");
+            }else{
+                System.out.println("Therapist not available");
+            }
             PostDTO post = userService.getPost(1L);
             List<CommentDTO> commentDTOS = userService.COMMENT_LIST_PERPost(post.getId());
             commentDTOS.forEach(commentDTO -> {

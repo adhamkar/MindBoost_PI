@@ -32,7 +32,7 @@ public class PostRestController {
 
     @GetMapping("/posts/{id}")
     public PostDTO getPost(@PathVariable(name = "id") Long Id){
-    return userService.getPost(Id);
+        return userService.getPost(Id);
     }
 
     @GetMapping("/posts/{id}/patient")
