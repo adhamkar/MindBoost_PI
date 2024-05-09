@@ -16,10 +16,13 @@ import java.util.List;
 public class PostDTO {
     private Long id;
     private String Content;
+    private String Title;
     private Date CreatedDate;
     private Date UpdatedDate;
     private Boolean user_visibility;
     private PatientDTO patientDTO;
     private TherapistDTO therapistDTO;
     private List<CommentDTO> commentDTOS;
+
+
 }

@@ -7,4 +7,7 @@ import java.util.List;
 
 public interface TherapySessionRepo extends JpaRepository<TherapieSession,Long> {
     List<TherapieSession> searchTherapieSessionByNameSession(String name);
+
+
+    List<TherapieSession> searchByNameSession(String nameSession);
 }

@@ -1,6 +1,7 @@
 package com.example.mindboost.DTOs;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 
 import java.util.List;
@@ -8,7 +9,7 @@ import java.util.List;
 
 @Data
 public class PatientDTO extends UserDTO {
-
+    @NotNull
     private int age;
     private String city;
     private String profession;
@@ -22,14 +23,5 @@ public class PatientDTO extends UserDTO {
     private List<NotePadDTO> notePadDTOS;
 
     private List<TherapieSessionDTO> therapieSessionDTOS;
-
-   /* public void addCommentByPatient(PostDTO post, PatientDTO patientDTO, String commentText) {
-        CommentDTO commentDTO = new CommentDTO();
-        commentDTO.setPostDTO(post);
-        commentDTO.setPatientDTO(patientDTO);
-        commentDTO.addComment(commentText);
-        commentDTO.setCreatedDate(new Date());
-        userService.SaveComment(commentDTO, post.getId());
-    }*/
 
 }

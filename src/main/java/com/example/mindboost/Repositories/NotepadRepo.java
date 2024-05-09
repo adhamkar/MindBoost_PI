@@ -15,4 +15,5 @@ public interface NotepadRepo extends JpaRepository<NotePad,Long> {
     List<NotePad> searchByTitle(@Param("kw") String keyword);
 
     //List<String> findNotePadsByTitle();
+    List<NotePad> findAllByPatientId(Long patientID);
 }

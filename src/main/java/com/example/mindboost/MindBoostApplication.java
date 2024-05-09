@@ -55,6 +55,7 @@ public class MindBoostApplication {
 
                 PostDTO postDTO=new PostDTO();
                 postDTO.setPatientDTO(patientDTO);
+                postDTO.setTitle(patientDTO.getUserName()+"'s post title");
                 postDTO.setCreatedDate(new Date());
                 postDTO.setContent("this is "+patientDTO.getUserName()+"'s post");
                 postDTO.setUser_visibility(random.nextBoolean());
@@ -94,6 +95,7 @@ public class MindBoostApplication {
 
                 PostDTO postDTO=new PostDTO();
                 postDTO.setTherapistDTO(therapistDTO);
+                postDTO.setTitle(therapistDTO.getUserName()+"'s post title");
                 postDTO.setCreatedDate(new Date());
                 postDTO.setContent("this is "+therapistDTO.getUserName()+"'s post");
                 postDTO.setUser_visibility(random.nextBoolean());
@@ -152,6 +154,9 @@ public class MindBoostApplication {
             commentDTOS.forEach(commentDTO -> {
                 System.out.println("Post avec id :"+post.getId()+" Commentaires :"+commentDTO.getComment());
             });
+            System.out.println("*******************************************************");
+
+
 
         };
     }

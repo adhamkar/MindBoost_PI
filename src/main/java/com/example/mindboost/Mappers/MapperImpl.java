@@ -53,8 +53,13 @@ public class MapperImpl {
         return postDTO;
     }
     public Post FromPostDTO(PostDTO postDTO){
+        if (postDTO == null) {
+            return null;
+        }
         Post post=new Post();
         BeanUtils.copyProperties(postDTO,post);
+        //post.setPatient(FromPatientDTO(postDTO.getPatientDTO()));
+        //post.setTherapist(FromTherapistDTO(postDTO.getTherapistDTO()));
         return post;
     }
     public NotePadDTO FromNotePad(NotePad notePad){

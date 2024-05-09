@@ -11,4 +11,5 @@ public interface CommentRepo extends JpaRepository<Comment,Long> {
     /*@Query(value="SELECT * FROM notepad ORDER BY createddate DESC",nativeQuery = true)
     List<Comment> GetAllComments();*/
     List<Comment> findCommentsByPost(Post post);
+    List<Comment> findCommentsByPostId(Long postID);
 }

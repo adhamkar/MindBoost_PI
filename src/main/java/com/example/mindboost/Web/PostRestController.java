@@ -29,6 +29,10 @@ public class PostRestController {
     public List<PostDTO> posts(){
         return userService.Post_LIST();
     }
+    @GetMapping("/posts/{id}/title")
+    public String getPostTitle(@PathVariable(name = "id") Long Id){
+        return userService.getPost(Id).getTitle();
+    }
 
     @GetMapping("/posts/{id}")
     public PostDTO getPost(@PathVariable(name = "id") Long Id){
@@ -56,7 +60,7 @@ public class PostRestController {
     }
 
     @PostMapping("/patient_post")
-    public PostDTO AddPostByPost(@RequestBody PostDTO postDTO,@RequestParam Long patientID){
+    public PostDTO AddPostByPatient(@RequestBody PostDTO postDTO,@RequestParam Long patientID){
         PatientDTO patientDTO = userService.getpatient(patientID);
         postDTO.setPatientDTO(patientDTO);
         postDTO.setCreatedDate(new Date());
@@ -67,6 +71,7 @@ public class PostRestController {
     public PostDTO AddPostByTherapist(@RequestBody PostDTO postDTO,@RequestParam Long TherapsitID){
         TherapistDTO therapistDTO = userService.getTherapist(TherapsitID);
         postDTO.setTherapistDTO(therapistDTO);
+        postDTO.setUser_visibility(true);
         postDTO.setCreatedDate(new Date());
         return userService.savePost_Therapist(postDTO);
     }
@@ -76,4 +81,10 @@ public class PostRestController {
         userService.DeletePost(id);
     }
 
+    @PatchMapping("/posts/{id}")
+    public PostDTO updatePostByPatient(@RequestBody PostDTO postDTO,@PathVariable Long id){
+        postDTO.setId(id);
+        return userService.UpdatePost(postDTO);
+
+    }
 }

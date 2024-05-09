@@ -49,6 +49,11 @@ public interface UserService {
     void DeletePost(Long postID);
     PostDTO UpdatePost(PostDTO postDTO);
     PostDTO getPost(Long postID);
+
+    List<PostDTO> Post_LIST_PERPatient(Long patientID);
+
+    List<PostDTO> Post_List_PERTherapist(Long therapistID);
+
     List<PostDTO> Post_LIST();
 
 
@@ -57,8 +62,8 @@ public interface UserService {
     CommentDTO SaveComment(CommentDTO commentDTO,Long Post_id);
 
     void DeleteComment(Long commentID);
-    Comment UpdateComment(Comment comment);
-    Comment getComment(Long commentID);
+    CommentDTO UpdateComment(CommentDTO commentDTO);
+    CommentDTO getComment(Long commentID);
     List<CommentDTO> Comment_LIST();
     List<CommentDTO> COMMENT_LIST_PERPost(Long postId);
 
@@ -66,17 +71,19 @@ public interface UserService {
     //NotePad SaveNotePad(NotePad notePad);
     NotePadDTO SaveNotePad(NotePadDTO notePadDTO);
     void DeleteNotePad(Long notePadID);
-    NotePad UpdateNotePad(NotePad notePad);
-    NotePad getNotePad(Long notePadID);
-    List<NotePad> NotePad_LIST();
+    NotePadDTO UpdateNotePad(NotePadDTO notePadDTO);
+    NotePadDTO getNotePad(Long notePadID);
+    List<NotePadDTO> NotePad_LIST();
     List<NotePad> SearchNotePad(String name);
 
     /************** TherapieSession things *************/
     TherapieSessionDTO SaveTherapieSession(TherapieSessionDTO therapieSessionDTO);
     void DeleteTherapieSession(Long therapieSessionID);
-    TherapieSession UpdateTherapieSession(TherapieSession therapieSession);
-    TherapieSession getTherapieSession(Long therapieSessionID);
-    List<TherapieSession> TherapieSession_LIST();
+    TherapieSessionDTO UpdateTherapieSession(TherapieSessionDTO therapieSession);
+    TherapieSessionDTO getTherapieSession(Long therapieSessionID);
+    List<TherapieSessionDTO> TherapieSession_LIST();
 
-    List<TherapieSession> SearchTherapieSession(String SessionName);
+    List<TherapieSessionDTO> SearchTherapieSession(String SessionName);
+
+    List<NotePadDTO> NotePad_LIST_PERPatient(Long id);
 }

@@ -15,4 +15,8 @@ public interface PostRepo extends JpaRepository<Post,Long> {
     @Query(value = "SELECT p.patient FROM Post p WHERE p.id = :postId")
     Patient getPatientByPostId(@Param("postId") Long postId);
     Post findPostByPatientId(Long id);
+    List<Post> findAllByPatientId(Long patientID);
+
+    List<Post> findAllByTherapistId(Long therapistID);
+
 }
