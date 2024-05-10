@@ -15,7 +15,7 @@ import {MatSortModule} from "@angular/material/sort";
 import {MatPaginatorModule} from "@angular/material/paginator";
 import {MatTableModule} from "@angular/material/table";
 import {HttpClientModule} from "@angular/common/http";
-import {ReactiveFormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatInputModule} from "@angular/material/input";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatCardModule} from "@angular/material/card";
@@ -28,6 +28,7 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import { SidebarComponent } from './sidebar/sidebar.component';
 import {NgOptimizedImage} from "@angular/common";
 import { CreateCommentComponent } from './post/post-details/create-comment/create-comment.component';
+import {MatCheckbox, MatCheckboxModule} from "@angular/material/checkbox";
 
 @NgModule({
   declarations: [
@@ -64,6 +65,9 @@ import { CreateCommentComponent } from './post/post-details/create-comment/creat
     MatDialogActions,
     MatDialogTitle,
     NgOptimizedImage,
+    MatCheckboxModule,
+    FormsModule,
+    ReactiveFormsModule
 
   ],
   providers: [

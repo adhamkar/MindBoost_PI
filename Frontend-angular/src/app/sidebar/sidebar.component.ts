@@ -8,6 +8,6 @@ import { Component } from '@angular/core';
 export class SidebarComponent {
   /*userImageSrc: string = './app/sidebar/img.png';*/
   userImageSrc: string ='https://theartistgsm.com/wp-content/uploads/2020/08/admin-settings-male.png'
-  userName: string = 'Admin';
-  userEmail: string = 'admin@gmail.com';
+  userName: string = 'User';
+  userEmail: string = 'user@gmail.com';
 }

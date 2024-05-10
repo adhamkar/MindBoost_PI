@@ -6,7 +6,7 @@
         <p>{{ post.content }}</p>
         <div class="post-date">
           <label>Date:</label>
-          <span>{{ post.date | date:"MMM d, y - h:mm a" }}</span>
+          <span>{{ post.createdDate | date:"MMM d, y - h:mm a" }}</span>
         </div>
         <div class="post-actions">
           <button mat-raised-button color="primary" (click)="gotoList()"><mat-icon>arrow_back</mat-icon>Back</button>
@@ -15,13 +15,13 @@
 
     </div>
     <div class="comments">
-      <h4>Comments Details</h4>
-      <button class="addComment" mat-raised-button color="primary" ><mat-icon>add</mat-icon>Add Comment</button>
+      <h4></h4>
+      <button class="addComment" mat-raised-button color="primary"  (click)="createComment()"><mat-icon>add</mat-icon>Add Comment</button>
       <div class="comment-list">
         <div *ngFor="let c of comments" class="comment">
-          <p>{{ c.content }}</p>
+          <p>{{ c.comment }}</p>
           <div class="comment-date">
-            <span>{{ c.date | date:"MMM d, y - h:mm a" }}</span>
+            <span>{{ c.createdDate | date:"MMM d, y - h:mm a" }}</span>
           </div>
         </div>
       </div>

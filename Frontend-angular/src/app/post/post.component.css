@@ -1,4 +1,4 @@
-.post-container {
+.post-container{
   display: flex;
   flex-wrap: wrap; /* Permet aux cartes de passer à la ligne si elles ne tiennent pas sur une seule ligne */
   justify-content: space-between; /* Répartit les cartes également dans la ligne */

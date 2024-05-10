@@ -1,21 +1,18 @@
 <h1 mat-dialog-title class="dialog-title">{{inputData.title}}</h1>
 <div mat-dialog-content>
-  <form class="post-form">
-  <mat-form-field>
-    <mat-label>Title</mat-label>
-    <input matInput formControlName="title" placeholder="Enter title">
-    <mat-icon matSuffix>pencil</mat-icon>
-  </mat-form-field>
+  <form class="post-form" [formGroup]="postForm" (ngSubmit)="save()">
+
   <mat-form-field>
     <mat-label>Content</mat-label>
-    <textarea matInput formControlName="Content" placeholder="Enter content"></textarea>
+    <textarea matInput formControlName="content" placeholder="Enter content"></textarea>
     <mat-icon matSuffix>pencil</mat-icon>
   </mat-form-field>
+<!--    <mat-checkbox formControlName="userVisibility">name Visibility</mat-checkbox>-->
   </form>
 </div>
 
 <div mat-dialog-actions>
   <div class="spacer"></div> <!-- Espace pour pousser les boutons à droite -->
   <button mat-raised-button [mat-dialog-close]="false" style="background-color: rgba(128,128,128,0.29)">Cancel</button>
-  <button mat-raised-button type="submit" style="background-color: #06a0af">Create</button>
+  <button mat-raised-button type="submit" style="background-color: #06a0af" >Create</button>
 </div>
