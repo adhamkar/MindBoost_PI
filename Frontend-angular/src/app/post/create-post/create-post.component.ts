@@ -27,7 +27,6 @@ constructor(@Inject(MAT_DIALOG_DATA) public data:any ,private ref:MatDialogRef<C
       })
     }
     save(){
-      console.log("saaaaaaaaaave post")
       const patientID = 1;
        this.post= this.postForm.value;
       this.postService.createPatientPost(this.post, patientID).subscribe(

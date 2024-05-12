@@ -9,6 +9,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import jakarta.persistence.*;
+import org.hibernate.annotations.Formula;
+
 import java.util.List;
 @Entity
 @Table(name = "users")
@@ -26,10 +28,8 @@ public class User {
     private String email;
     @Column(length = 10)
     private String phone;
-    /*@Enumerated(EnumType.STRING)
-    private Role role;*/
     @Enumerated(EnumType.STRING)
     private Gender gender;
-
-
+    @Formula("Role") // Add this line
+    private String role;
 }

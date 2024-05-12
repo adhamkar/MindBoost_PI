@@ -13,7 +13,7 @@ public class UserDTO {
     private String userName;
     @Column(unique=true)
     private String email;
-    private String userType;
+    private String role;
     @NotNull
     private String Password;
     @Column(unique=true)

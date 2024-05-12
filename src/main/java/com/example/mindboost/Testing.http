@@ -1,0 +1,29 @@
+GET http://localhost:8085/patients
+Accept: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJBeW1hbmUiLCJleHAiOjE3MTU0NzUxMjIsImlhdCI6MTcxNTQ3NDUyMiwic2NvcGUiOiJST0xFX1BhdGllbnQifQ.42MHaH-RY7lcAuokDfg6R6eiDzHdZ5SE2Aidxtkl0joKCBHoyyfo2GlcNTyI24s222r6z9bpWExJP43ZH9knig
+###
+POST http://localhost:8085/auth/login
+Content-Type: application/x-www-form-urlencoded
+
+username=admin&password=12345
+
+###
+GET http://localhost:8085/auth/profile
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTcxNTQ3NzI2MSwiaWF0IjoxNzE1NDc2NjYxLCJzY29wZSI6IlJPTEVfQWRtaW4ifQ.KeyWMk6c231Fhg-Dvw_VMCtGiHwGLWx7jno9wH4nMIO-C4SjsmjuPKk-sgmuSRmTrW4oHzYjA7QFUKVao9_Tbw
+###
+POST  http://localhost:8085/patients
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTcxNTQ3NzI2MSwiaWF0IjoxNzE1NDc2NjYxLCJzY29wZSI6IlJPTEVfQWRtaW4ifQ.KeyWMk6c231Fhg-Dvw_VMCtGiHwGLWx7jno9wH4nMIO-C4SjsmjuPKk-sgmuSRmTrW4oHzYjA7QFUKVao9_Tbw
+
+{
+    "userName": "said",
+    "email": "said@gmail.com",
+    "password": "said1234",
+    "phone": "0612345678",
+    "gender": "Male",
+    "age": 25,
+    "city": "Casablanca",
+    "profession": "Engineer",
+    "medicalHistory": "psycho"
+
+}

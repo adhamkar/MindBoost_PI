@@ -14,7 +14,7 @@ import {MatList, MatListItem, MatListModule} from "@angular/material/list";
 import {MatSortModule} from "@angular/material/sort";
 import {MatPaginatorModule} from "@angular/material/paginator";
 import {MatTableModule} from "@angular/material/table";
-import {HttpClientModule} from "@angular/common/http";
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatInputModule} from "@angular/material/input";
 import {MatFormFieldModule} from "@angular/material/form-field";
@@ -29,6 +29,8 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import {NgOptimizedImage} from "@angular/common";
 import { CreateCommentComponent } from './post/post-details/create-comment/create-comment.component';
 import {MatCheckbox, MatCheckboxModule} from "@angular/material/checkbox";
+import { LoginComponent } from './login/login.component';
+import {AppHttpInterceptor} from "./interceptors/app-http.interceptor";
 
 @NgModule({
   declarations: [
@@ -40,6 +42,7 @@ import {MatCheckbox, MatCheckboxModule} from "@angular/material/checkbox";
     PostDetailsComponent,
     SidebarComponent,
     CreateCommentComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
@@ -71,7 +74,8 @@ import {MatCheckbox, MatCheckboxModule} from "@angular/material/checkbox";
 
   ],
   providers: [
-    provideAnimationsAsync()
+    provideAnimationsAsync(),
+    {provide:HTTP_INTERCEPTORS, useClass:AppHttpInterceptor, multi:true}
   ],
   bootstrap: [AppComponent]
 })

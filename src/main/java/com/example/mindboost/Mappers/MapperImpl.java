@@ -12,6 +12,16 @@ public class MapperImpl {
         BeanUtils.copyProperties(user,userDTO);
         return userDTO;
     }
+    public AdminDTO FromAdmin(Admin admin){
+        AdminDTO adminDTO=new AdminDTO();
+        BeanUtils.copyProperties(admin,adminDTO);
+        return adminDTO;
+    }
+    public Admin FromAdminDTO(AdminDTO adminDTO){
+        Admin admin=new Admin();
+        BeanUtils.copyProperties(adminDTO,admin);
+        return admin;
+    }
 
     public User FromUserDTO(UserDTO userDTO){
         User user=new User();

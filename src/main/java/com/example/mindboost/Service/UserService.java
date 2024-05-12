@@ -9,6 +9,22 @@ import java.util.List;
 
 
 public interface UserService {
+    UserDTO LoadUserByUserName(String userName);
+
+    List<UserDTO> User_LIST();
+
+    UserDTO getUser(Long userID);
+
+    void DeleteUser(Long userID);
+
+    UserDTO UpdateUser(UserDTO userDTO);
+
+    AdminDTO SaveAdmin(AdminDTO adminDTO);
+
+    AdminDTO UpdateAdmin(AdminDTO adminDTO);
+
+    List<AdminDTO> Admin_LIST();
+
     /************** Users things *************/
     PatientDTO SavePatient(PatientDTO patientDTO);
 

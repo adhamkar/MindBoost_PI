@@ -6,6 +6,7 @@ import com.example.mindboost.Mappers.MapperImpl;
 import com.example.mindboost.Repositories.*;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -25,8 +26,10 @@ public class UserServiceImpl implements UserService {
     private TherapistRepo therapistRepo;
     private TherapySessionRepo therapySessionRepo;
     private NotepadRepo notepadRepo;
+    private AdminRepo adminRepo;
     private MapperImpl mapper;
     private UserRepo userRepo;
+    private PasswordEncoder passwordEncoder;
 
     /************** Users implementation *************/
     @Override
@@ -34,6 +37,75 @@ public class UserServiceImpl implements UserService {
         User user = mapper.FromUserDTO(userDTo);
         User userSaved = userRepo.save(user);
         return mapper.FromUser(userSaved);
+    }
+    @Override
+   public UserDTO LoadUserByUserName(String userName) {
+        User user = userRepo.findByUserName(userName);
+        UserDTO userDTO = mapper.FromUser(user);
+        userDTO.setRole(user.getRole());
+        return userDTO;
+    }
+    @Override
+    public List<UserDTO> User_LIST() {
+        List<User> users = userRepo.findAll();
+        List<UserDTO> userDTOS = users.stream()
+                .map(user -> mapper.FromUser(user))
+                .collect(Collectors.toList());
+        return userDTOS;
+    }
+    @Override
+    public UserDTO getUser(Long userID) {
+        User user = userRepo.findById(userID).orElseThrow(null);
+        if (user != null) {
+            return mapper.FromUser(user);
+        }
+        return null;
+    }
+    @Override
+    public void DeleteUser(Long userID) {
+        if (userRepo.findById(userID) != null) {
+            userRepo.deleteById(userID);
+        }
+    }
+    @Override
+    public UserDTO UpdateUser(UserDTO userDTO) {
+        User user = mapper.FromUserDTO(userDTO);
+        List<User> allusers = userRepo.findAll();
+        if (allusers.contains(user)) {
+            User savedUser = userRepo.save(user);
+            return mapper.FromUser(savedUser);
+        }
+        return null;
+    }
+    @Override
+    public AdminDTO SaveAdmin(AdminDTO adminDTO) {
+        Admin admin = mapper.FromAdminDTO(adminDTO);
+        List<Admin> allAdmins = adminRepo.findAll();
+        if (allAdmins.contains(admin)) {
+            return null;
+        }
+        admin.setPassword(passwordEncoder.encode(admin.getPassword()));
+        Admin savedAdmin = adminRepo.save(admin);
+        adminDTO.setId(savedAdmin.getId());
+        return adminDTO;
+    }
+    @Override
+    public AdminDTO UpdateAdmin(AdminDTO adminDTO) {
+        Admin admin = mapper.FromAdminDTO(adminDTO);
+        List<Admin> allAdmins = adminRepo.findAll();
+        if (allAdmins.contains(admin)) {
+            Admin savedAdmin = adminRepo.save(admin);
+            return mapper.FromAdmin(savedAdmin);
+        }
+        return null;
+    }
+    @Override
+    public List<AdminDTO> Admin_LIST() {
+        List<Admin> admins = adminRepo.findAll();
+        List<AdminDTO> adminDTOS = admins.stream()
+                .map(admin -> mapper.FromAdmin(admin))
+                .collect(Collectors.toList());
+        return adminDTOS;
     }
 
     @Override
@@ -44,6 +116,7 @@ public class UserServiceImpl implements UserService {
         if (allpatients.contains(patient)) {
             return null;
         }
+        patient.setPassword(passwordEncoder.encode(patient.getPassword()));
         Patient savedPatient = patientRepo.save(patient);
         patientDTO.setId(savedPatient.getId());
         return patientDTO;
@@ -57,6 +130,7 @@ public class UserServiceImpl implements UserService {
         if (alltherapist.contains(therapist)) {
             return null;
         }
+        therapist.setPassword(passwordEncoder.encode(therapist.getPassword()));
         Therapist savedTherapist = therapistRepo.save(therapist);
         therapistDTO.setId((savedTherapist.getId()));
         return therapistDTO;

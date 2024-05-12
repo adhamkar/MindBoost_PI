@@ -5,5 +5,4 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 @Data
 public class AdminDTO extends UserDTO {
-
 }

@@ -13,7 +13,6 @@ import java.util.List;
 
 @Entity
 @Data
-//@DiscriminatorValue("Patient")
 @NoArgsConstructor
 @AllArgsConstructor
 public class Patient extends User{

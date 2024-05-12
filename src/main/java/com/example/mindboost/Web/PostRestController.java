@@ -63,6 +63,7 @@ public class PostRestController {
     public PostDTO AddPostByPatient(@RequestBody PostDTO postDTO,@RequestParam Long patientID){
         PatientDTO patientDTO = userService.getpatient(patientID);
         postDTO.setPatientDTO(patientDTO);
+        postDTO.setUser_visibility(true);
         postDTO.setCreatedDate(new Date());
         return userService.savePost(postDTO);
     }

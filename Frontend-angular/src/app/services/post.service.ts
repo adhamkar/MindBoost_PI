@@ -27,8 +27,8 @@ export class PostService {
 
     return this.http.post(`${this.baseUrl}`+"/patient_post", post);
   }
-  public createPatientPost(post: Post, patientID: number): Observable<Post> {
-    return this.http.post<Post>(`${this.baseUrl}/patient_post?patientID=${patientID}`, post);
+  public createPatientPost(post: any, patientID: number) {
+    return this.http.post(`${this.baseUrl}/patient_post?patientID=${patientID}`, post);
   }
 
   // Méthode pour créer un post pour un thérapeute
