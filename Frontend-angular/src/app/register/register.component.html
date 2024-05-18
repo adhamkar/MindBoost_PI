@@ -1,0 +1,70 @@
+<mat-card>
+  <mat-card-title style="margin: 10px">Registration</mat-card-title>
+  <mat-card-content>
+    <form class="form-grid" [formGroup]="registerForm" (ngSubmit)="handleSignUp()">
+      <div>
+        <div *ngIf="registerForm.controls['username'].invalid && (registerForm.controls['username'].dirty || registerForm.controls['username'].touched)" class="alert alert-danger">
+          User Name is required.
+        </div>
+        <mat-form-field>
+          <input type="text" matInput placeholder="Username" formControlName="username">
+        </mat-form-field>
+        <div *ngIf="registerForm.controls['email'].invalid && (registerForm.controls['email'].dirty || registerForm.controls['email'].touched)" class="alert alert-danger">
+          E-mail is required.
+        </div>
+        <mat-form-field>
+          <input type="email" matInput placeholder="Email" formControlName="email">
+        </mat-form-field>
+        <div *ngIf="registerForm.controls['gender'].invalid && (registerForm.controls['gender'].dirty || registerForm.controls['gender'].touched)" class="alert alert-danger">
+          Gender is required.
+        </div>
+        <mat-form-field>
+          <mat-select placeholder="Gender" formControlName="gender">
+            <mat-option value="male">Male</mat-option>
+            <mat-option value="female">Female</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <div *ngIf="registerForm.controls['age'].invalid && (registerForm.controls['age'].dirty || registerForm.controls['age'].touched)" class="alert alert-danger">
+          Age is required.
+        </div>
+        <mat-form-field>
+          <input type="number" matInput placeholder="Age" formControlName="age">
+        </mat-form-field>
+      </div>
+      <div>
+        <div *ngIf="registerForm.controls['city'].invalid && (registerForm.controls['city'].dirty || registerForm.controls['city'].touched)" class="alert alert-danger">
+          City is required.
+        </div>
+        <mat-form-field>
+          <input type="text" matInput placeholder="City" formControlName="city">
+        </mat-form-field>
+        <div *ngIf="registerForm.controls['profession'].invalid && (registerForm.controls['profession'].dirty || registerForm.controls['profession'].touched)" class="alert alert-danger">
+          Profession is required.
+        </div>
+        <mat-form-field>
+          <input type="text" matInput placeholder="Profession" formControlName="profession">
+        </mat-form-field>
+        <mat-form-field>
+          <input type="text" matInput placeholder="Medical History" formControlName="medicalHistory">
+        </mat-form-field>
+        <div *ngIf="registerForm.controls['password'].invalid && (registerForm.controls['password'].dirty || registerForm.controls['password'].touched)" class="alert alert-danger">
+          Password is required.
+        </div>
+        <mat-form-field>
+          <input type="password" matInput placeholder="Password" formControlName="password">
+        </mat-form-field>
+      </div>
+      <div *ngIf="registerForm.controls['phone'].invalid && (registerForm.controls['phone'].dirty || registerForm.controls['phone'].touched)" class="alert alert-danger">
+        Phone is required.
+      </div>
+      <mat-form-field>
+        <input type="tel" matInput placeholder="Phone" formControlName="phone">
+      </mat-form-field>
+      <br>
+      <div class="button">
+        <button mat-raised-button color="primary" routerLink="/login">Already have an Account?</button>
+        <button type="submit" mat-button [disabled]="!registerForm.valid || registerForm.pristine">Sign Up</button>
+      </div>
+    </form>
+  </mat-card-content>
+</mat-card>

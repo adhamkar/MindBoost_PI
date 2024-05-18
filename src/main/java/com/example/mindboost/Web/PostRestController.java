@@ -11,6 +11,8 @@ import com.example.mindboost.Entities.Therapist;
 import com.example.mindboost.Service.UserService;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -60,8 +62,10 @@ public class PostRestController {
     }
 
     @PostMapping("/patient_post")
-    public PostDTO AddPostByPatient(@RequestBody PostDTO postDTO,@RequestParam Long patientID){
-        PatientDTO patientDTO = userService.getpatient(patientID);
+    public PostDTO AddPostByPatient(@RequestBody PostDTO postDTO){
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String username = authentication.getName();
+        PatientDTO patientDTO = userService.findPatientByUsername(username);
         postDTO.setPatientDTO(patientDTO);
         postDTO.setUser_visibility(true);
         postDTO.setCreatedDate(new Date());

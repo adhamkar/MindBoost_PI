@@ -22,8 +22,8 @@
   font-weight: bold;
 }
 .container{
- /* Répartit les cartes également dans la ligne */
-  margin: 2%;
+  width: 100%;
+  margin: 0;
 }
 .create-button{
   background: linear-gradient(to right, #064053, #26c6d7);
@@ -43,5 +43,6 @@
   color: #043342; /* Couleur de la date */
 
 }
-
-
+.icons:hover{
+  cursor: pointer;
+}

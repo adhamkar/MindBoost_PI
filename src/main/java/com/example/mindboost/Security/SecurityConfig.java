@@ -50,8 +50,10 @@ private PasswordEncoder passwordEncoder;
                         .sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .csrf(csrf->csrf.disable())
                 .cors(Customizer.withDefaults())
-                .authorizeHttpRequests(ar->ar.requestMatchers("/auth/login/**").permitAll())
-                .authorizeHttpRequests(ar->ar.anyRequest().authenticated())
+                .authorizeHttpRequests(ar -> ar
+                        .requestMatchers("/auth/signup", "/auth/login").permitAll()
+                        .anyRequest().authenticated())
+                //.authorizeHttpRequests(ar->ar.anyRequest().authenticated())
                 //.httpBasic(Customizer.withDefaults())
                 .oauth2ResourceServer(oa->oa.jwt(Customizer.withDefaults()))
                 .userDetailsService(userDetailService)
@@ -65,7 +67,7 @@ private PasswordEncoder passwordEncoder;
     @Bean
     JwtDecoder jwtDecoder(){
         String secretKey = "7B7C57F468884CC64739275DFC3A54C2A3782489B9DB32E7A75F6C4066242F36";
-        SecretKeySpec secretKeySpec = new SecretKeySpec(secretKey.getBytes(), "RSA");
+        SecretKeySpec secretKeySpec = new SecretKeySpec(secretKey.getBytes(), "HmacSHA512");
         return NimbusJwtDecoder.withSecretKey(secretKeySpec).macAlgorithm(MacAlgorithm.HS512).build();
     }
     @Bean
@@ -78,7 +80,8 @@ private PasswordEncoder passwordEncoder;
     @Bean
     CorsConfigurationSource corsConfigurationSource(){
         CorsConfiguration corsConfiguration=new CorsConfiguration();
-        corsConfiguration.addAllowedOrigin("*");
+        corsConfiguration.addAllowedOrigin("http://localhost:4200");
+        //corsConfiguration.addAllowedOrigin("*");
         corsConfiguration.addAllowedMethod("*");
         corsConfiguration.addAllowedHeader("*");
         corsConfiguration.setExposedHeaders(List.of("x-auth-token"));

@@ -1,15 +1,32 @@
-GET http://localhost:8085/patients
+GET http://localhost:8085/therapistes
 Accept: application/json
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJBeW1hbmUiLCJleHAiOjE3MTU0NzUxMjIsImlhdCI6MTcxNTQ3NDUyMiwic2NvcGUiOiJST0xFX1BhdGllbnQifQ.42MHaH-RY7lcAuokDfg6R6eiDzHdZ5SE2Aidxtkl0joKCBHoyyfo2GlcNTyI24s222r6z9bpWExJP43ZH9knig
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTcxNTgwMjU3MiwiaWF0IjoxNzE1ODAxOTcyLCJzY29wZSI6IlJPTEVfQWRtaW4ifQ.eBFCyXIeRKK9J5nypUL9QwHhlSntQSCjP_ZqK1_ySPnqjYEj2g9D0Ff-Mp4MABEMuFsZwMyTKNRSgHKlPRJxtA
 ###
 POST http://localhost:8085/auth/login
 Content-Type: application/x-www-form-urlencoded
 
-username=admin&password=12345
+username=Adham&password=Adham1234
+###
+POST http://localhost:8085/auth/signup
+Content-Type: application/json
+
+{
+    "userName": "toto",
+    "email": "toto@gmail.com",
+    "password": "toto1234",
+    "phone": "0610345688",
+    "gender": "Female",
+    "age": 25,
+    "city": "Casablanca",
+    "profession": "Student",
+    "medicalHistory": "psycho",
+    "role": "patient"
+
+}
 
 ###
 GET http://localhost:8085/auth/profile
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTcxNTQ3NzI2MSwiaWF0IjoxNzE1NDc2NjYxLCJzY29wZSI6IlJPTEVfQWRtaW4ifQ.KeyWMk6c231Fhg-Dvw_VMCtGiHwGLWx7jno9wH4nMIO-C4SjsmjuPKk-sgmuSRmTrW4oHzYjA7QFUKVao9_Tbw
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTcxNTc5MDIxOSwiaWF0IjoxNzE1Nzg5NjE5LCJzY29wZSI6IlJPTEVfQWRtaW4ifQ.lyGPg0UA6FMsOnEflBHMDB9xQoz0Pt-vEa1618XUXTdqznbysVdAwfmiWJP0mWrcTD5NiaEIKKLkffN061vG6Q
 ###
 POST  http://localhost:8085/patients
 Content-Type: application/json
@@ -25,5 +42,15 @@ Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTcxNTQ3N
     "city": "Casablanca",
     "profession": "Engineer",
     "medicalHistory": "psycho"
+
+}
+###
+POST http://localhost:8085/patient_post
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJBZGhhbSIsImV4cCI6MTcxNTk5MzQwOSwiaWF0IjoxNzE1OTkyODA5LCJzY29wZSI6IlJPTEVfUGF0aWVudCJ9.YXuT_Xx3pKk2jh20EgEAJFj7T-TIwgY-pqbVMP4VBCfb7C-66y8vhXBqYzBVLzitubUd0hhqErrztKQXeLF4Wg
+
+{
+    "title": "new post",
+    "content": "new content"
 
 }

@@ -31,6 +31,12 @@ import { CreateCommentComponent } from './post/post-details/create-comment/creat
 import {MatCheckbox, MatCheckboxModule} from "@angular/material/checkbox";
 import { LoginComponent } from './login/login.component';
 import {AppHttpInterceptor} from "./interceptors/app-http.interceptor";
+import {AuthenticationGuard} from "./guards/authentication.guard";
+import {AuthorizationGuard} from "./guards/authorization.guard";
+import { RegisterComponent } from './register/register.component';
+import { UserRoleComponent } from './user-role/user-role.component';
+import {MatOption, MatSelect} from "@angular/material/select";
+import {ScheduleModule} from "@syncfusion/ej2-angular-schedule";
 
 @NgModule({
   declarations: [
@@ -43,6 +49,8 @@ import {AppHttpInterceptor} from "./interceptors/app-http.interceptor";
     SidebarComponent,
     CreateCommentComponent,
     LoginComponent,
+    RegisterComponent,
+    UserRoleComponent,
   ],
   imports: [
     BrowserModule,
@@ -70,12 +78,16 @@ import {AppHttpInterceptor} from "./interceptors/app-http.interceptor";
     NgOptimizedImage,
     MatCheckboxModule,
     FormsModule,
-    ReactiveFormsModule
+    MatSelect,
+    MatOption,
+    ScheduleModule
 
   ],
   providers: [
     provideAnimationsAsync(),
-    {provide:HTTP_INTERCEPTORS, useClass:AppHttpInterceptor, multi:true}
+    {provide:HTTP_INTERCEPTORS, useClass:AppHttpInterceptor, multi:true},
+    AuthenticationGuard,
+    AuthorizationGuard
   ],
   bootstrap: [AppComponent]
 })

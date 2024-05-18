@@ -102,4 +102,6 @@ public interface UserService {
     List<TherapieSessionDTO> SearchTherapieSession(String SessionName);
 
     List<NotePadDTO> NotePad_LIST_PERPatient(Long id);
+
+    PatientDTO findPatientByUsername(String username);
 }

@@ -552,4 +552,12 @@ public class UserServiceImpl implements UserService {
                 .collect(Collectors.toList());
         return notePadDTOS;
     }
+
+    @Override
+    public PatientDTO findPatientByUsername(String username) {
+        Patient patient = patientRepo.findByUserName(username);
+        return mapper.FromPatient(patient);
+    }
+
+
 }

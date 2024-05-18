@@ -9,6 +9,7 @@ import {Post} from "../models/post.model";
 export class PostService {
 
   private baseUrl = "http://localhost:8085/posts";
+  private url = "http://localhost:8085";
 
   constructor(private http: HttpClient) { }
 
@@ -27,8 +28,8 @@ export class PostService {
 
     return this.http.post(`${this.baseUrl}`+"/patient_post", post);
   }
-  public createPatientPost(post: any, patientID: number) {
-    return this.http.post(`${this.baseUrl}/patient_post?patientID=${patientID}`, post);
+  public createPatientPost(post: any) {
+    return this.http.post(`${this.url}/patient_post`, post);
   }
 
   // Méthode pour créer un post pour un thérapeute

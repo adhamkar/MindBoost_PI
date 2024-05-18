@@ -1,5 +1,6 @@
 package com.example.mindboost.DTOs;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -14,9 +15,9 @@ public class NotePadDTO {
     private Long id;
     private String Title;
     private String Content;
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @JsonFormat(pattern="yyyy-MM-dd")
     private Date CreatedDate;
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private Date ModifieddDate;
     private PatientDTO patientDTO;
 }

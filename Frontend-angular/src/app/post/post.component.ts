@@ -4,6 +4,7 @@ import {CreatePostComponent} from "./create-post/create-post.component";
 import {Router} from "@angular/router";
 import {PostService} from "../services/post.service";
 import {Post} from "../models/post.model";
+import {AuthService} from "../services/auth.service";
 
 @Component({
   selector: 'app-post',
@@ -42,7 +43,7 @@ export class PostComponent implements OnInit{
         'Lorem Ipsum is simply dummy text of the printing and typesetting industry..'
     },
   ]*/
-  constructor(private matDialog:MatDialog, private router:Router,private postService: PostService) {
+  constructor(private matDialog:MatDialog, private router:Router,private postService: PostService,public authService:AuthService) {
   }
 
   ngOnInit(): void {
