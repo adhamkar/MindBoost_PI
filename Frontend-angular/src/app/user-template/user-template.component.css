@@ -17,10 +17,10 @@ mat-sidenav-content{
 }
 mat-toolbar{
   background-color: #ffffff;
-  mat-icon{
+/*  mat-icon{
     margin-left: 15px;
     color:gray
-  }
+  }*/
   justify-content: space-between;
   .box {
     margin-top: 0;

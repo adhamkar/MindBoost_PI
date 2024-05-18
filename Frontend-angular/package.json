@@ -20,10 +20,16 @@
     "@angular/platform-browser": "^17.3.0",
     "@angular/platform-browser-dynamic": "^17.3.0",
     "@angular/router": "^17.3.0",
+    "@syncfusion/ej2-angular-schedule": "^25.2.4",
+    "bootstrap": "^5.3.3",
+    "bootstrap-icons": "^1.11.3",
+    "bulma": "^1.0.0",
     "jwt-decode": "^4.0.0",
     "rxjs": "~7.8.0",
+    "sweetalert2": "^11.11.0",
     "tslib": "^2.3.0",
-    "zone.js": "~0.14.3"
+    "zone.js": "~0.14.3",
+    "@syncfusion/ej2-material-theme": "~25.2.4"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^17.3.2",

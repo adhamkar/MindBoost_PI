@@ -3,11 +3,10 @@
     <mat-icon>notifications_none</mat-icon>
   </div>
 
-  <div class="user">
+  <div class="user" *ngIf="authService.isAuthtenticated">
     <!-- Utilisez ngSrc pour charger l'image de manière optimisée -->
     <img src="/assets/user (4).png">
-    <h4 class="name">{{ userName }}</h4>
-    <p class="mail">{{ userEmail }}</p>
+    <h4 class="name"><span class="role">Welcome</span> {{ this.authService.username }}</h4>
   </div>
   <div class="menu">
     <div class="menu-head">

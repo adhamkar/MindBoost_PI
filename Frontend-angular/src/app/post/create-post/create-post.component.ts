@@ -4,6 +4,8 @@ import {PostService} from "../../services/post.service";
 import {Router} from "@angular/router";
 import {Post} from "../../models/post.model";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {AuthService} from "../../services/auth.service";
+
 
 @Component({
   selector: 'app-create-post',
@@ -16,20 +18,20 @@ export class CreatePostComponent implements OnInit{
   public postForm!: FormGroup;
 constructor(@Inject(MAT_DIALOG_DATA) public data:any ,private ref:MatDialogRef<CreatePostComponent>,
             private postService:PostService, private router: Router,
-            private formBuilder: FormBuilder) {
+            private formBuilder: FormBuilder,public authService:AuthService){
 }
 
   ngOnInit(): void {
     this.inputData = this.data;
     this.postForm = this.formBuilder.group({
       content:this.formBuilder.control('', [Validators.required]),
+      title:this.formBuilder.control('', [Validators.required]),
      // userVisibility:this.formBuilder.control(false) // Define userVisibility FormControl with initial value
       })
     }
     save(){
-      const patientID = 1;
        this.post= this.postForm.value;
-      this.postService.createPatientPost(this.post, patientID).subscribe(
+      this.postService.createPatientPost(this.post).subscribe(
         (data)=>{
           this.post=data;
         },

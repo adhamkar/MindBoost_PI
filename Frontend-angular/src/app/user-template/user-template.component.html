@@ -10,12 +10,11 @@
             <div class="box">
               <button mat-button routerLink="/home"><mat-icon>home</mat-icon>Home</button>
               <button mat-button routerLink="/user/home"><mat-icon>chat</mat-icon>ChatBot</button>
-              <button mat-button routerLink="/user/posts"><mat-icon>note</mat-icon>Posts</button>
+              <button mat-button routerLink="/user/posts" *ngIf="!authService.roles.includes('ADMIN')"><mat-icon>note</mat-icon>Posts</button>
               <button mat-button ><mat-icon>book_border</mat-icon>About Us</button>
               <button mat-button ><mat-icon>help</mat-icon>Need Help?</button>
-
           </div>
-          <button mat-raised-button class="logoutButton" color="accent" ><mat-icon>logout</mat-icon>Logout</button>
+          <button mat-raised-button class="logoutButton" color="accent" (click)="Onlogout()"><mat-icon>logout</mat-icon>Logout</button>
         </mat-toolbar>
 
       </div>
