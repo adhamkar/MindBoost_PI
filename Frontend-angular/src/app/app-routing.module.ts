@@ -7,23 +7,32 @@ import {HomeComponent} from "./home/home.component";
 import {CreatePostComponent} from "./post/create-post/create-post.component";
 import {CreateCommentComponent} from "./post/post-details/create-comment/create-comment.component";
 import {LoginComponent} from "./login/login.component";
-import {AuthenticationGuard} from "./guards/authentication.guard";
-import {AuthorizationGuard} from "./guards/authorization.guard";
+//import {AuthenticationGuard} from "./guards/authentication.guard";
+//import {AuthorizationGuard} from "./guards/authorization.guard";
 import {RegisterComponent} from "./register/register.component";
 import {UserRoleComponent} from "./user-role/user-role.component";
+import {MyPostsComponent} from "./post/my-posts/my-posts.component";
+import {ProfileComponent} from "./profile/profile.component";
+import {PlanningComponent} from "./planning/planning.component";
+import {ToDoListComponent} from "./to-do-list/to-do-list.component";
+import {NotesComponent} from "./notes/notes.component";
 
 const routes: Routes = [
-  {path : "", redirectTo:"/login", pathMatch:"full"},
+  {path : "", component : UserTemplateComponent},
   {path : "login", component : LoginComponent},
   {path : "home", component : HomeComponent},
   {path : "user_role", component : UserRoleComponent},
   {path : "signup", component : RegisterComponent},
-  {path : "user", component : UserTemplateComponent,canActivate :[AuthenticationGuard],children:[
+  {path : "user", component : UserTemplateComponent ,children:[
       {path : "posts", component : PostComponent},
-      { path: 'posts/add', component: CreatePostComponent,canActivate :[AuthorizationGuard]},
+      { path: 'posts/add', component: CreatePostComponent},
       { path: 'posts/:id', component: PostDetailsComponent,},
       { path: 'posts/:id/add', component: CreateCommentComponent },
-
+      {path : "my-posts", component : MyPostsComponent},
+      {path : "profile", component : ProfileComponent},
+      {path : "planning", component : PlanningComponent},
+      {path : "to-do-list", component : ToDoListComponent},
+      {path : "notes", component : NotesComponent},
     ]},
 
 ];

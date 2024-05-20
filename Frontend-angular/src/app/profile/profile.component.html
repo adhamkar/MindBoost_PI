@@ -1,0 +1,65 @@
+<div class="container">
+  <div class="profile-container">
+    <div [ngClass]="getClass()">
+      <div class="col-left">
+        <div class="card welcome-card">
+          <div class="card-head welcome-head-container">
+            <div class="col-left">
+              <div></div>
+              <p></p>
+            </div>
+            <div class="col-right">
+              <img src='assets/profile-bg-3.png' alt="">
+            </div>
+          </div>
+          <div class="card-body welcome-body-container">
+            <div class="col-left">
+              <div class="avatar">
+                <img src='assets/user3.jpg' alt="">
+              </div>
+              <div class="name">{{profileData.name}}</div>
+              <p>{{profileData.role}}</p>
+              <div style="padding-right: 10px">
+                <mat-card class="info-card">
+                  <mat-card-content> <mat-icon>person</mat-icon> {{profileData.gender}}</mat-card-content>
+                </mat-card>
+              <mat-card class="info-card">
+
+                <mat-card-content><mat-icon>phone</mat-icon>{{profileData.phone}} </mat-card-content>
+              </mat-card>
+                <mat-card class="info-card">
+                  <mat-card-content><mat-icon>email</mat-icon> {{profileData.email}}</mat-card-content>
+                </mat-card>
+              <mat-card class="info-card">
+
+                <mat-card-content><mat-icon>date_range</mat-icon> {{profileData.age}} years</mat-card-content>
+              </mat-card>
+
+              </div>
+            </div>
+            <div class="col-right">
+
+              <div class="view-profile">
+                <button  mat-raised-button (click)="openEditProfileDialog()" >
+                  <mat-icon>edit</mat-icon>
+                  Edit Profile
+                </button>
+              </div>
+              <div style="padding-left: 10px ;padding-top:55px">
+              <mat-card class="info-card">
+                <mat-card-content><mat-icon>work</mat-icon> {{profileData.profession}}</mat-card-content>
+              </mat-card>
+              <mat-card class="info-card">
+                <mat-card-content><mat-icon>history</mat-icon> Medical History:{{profileData.history}} </mat-card-content>
+              </mat-card>
+              <mat-card class="info-card">
+                <mat-card-content><mat-icon>location_on</mat-icon> {{profileData.city}}</mat-card-content>
+              </mat-card>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

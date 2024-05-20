@@ -7,7 +7,7 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { PostComponent } from './post/post.component';
 import { HomeComponent } from './home/home.component';
 import {MatToolbar, MatToolbarModule} from "@angular/material/toolbar";
-import {MatIcon, MatIconModule} from "@angular/material/icon";
+import {MatIconModule} from "@angular/material/icon";
 import {MatMenu, MatMenuModule, MatMenuTrigger} from "@angular/material/menu";
 import {MatDrawerContainer, MatSidenavModule} from "@angular/material/sidenav";
 import {MatList, MatListItem, MatListModule} from "@angular/material/list";
@@ -30,13 +30,24 @@ import {NgOptimizedImage} from "@angular/common";
 import { CreateCommentComponent } from './post/post-details/create-comment/create-comment.component';
 import {MatCheckbox, MatCheckboxModule} from "@angular/material/checkbox";
 import { LoginComponent } from './login/login.component';
-import {AppHttpInterceptor} from "./interceptors/app-http.interceptor";
-import {AuthenticationGuard} from "./guards/authentication.guard";
-import {AuthorizationGuard} from "./guards/authorization.guard";
+// import {AppHttpInterceptor} from "./interceptors/app-http.interceptor";
+//import {AuthenticationGuard} from "./guards/authentication.guard";
+// import {AuthorizationGuard} from "./guards/authorization.guard";
 import { RegisterComponent } from './register/register.component';
 import { UserRoleComponent } from './user-role/user-role.component';
-import {MatOption, MatSelect} from "@angular/material/select";
+import {MatOption, MatSelect, MatSelectModule} from "@angular/material/select";
 import {ScheduleModule} from "@syncfusion/ej2-angular-schedule";
+import {ProfileComponent} from "./profile/profile.component";
+import {NotesComponent} from "./notes/notes.component";
+import {MyPostsComponent} from "./post/my-posts/my-posts.component";
+import {EditProfileComponent} from "./profile/edit-profile/edit-profile.component";
+import {PlanningComponent} from "./planning/planning.component";
+import {ToDoListComponent} from "./to-do-list/to-do-list.component";
+import {MatOptionModule} from "@angular/material/core";
+import {NgToastModule} from "ng-angular-popup";
+import {NgConfirmModule} from "ng-confirm-box";
+import {MatTab, MatTabsModule} from "@angular/material/tabs";
+import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
 
 @NgModule({
   declarations: [
@@ -48,46 +59,57 @@ import {ScheduleModule} from "@syncfusion/ej2-angular-schedule";
     PostDetailsComponent,
     SidebarComponent,
     CreateCommentComponent,
+    ProfileComponent,
+    NotesComponent,
+    MyPostsComponent,
+    EditProfileComponent,
+    PlanningComponent,
+    ToDoListComponent,
     LoginComponent,
     RegisterComponent,
     UserRoleComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    MatToolbarModule,
-    MatButtonModule,
-    MatIconModule,
-    MatMenuModule,
-    MatSidenavModule,
-    MatListModule,
-    MatListItem,
-    MatCardModule,
-    MatFormFieldModule,
-    MatInputModule,
-    ReactiveFormsModule,
-    HttpClientModule,
-    MatTableModule,
-    MatPaginatorModule,
-    MatSortModule,
-    MatDialogContent,
-    MatDialogClose,
-    MatDialogActions,
-    MatDialogTitle,
-    NgOptimizedImage,
-    MatCheckboxModule,
-    FormsModule,
-    MatSelect,
-    MatOption,
-    ScheduleModule
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        MatToolbarModule,
+        MatButtonModule,
+        MatIconModule,
+        MatMenuModule,
+        MatSidenavModule,
+        MatListModule,
+        MatListItem,
+        MatCardModule,
+        MatFormFieldModule,
+        MatInputModule,
+        ReactiveFormsModule,
+        HttpClientModule,
+        MatTableModule,
+        MatPaginatorModule,
+        MatSortModule,
+        MatDialogContent,
+        MatDialogClose,
+        MatDialogActions,
+        MatDialogTitle,
+        NgOptimizedImage,
+        MatCheckboxModule,
+        FormsModule,
+        MatSortModule,
+        NgToastModule,
+        NgConfirmModule,
+        MatSelectModule,
+        MatOptionModule,
+        ScheduleModule,
+        MatTabsModule,
+      FontAwesomeModule
 
-  ],
+    ],
   providers: [
     provideAnimationsAsync(),
-    {provide:HTTP_INTERCEPTORS, useClass:AppHttpInterceptor, multi:true},
-    AuthenticationGuard,
-    AuthorizationGuard
+    // {provide:HTTP_INTERCEPTORS, useClass:AppHttpInterceptor, multi:true},
+    //AuthenticationGuard,
+  //  AuthorizationGuard
   ],
   bootstrap: [AppComponent]
 })

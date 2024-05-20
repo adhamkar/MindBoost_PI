@@ -1,0 +1,30 @@
+.post-container {
+  width: 100%;
+  margin-top: 20px;
+}
+
+.post-container table {
+  width: 100%;
+}
+
+.post-container th,
+.post-container td {
+  text-align: left;
+}
+
+.post-container mat-icon {
+  cursor: pointer;
+  color: rgba(0, 0, 0, 0.54);
+}
+
+.post-container button {
+  min-width: 0;
+}
+.mat-mdc-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+td, th {
+  width: 25%;
+}

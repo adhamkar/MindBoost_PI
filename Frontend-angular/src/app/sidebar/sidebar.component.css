@@ -8,13 +8,13 @@
 }
 mat-icon {
   color: #8997ac;
-  font-family: 'Material Icons';
+  font-family:'Material Icons';
   vertical-align: middle;
 }
 .top{
   margin-top: 15px;
   padding: 8px;
-  margin-left: 160px;
+  margin-left: 140px;
   font-size: 45px;
 }
 
@@ -23,44 +23,46 @@ mat-icon {
   font-weight: 800;
   margin-bottom: 50px;
 }
-  img {
-    margin-top: 16px;
-    width: 120px;
-    height: 120px;
+img {
+  margin-top: 16px;
+  width: 120px;
+  height: 120px;
+}
+.name{
+  color:white;
+}
+.mail{
+  margin-top: -16px;
+  color: white;
+}
+.menu-head{
+  color:#064053;
+  text-transform: uppercase;
+  font-weight: 900;
+  margin-left: 60px;
+  margin-bottom: 20px;
+}
+.menu-item{
+  margin: 0 10px 0 10px;
+  .menu-button {
+    display: block;
+    width: 100%;
+    position: relative;
+    display: flex;
+
+    margin-bottom: 10px;
   }
-  .name{
+  .menu-button span{
+    margin-left: 15px;
     color:white;
   }
-  .mail{
-    margin-top: -16px;
-    color: white;
+  .menu-button:focus{
+    background-color: rgba(22, 76, 86, 0.33);
   }
-  .menu-head{
-    color:#064053;
-    text-transform: uppercase;
-    font-weight: 900;
-    margin-left: 60px;
-    margin-bottom: 20px;
+  .menu-button:hover{
+    background-color: rgba(22, 76, 86, 0.33);
   }
-  .menu-item{
-    margin: 0 10px 0 10px;
-    .menu-button {
-      /*display: block;*/
-      width: 100%;
-      position: relative;
-      display: flex;
 
-      margin-bottom: 10px;
-    }
-    .menu-button span{
-      margin-left: 15px;
-      color:white;
-    }
-    .menu-button:focus{
-      background-color: #064053;
-    }
-    .menu-button:hover{
-      background-color: #064053;
-    }
 
 }
+

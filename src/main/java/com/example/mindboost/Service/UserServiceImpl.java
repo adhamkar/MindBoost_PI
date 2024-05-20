@@ -6,7 +6,7 @@ import com.example.mindboost.Mappers.MapperImpl;
 import com.example.mindboost.Repositories.*;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.security.crypto.password.PasswordEncoder;
+//import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -29,7 +29,7 @@ public class UserServiceImpl implements UserService {
     private AdminRepo adminRepo;
     private MapperImpl mapper;
     private UserRepo userRepo;
-    private PasswordEncoder passwordEncoder;
+    //private PasswordEncoder passwordEncoder;
 
     /************** Users implementation *************/
     @Override
@@ -84,7 +84,8 @@ public class UserServiceImpl implements UserService {
         if (allAdmins.contains(admin)) {
             return null;
         }
-        admin.setPassword(passwordEncoder.encode(admin.getPassword()));
+        //admin.setPassword(passwordEncoder.encode(admin.getPassword()));
+        admin.setPassword(admin.getPassword());
         Admin savedAdmin = adminRepo.save(admin);
         adminDTO.setId(savedAdmin.getId());
         return adminDTO;
@@ -116,7 +117,7 @@ public class UserServiceImpl implements UserService {
         if (allpatients.contains(patient)) {
             return null;
         }
-        patient.setPassword(passwordEncoder.encode(patient.getPassword()));
+        patient.setPassword(patient.getPassword());
         Patient savedPatient = patientRepo.save(patient);
         patientDTO.setId(savedPatient.getId());
         return patientDTO;
@@ -130,7 +131,7 @@ public class UserServiceImpl implements UserService {
         if (alltherapist.contains(therapist)) {
             return null;
         }
-        therapist.setPassword(passwordEncoder.encode(therapist.getPassword()));
+        therapist.setPassword(therapist.getPassword());
         Therapist savedTherapist = therapistRepo.save(therapist);
         therapistDTO.setId((savedTherapist.getId()));
         return therapistDTO;

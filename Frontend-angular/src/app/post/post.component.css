@@ -3,12 +3,19 @@
   flex-wrap: wrap; /* Permet aux cartes de passer à la ligne si elles ne tiennent pas sur une seule ligne */
   justify-content: space-between; /* Répartit les cartes également dans la ligne */
   margin: 1%;
+
 }
+
 
 .card-class {
   margin-bottom: 20px; /* Espacement entre les cartes des posts */
   width: calc(33.33% - 20px); /* Calcule la largeur de chaque carte avec un espacement entre les cartes */
   /* Pour une disposition flexible, vous pouvez également utiliser le pourcentage pour la largeur */
+  transition: transform 0.2s;
+}
+.card-class:hover{
+  transform: scale(1.05);
+
 }
 
 .post-header {

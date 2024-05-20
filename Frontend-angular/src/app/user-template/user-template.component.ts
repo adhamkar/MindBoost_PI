@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import {AuthService} from "../services/auth.service";
-import {Router} from "@angular/router";
+import {NavbarService} from "../services/navbar.service";
 
 @Component({
   selector: 'app-user-template',
@@ -8,10 +7,14 @@ import {Router} from "@angular/router";
   styleUrl: './user-template.component.css'
 })
 export class UserTemplateComponent {
-  constructor(public authService: AuthService, private router: Router ){
+
+  isProfilePage: boolean = false;
+  constructor(private navbarService: NavbarService) {
   }
 
-  Onlogout() {
-    this.authService.logout();
+  ngOnInit() {
+    this.navbarService.isProfilePage$.subscribe(isProfilePage => {
+      this.isProfilePage = isProfilePage;
+    });
   }
 }

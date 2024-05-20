@@ -6,7 +6,7 @@ import com.example.mindboost.Security.entities.AppRole;
 import com.example.mindboost.Security.entities.AppUser;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
-import org.springframework.security.crypto.password.PasswordEncoder;
+//import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -15,7 +15,7 @@ import org.springframework.stereotype.Service;
 public class AccountServiceImpl implements AccountService {
     private AppUserRepo appUserRepo;
     private AppRoleRepo appRoleRepo;
-    private PasswordEncoder passwordEncoder;
+   // private PasswordEncoder passwordEncoder;
     @Override
     public AppUser AddUser(String userName, String password, String email, String confirmedPassword) {
         AppUser appUser=appUserRepo.findByUserName(userName);
@@ -24,7 +24,7 @@ public class AccountServiceImpl implements AccountService {
         appUser=AppUser.builder()
                 .userName(userName)
                 .email(email)
-                .Password(passwordEncoder.encode(password))
+               // .Password(passwordEncoder.encode(password))
                 .build();
         appUserRepo.save(appUser);
         return appUser;
