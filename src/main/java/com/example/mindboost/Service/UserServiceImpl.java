@@ -559,5 +559,23 @@ public class UserServiceImpl implements UserService {
         return mapper.FromPatient(patient);
     }
 
+    @Override
+    public CommentDTO saveComment(CommentDTO commentDTO) {
+       return null;
+    }
+/*
+ public CommentDTO SaveComment(CommentDTO commentDTO, Long Post_id) {
+        Post post = postRepo.findById(Post_id).orElseThrow(null);
+        if (commentDTO == null) {
+            return null;
+        }
+        Comment comment = mapper.FromCommentDTO(commentDTO);
+        comment.setPost(post);
+        comment.setTherapist(post.getTherapist());
+        comment.setPatient(post.getPatient());
+        Comment savedComment = commentRepo.save(comment);
+        return mapper.FromComment(savedComment);
+    }
+ */
 
 }

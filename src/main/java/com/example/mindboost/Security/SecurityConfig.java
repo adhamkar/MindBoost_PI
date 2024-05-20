@@ -7,6 +7,7 @@ import lombok.AllArgsConstructor;
 import org.apache.tomcat.util.net.openssl.ciphers.Authentication;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -26,6 +27,7 @@ import org.springframework.security.oauth2.jwt.JwtEncoder;
 import org.springframework.security.oauth2.jwt.NimbusJwtDecoder;
 import org.springframework.security.oauth2.jwt.NimbusJwtEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.stereotype.Component;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
@@ -37,9 +39,13 @@ import java.util.List;
 @EnableWebSecurity
 @EnableMethodSecurity(prePostEnabled = true)
 @AllArgsConstructor
+
 public class SecurityConfig {
-private UserDetailService userDetailService;
-private PasswordEncoder passwordEncoder;
+
+    private final UserDetailService userDetailService;
+    private final PasswordEncoder passwordEncoder;
+    //@Value("${jwt.secret}")
+    //private String Key;
 
 
 
@@ -50,9 +56,12 @@ private PasswordEncoder passwordEncoder;
                         .sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .csrf(csrf->csrf.disable())
                 .cors(Customizer.withDefaults())
+
                 .authorizeHttpRequests(ar -> ar
                         .requestMatchers("/auth/signup", "/auth/login").permitAll()
                         .anyRequest().authenticated())
+                /*.authorizeHttpRequests(ar -> ar
+                        .requestMatchers("/**").permitAll())*/
                 //.authorizeHttpRequests(ar->ar.anyRequest().authenticated())
                 //.httpBasic(Customizer.withDefaults())
                 .oauth2ResourceServer(oa->oa.jwt(Customizer.withDefaults()))

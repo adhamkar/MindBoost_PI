@@ -12,8 +12,10 @@ import {AuthorizationGuard} from "./guards/authorization.guard";
 import {RegisterComponent} from "./register/register.component";
 import {UserRoleComponent} from "./user-role/user-role.component";
 
+
 const routes: Routes = [
   {path : "", redirectTo:"/login", pathMatch:"full"},
+
   {path : "login", component : LoginComponent},
   {path : "home", component : HomeComponent},
   {path : "user_role", component : UserRoleComponent},
@@ -23,7 +25,6 @@ const routes: Routes = [
       { path: 'posts/add', component: CreatePostComponent,canActivate :[AuthorizationGuard]},
       { path: 'posts/:id', component: PostDetailsComponent,},
       { path: 'posts/:id/add', component: CreateCommentComponent },
-
     ]},
 
 ];

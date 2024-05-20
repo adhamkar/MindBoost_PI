@@ -16,7 +16,7 @@
     </div>
     <div class="comments">
       <h4></h4>
-      <button class="addComment" mat-raised-button color="primary"  (click)="createComment()"><mat-icon>add</mat-icon>Add Comment</button>
+      <button class="addComment" mat-raised-button color="primary"  (click)="createComment(post.id)"><mat-icon>add</mat-icon>Add Comment</button>
       <div class="comment-list">
         <div *ngFor="let c of comments" class="comment">
           <p>{{ c.comment }}</p>

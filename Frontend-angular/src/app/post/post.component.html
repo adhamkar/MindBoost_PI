@@ -2,7 +2,7 @@
   <div class="post-header">
     <h1 style="color: #043342; text-align: center;font-weight: bold">Read what people had <span style="color: #1bcfe3;">Experienced.</span> </h1>
     <p style="text-align: center;">You can also share your own feelings and experiences Anonymously!</p>
-    <button class="create-button" mat-raised-button color="primary" style="display: block; margin: auto;" (click)="createPost()" *ngIf="!authService.roles.includes('Admin')">Create your own Post</button>
+    <button class="create-button" mat-raised-button color="primary" style="display: block; margin: auto;" (click)="createPost()" >Create your own Post</button>
   </div>
 
   <div class="post-container">
@@ -19,8 +19,10 @@
         <div>
           <button mat-button color="primary" (click)="getPost(post.id)" ><mat-icon>comment</mat-icon>Comments</button>
         </div>
-        <div class="icons delete">
-          <mat-icon aria-hidden="false" fontIcon="delete" color="warn" ></mat-icon>
+        <div class="icons delete" *ngIf="authService.roles.includes('Admin')">
+          <button (click)="DeletePost(post.id)" style="border: none; background-color: transparent">
+            <mat-icon aria-hidden="false" fontIcon="delete" color="warn"></mat-icon>
+          </button>
         </div>
       </mat-card-actions>
       <mat-card-footer></mat-card-footer>

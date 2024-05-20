@@ -38,6 +38,7 @@ import { UserRoleComponent } from './user-role/user-role.component';
 import {MatOption, MatSelect} from "@angular/material/select";
 import {ScheduleModule} from "@syncfusion/ej2-angular-schedule";
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -51,6 +52,7 @@ import {ScheduleModule} from "@syncfusion/ej2-angular-schedule";
     LoginComponent,
     RegisterComponent,
     UserRoleComponent,
+
   ],
   imports: [
     BrowserModule,

@@ -7,6 +7,7 @@ import {Observable} from "rxjs";
 })
 export class CommentService {
   private baseUrl = "http://localhost:8085/posts";
+  private url = "http://localhost:8085";
 
   constructor(private http: HttpClient) { }
 
@@ -14,8 +15,8 @@ export class CommentService {
     return this.http.get<Comment[]>(`${this.baseUrl}`);
   }
 
-  public saveComment(id:string, comment: Comment): Observable<Object> {
-    return this.http.post(`${this.baseUrl}`+"/"+id, comment);
+  public saveComment(postId:number,comment: Comment): Observable<Object> {
+    return this.http.post(`${this.url}/comment_pt/${postId}`, comment);
   }
 
   public deleteComment(id:number): Observable<Object> {

@@ -104,4 +104,6 @@ public interface UserService {
     List<NotePadDTO> NotePad_LIST_PERPatient(Long id);
 
     PatientDTO findPatientByUsername(String username);
+
+    CommentDTO saveComment(CommentDTO commentDTO);
 }
