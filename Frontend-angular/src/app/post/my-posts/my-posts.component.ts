@@ -4,6 +4,11 @@ import {MatTableDataSource} from "@angular/material/table";
 import {MatSort} from "@angular/material/sort";
 import {Post} from "../../models/post.model";
 import {PostService} from "../../services/post.service";
+import {MatDialog} from "@angular/material/dialog";
+import {Router} from "@angular/router";
+import {AuthService} from "../../services/auth.service";
+import {CreatePostComponent} from "../create-post/create-post.component";
+import {EditPostComponent} from "../edit-post/edit-post.component";
 
 @Component({
   selector: 'app-my-posts',
@@ -11,35 +16,57 @@ import {PostService} from "../../services/post.service";
   styleUrl: './my-posts.component.css'
 })
 export class MyPostsComponent implements OnInit{
-
-  public dataSource!: MatTableDataSource<Post>;
-  public posts!:Post[];
-  @ViewChild(MatPaginator) paginator!:MatPaginator;
-  @ViewChild(MatSort) sort!:MatSort;
-  public displayedColumns:string []=['id','content','createdDate','updatedDate','actions'];
-  constructor(private postService:PostService) {
-
+  posts: Post[] = [];
+  constructor(private matDialog:MatDialog, private router:Router,private postService: PostService,public authService:AuthService) {
   }
 
   ngOnInit(): void {
-      this.getPosts()
-    }
-  getPosts(){
-    this.postService.getAllPosts()
-    .subscribe(res =>{
-      this.posts = res;
-      this.dataSource = new MatTableDataSource(this.posts);
-      this.dataSource.paginator = this.paginator;
-      this.dataSource.sort = this.sort;
-  })
-}
+    this.getAllPosts();
+  }
 
-  applyFilter(event: Event) {
-    const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
+  getAllPosts(): void {
+    this.postService.getAllPosts().subscribe(
+      (posts: Post[]) => {
+        this.posts = posts;
+      },
+      (error) => {
+        console.error('Error fetching posts:', error);
+      }
+    );
+  }
 
-    if (this.dataSource.paginator) {
-      this.dataSource.paginator.firstPage();
-    }
+  createPost(){
+    this.matDialog.open(CreatePostComponent,{
+      width:'40%',
+      enterAnimationDuration:'1000ms',
+      exitAnimationDuration:'1000ms',
+      data:{
+        title: 'Create Post'
+      }
+    })
+  }
+
+  getPost(id:any):any {
+
+    this.router.navigate(['user/posts', id]);
+
+  }
+
+  editPost(i: number) {
+    const post = this.posts[i];
+    this.matDialog.open(EditPostComponent,{
+      width:'40%',
+      enterAnimationDuration:'1000ms',
+      exitAnimationDuration:'1000ms',
+      data:{
+        title: 'Edit Post',
+        post: post
+      }
+    })
+
+  }
+
+  deletePost(i: number) {
+
   }
 }

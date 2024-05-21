@@ -16,14 +16,15 @@ import {ProfileComponent} from "./profile/profile.component";
 import {PlanningComponent} from "./planning/planning.component";
 import {ToDoListComponent} from "./to-do-list/to-do-list.component";
 import {NotesComponent} from "./notes/notes.component";
+import {AuthenticationGuard} from "./guards/authentication.guard";
 
 const routes: Routes = [
-  {path : "", component : UserTemplateComponent},
+  {path : "",redirectTo:"/login" ,pathMatch:"full"},
   {path : "login", component : LoginComponent},
   {path : "home", component : HomeComponent},
   {path : "user_role", component : UserRoleComponent},
   {path : "signup", component : RegisterComponent},
-  {path : "user", component : UserTemplateComponent ,children:[
+  {path : "user", component : UserTemplateComponent ,canActivate:[AuthenticationGuard],children:[
       {path : "posts", component : PostComponent},
       { path: 'posts/add', component: CreatePostComponent},
       { path: 'posts/:id', component: PostDetailsComponent,},

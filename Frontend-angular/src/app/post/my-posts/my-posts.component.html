@@ -1,46 +1,22 @@
-<mat-form-field>
-  <input matInput (keyup)="applyFilter($event)" placeholder="Filter">
-</mat-form-field>
+<div class="container">
+  <div class="content">
+    <div class="notes-section">
+      <div class="notes">
+        <div class="note" *ngFor="let post of posts; let i = index">
+          <span class="edit-icon" (click)="editPost(i)">✎</span>
+          <span class="delete-icon" (click)="deletePost(i)">🗑️</span>
+          <div class="note-header">
+            <h3>Post {{i}}</h3>
+          </div>
+          <p>{{ post.content }}</p>
+          <div class="note-footer">
+            <span><i class="date-icon">📅</i> {{ post.createdDate | date:'dd MMM yyyy' }}</span>
+            <span><i class="time-icon">⏰</i> {{ post.createdDate | date:'hh:mm a, EEEE' }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
 
-<div class="mat-elevation-z8">
-  <table mat-table [dataSource]="dataSource" matSort>
-
-    <!-- ID Column -->
-    <ng-container matColumnDef="id">
-      <th mat-header-cell *matHeaderCellDef mat-sonpmrt-header> ID </th>
-      <td mat-cell *matCellDef="let row"> {{row.id}} </td>
-    </ng-container>
-
-    <!-- Progress Column -->
-    <ng-container matColumnDef="content">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header> Content</th>
-      <td mat-cell *matCellDef="let row"> {{row.content}}% </td>
-    </ng-container>
-
-    <!-- Name Column -->
-    <ng-container matColumnDef="createdDate">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header> Created Date </th>
-      <td mat-cell *matCellDef="let row"> {{row.createdDate | date}} </td>
-    </ng-container>
-
-    <!-- Color Column -->
-    <ng-container matColumnDef="updatedDate">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header> Updated Date </th>
-      <td mat-cell *matCellDef="let row" > {{row.updatedDate | date}} </td>
-    </ng-container>
-    <ng-container matColumnDef="actions">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header> Actions </th>
-      <td mat-cell *matCellDef="let row" >
-        <button mat-raised-button color="warn"><mat-icon>add</mat-icon></button>
-        <button mat-raised-button color="warn"><mat-icon>add</mat-icon></button>
-        <button mat-raised-button color="warn"><mat-icon>add</mat-icon></button>
-      </td>
-    </ng-container>
-
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;">
-    </tr>
-  </table>
-
-  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+  </div>
 </div>
+

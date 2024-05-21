@@ -12,8 +12,8 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
-//import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-//import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.util.Date;
 import java.util.List;
@@ -27,10 +27,10 @@ public class MindBoostApplication {
         SpringApplication.run(MindBoostApplication.class, args);
     }
 
-  //  @Bean
- //   public PasswordEncoder passwordEncoder(){
-   //     return new BCryptPasswordEncoder();
-  //  }
+    @Bean
+    public PasswordEncoder passwordEncoder(){
+        return new BCryptPasswordEncoder();
+    }
     //@Bean
     CommandLineRunner clRunner(UserService userService) {
         return args -> {
@@ -41,7 +41,7 @@ public class MindBoostApplication {
             userService.SaveAdmin(adminDTO);
         };
     }
-    //Bean
+    @Bean
     CommandLineRunner commandLineRunner(UserService userService) {
 
         return args -> {
@@ -150,7 +150,7 @@ public class MindBoostApplication {
 
             });
 
-            PatientDTO patientDTO = userService.getpatient(1L);
+            PatientDTO patientDTO = userService.getpatient(2L);
             TherapistDTO therapistDTO = userService.getTherapist(6L);
             if (therapistDTO.getAviability()) {
                 TherapieSessionDTO therapieSessionDTO = new TherapieSessionDTO();
@@ -180,16 +180,16 @@ public class MindBoostApplication {
     //@Bean
     CommandLineRunner commandLineRunner(AccountService accountService){
         return args -> {
-           accountService.AddRole("USER");
-           accountService.AddRole("ADMIN");
+            accountService.AddRole("USER");
+            accountService.AddRole("ADMIN");
 
-              accountService.AddUser("user1", "1234", "user1@gmail.com","1234");
-              accountService.AddUser("user2", "12345", "user2@gmail.com","12345");
-              accountService.AddUser("admin","1452","admin@gmail.com","1452");
-                accountService.AddRoleToUser("user1","USER");
-                accountService.AddRoleToUser("user2","USER");
-                accountService.AddRoleToUser("admin","ADMIN");
-                accountService.AddRoleToUser("admin","USER");
+            accountService.AddUser("user1", "1234", "user1@gmail.com","1234");
+            accountService.AddUser("user2", "12345", "user2@gmail.com","12345");
+            accountService.AddUser("admin","1452","admin@gmail.com","1452");
+            accountService.AddRoleToUser("user1","USER");
+            accountService.AddRoleToUser("user2","USER");
+            accountService.AddRoleToUser("admin","ADMIN");
+            accountService.AddRoleToUser("admin","USER");
         };
     }
 }

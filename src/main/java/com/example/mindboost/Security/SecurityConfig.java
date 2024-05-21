@@ -1,4 +1,4 @@
-/*
+
 package com.example.mindboost.Security;
 
 import com.example.mindboost.Security.Service.UserDetailService;
@@ -92,4 +92,4 @@ private PasswordEncoder passwordEncoder;
     }
 
 }
-*/
+

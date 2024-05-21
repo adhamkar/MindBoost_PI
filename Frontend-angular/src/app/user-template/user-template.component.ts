@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {NavbarService} from "../services/navbar.service";
+
 
 @Component({
   selector: 'app-user-template',
@@ -9,12 +9,10 @@ import {NavbarService} from "../services/navbar.service";
 export class UserTemplateComponent {
 
   isProfilePage: boolean = false;
-  constructor(private navbarService: NavbarService) {
+  constructor() {
   }
 
   ngOnInit() {
-    this.navbarService.isProfilePage$.subscribe(isProfilePage => {
-      this.isProfilePage = isProfilePage;
-    });
+
   }
 }

@@ -14,10 +14,12 @@
       <span>Mind___Boost</span>
     </div>
     <div class="menu-item">
-      <button mat-button class="menu-button" (click)="toggleProfilePage()" routerLink="/user/profile">
-        <mat-icon style="color:white">dashboard</mat-icon>
-        <span>Dashboard</span>
-      </button>
+      <button mat-button class="menu-button" routerLink="/user/my-posts"><mat-icon style="color:white">article</mat-icon><span>My posts</span></button>
+      <button mat-button class="menu-button" routerLink="/user/notes"><mat-icon style="color:white">note</mat-icon><span>My notes</span></button>
+      <button mat-button class="menu-button" routerLink="/user/profile"><mat-icon style="color:white">persone</mat-icon><span>My profile</span></button>
+      <button mat-button class="menu-button" routerLink="/user/to-do-list"><mat-icon style="color:white">format_list_bulleted</mat-icon><span>To do list</span></button>
+      <button mat-button class="menu-button" routerLink="/user/planning"><mat-icon style="color:white">event</mat-icon><span>Planning</span></button>
+
 
     </div>
 

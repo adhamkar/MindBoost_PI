@@ -1,4 +1,4 @@
-/*
+
 package com.example.mindboost.Security;
 
 
@@ -83,4 +83,4 @@ public class SecurityController {
 
 
 }
-*/
+

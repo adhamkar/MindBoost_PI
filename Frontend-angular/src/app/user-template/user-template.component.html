@@ -15,20 +15,9 @@
               <button mat-button routerLink="/user/needHelp"><mat-icon>help</mat-icon>Need Help?</button>
 
           </div>
-          <button mat-raised-button class="logoutButton" color="accent" ><mat-icon>logout</mat-icon>Logout</button>
+          <button mat-raised-button class="logoutButton" color="accent" ><mat-icon style="color:white">logout</mat-icon>Logout</button>
         </mat-toolbar>
-        <mat-toolbar *ngIf="isProfilePage">
-          <mat-icon (click)="sidebar.toggle()">menu</mat-icon>
-          <div class="box">
-            <button mat-button routerLink="/user/my-posts"><mat-icon>article</mat-icon>My posts</button>
-            <button mat-button routerLink="/user/notes"><mat-icon>note</mat-icon>My notes</button>
-            <button mat-button routerLink="/user/profile"><mat-icon>persone</mat-icon>My profile</button>
-            <button mat-button routerLink="/user/to-do-list"><mat-icon>format_list_bulleted</mat-icon>To do list</button>
-            <button mat-button routerLink="/user/planning"><mat-icon>event</mat-icon>Planning</button>
 
-          </div>
-          <button mat-raised-button class="logoutButton" color="accent" ><mat-icon>logout</mat-icon>Logout</button>
-        </mat-toolbar>
 
       </div>
       <div class="main">

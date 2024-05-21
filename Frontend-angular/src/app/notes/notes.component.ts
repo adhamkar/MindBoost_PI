@@ -77,6 +77,6 @@ export class NotesComponent implements OnInit{
   }
 
   deleteNote(i: number) {
-    
+
   }
 }

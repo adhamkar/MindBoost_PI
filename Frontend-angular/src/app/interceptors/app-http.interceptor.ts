@@ -1,4 +1,4 @@
-/*
+
 
 import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
 import { Injectable } from "@angular/core";
@@ -22,4 +22,4 @@ export class AppHttpInterceptor implements HttpInterceptor {
   }
 }
 
-*/
+

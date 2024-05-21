@@ -26,7 +26,7 @@ import {MatDialogActions, MatDialogClose, MatDialogContent, MatDialogTitle} from
 import { PostDetailsComponent } from './post/post-details/post-details.component';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import { SidebarComponent } from './sidebar/sidebar.component';
-import {NgOptimizedImage} from "@angular/common";
+import {CommonModule, NgOptimizedImage} from "@angular/common";
 import { CreateCommentComponent } from './post/post-details/create-comment/create-comment.component';
 import {MatCheckbox, MatCheckboxModule} from "@angular/material/checkbox";
 import { LoginComponent } from './login/login.component';
@@ -48,6 +48,11 @@ import {NgToastModule} from "ng-angular-popup";
 import {NgConfirmModule} from "ng-confirm-box";
 import {MatTab, MatTabsModule} from "@angular/material/tabs";
 import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
+import {AppHttpInterceptor} from "./interceptors/app-http.interceptor";
+import {AuthenticationGuard} from "./guards/authentication.guard";
+import {AuthorizationGuard} from "./guards/authorization.guard";
+import { EditPostComponent } from './post/edit-post/edit-post.component';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -68,6 +73,7 @@ import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
     LoginComponent,
     RegisterComponent,
     UserRoleComponent,
+    EditPostComponent,
   ],
     imports: [
         BrowserModule,
@@ -102,14 +108,16 @@ import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
         MatOptionModule,
         ScheduleModule,
         MatTabsModule,
-      FontAwesomeModule
+      FontAwesomeModule,
+      CommonModule
 
     ],
   providers: [
     provideAnimationsAsync(),
-    // {provide:HTTP_INTERCEPTORS, useClass:AppHttpInterceptor, multi:true},
-    //AuthenticationGuard,
-  //  AuthorizationGuard
+    {provide:HTTP_INTERCEPTORS, useClass:AppHttpInterceptor, multi:true},
+    AuthenticationGuard,
+    AuthorizationGuard,
+   DatePipe
   ],
   bootstrap: [AppComponent]
 })

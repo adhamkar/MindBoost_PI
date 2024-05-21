@@ -1,4 +1,4 @@
-/*
+
 package com.example.mindboost.Security.Service;
 
 import com.example.mindboost.DTOs.UserDTO;
@@ -29,7 +29,7 @@ private UserService userService;
         return userDetails;
     }
 
-*/
+
 /*
     @Override
   public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
@@ -41,7 +41,7 @@ private UserService userService;
                 .password(appUser.getPassword())
                 .roles(roles).build();
         return userDetails;
-    }*//*
+    }*/
 
 }
-*/
+
