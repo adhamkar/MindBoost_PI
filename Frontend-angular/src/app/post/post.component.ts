@@ -47,7 +47,8 @@ export class PostComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    this.getAllPosts();
+      this.getAllPosts();
+
   }
 
   getAllPosts(): void {
@@ -70,6 +71,17 @@ export class PostComponent implements OnInit{
         title: 'Create Post'
       }
     })
+  }
+  DeletePost(id:any):void {
+    this.postService.deletePost(id).subscribe(
+      (response) => {
+        console.log('Post deleted:', response);
+        this.getAllPosts();
+      },
+      (error) => {
+        console.error('Error deleting post:', error);
+      }
+    );
   }
 
   getPost(id:any):any {

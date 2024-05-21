@@ -42,4 +42,7 @@ export class PostService {
   public deletePost(id:string): Observable<Object> {
     return this.http.delete<Post>(`${this.baseUrl}`+"/"+id);
   }
+  /*
+  /posts/{id}
+  */
 }

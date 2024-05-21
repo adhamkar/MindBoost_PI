@@ -18,8 +18,11 @@ import {ToDoListComponent} from "./to-do-list/to-do-list.component";
 import {NotesComponent} from "./notes/notes.component";
 import {AuthenticationGuard} from "./guards/authentication.guard";
 
+
 const routes: Routes = [
+
   {path : "",redirectTo:"/login" ,pathMatch:"full"},
+
   {path : "login", component : LoginComponent},
   {path : "home", component : HomeComponent},
   {path : "user_role", component : UserRoleComponent},
@@ -29,11 +32,13 @@ const routes: Routes = [
       { path: 'posts/add', component: CreatePostComponent},
       { path: 'posts/:id', component: PostDetailsComponent,},
       { path: 'posts/:id/add', component: CreateCommentComponent },
+
       {path : "my-posts", component : MyPostsComponent},
       {path : "profile", component : ProfileComponent},
       {path : "planning", component : PlanningComponent},
       {path : "to-do-list", component : ToDoListComponent},
       {path : "notes", component : NotesComponent},
+
     ]},
 
 ];

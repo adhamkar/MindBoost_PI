@@ -4,6 +4,7 @@ import { Comment } from './comment.model';
 
 export class Post {
   id!: number;
+  title!: string;
   content!: string;
   createdDate!: Date;
   updatedDate!: Date;

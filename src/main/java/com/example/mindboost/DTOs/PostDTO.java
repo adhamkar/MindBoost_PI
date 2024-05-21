@@ -1,9 +1,6 @@
 package com.example.mindboost.DTOs;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.*;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -17,7 +14,9 @@ public class PostDTO {
     private Long id;
     private String Content;
     private String Title;
+    @JsonFormat(pattern="yyyy-MM-dd")
     private Date CreatedDate;
+    @JsonFormat(pattern="yyyy-MM-dd")
     private Date UpdatedDate;
     private Boolean user_visibility;
     private PatientDTO patientDTO;

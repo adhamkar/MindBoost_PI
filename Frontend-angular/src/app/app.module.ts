@@ -54,6 +54,7 @@ import {AuthorizationGuard} from "./guards/authorization.guard";
 import { EditPostComponent } from './post/edit-post/edit-post.component';
 import { DatePipe } from '@angular/common';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -73,7 +74,10 @@ import { DatePipe } from '@angular/common';
     LoginComponent,
     RegisterComponent,
     UserRoleComponent,
+
     EditPostComponent,
+
+
   ],
     imports: [
         BrowserModule,

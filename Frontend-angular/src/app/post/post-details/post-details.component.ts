@@ -54,13 +54,14 @@ export class PostDetailsComponent implements OnInit{
     );
   }
 
-  createComment() {
+  createComment(postId: number) {
     this.matDialog.open(CreateCommentComponent,{
       width:'40%',
       enterAnimationDuration:'1000ms',
       exitAnimationDuration:'1000ms',
       data:{
-        title: 'Create Post'
+        title: 'Create Post',
+        postId: postId
       }
     })
   }

@@ -54,3 +54,6 @@ Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJBZGhhbSIsImV4cCI6MTcxNTk5M
     "content": "new content"
 
 }
+
+###
+GET http://localhost:8085/posts

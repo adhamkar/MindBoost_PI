@@ -1,12 +1,11 @@
 package com.example.mindboost.Web;
 
-import com.example.mindboost.DTOs.CommentDTO;
-import com.example.mindboost.DTOs.PatientDTO;
-import com.example.mindboost.DTOs.PostDTO;
-import com.example.mindboost.DTOs.TherapistDTO;
+import com.example.mindboost.DTOs.*;
 import com.example.mindboost.Service.UserService;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
@@ -63,6 +62,7 @@ public class CommentRestController {
     public void deleteComment(@PathVariable Long id){
         userService.DeleteComment(id);
     }
+
     @PostMapping("/comment")
     public CommentDTO addComment(@RequestBody CommentDTO commentDTO,@RequestParam Long postID){
         PostDTO postDTO = userService.getPost(postID);
@@ -70,6 +70,18 @@ public class CommentRestController {
         commentDTO.setCreatedDate(new Date());
         return userService.SaveComment(commentDTO,postID);
     }
+    @PostMapping("/comment_pt/{postID}")
+    public CommentDTO SaveComment(@PathVariable Long postID,@RequestBody CommentDTO commentDTO){
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String username = authentication.getName();
+        PatientDTO patientDTO = userService.findPatientByUsername(username);
+        PostDTO postDTO = userService.getPost(postID);
+        commentDTO.setPostDTO(postDTO);
+        commentDTO.setPatientDTO(patientDTO);
+        commentDTO.setCreatedDate(new Date());
+        return userService.SaveComment(commentDTO,postDTO.getId());
+    }
+
     @PatchMapping("/comments/{id}")
     public CommentDTO updateComment(@RequestBody CommentDTO commentDTO,@PathVariable Long id){
         commentDTO.setId(id);
