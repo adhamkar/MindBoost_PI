@@ -35,22 +35,6 @@ export class MyPostsComponent implements OnInit{
     );
   }
 
-  createPost(){
-    this.matDialog.open(CreatePostComponent,{
-      width:'40%',
-      enterAnimationDuration:'1000ms',
-      exitAnimationDuration:'1000ms',
-      data:{
-        title: 'Create Post'
-      }
-    })
-  }
-
-  getPost(id:any):any {
-
-    this.router.navigate(['user/posts', id]);
-
-  }
 
   editPost(i: number) {
     const post = this.posts[i];
