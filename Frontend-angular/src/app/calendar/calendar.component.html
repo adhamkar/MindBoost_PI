@@ -1,0 +1,84 @@
+<!--<div class="calendar-container">-->
+<!--  <mat-toolbar color="primary">-->
+<!--    <span>17 October 2023</span>-->
+<!--    <span class="spacer"></span>-->
+<!--    <button mat-button (click)="addEventDialog()">Add Event</button>-->
+<!--  </mat-toolbar>-->
+
+<!--  <div class="calendar-view">-->
+<!--    <div class="date-view">-->
+<!--      <button mat-raised-button color="primary" (click)="view='day'">Day</button>-->
+<!--      <button mat-raised-button (click)="view='week'">Week</button>-->
+<!--      <button mat-raised-button (click)="view='month'">Month</button>-->
+<!--    </div>-->
+
+<!--    <div *ngIf="view === 'day'" class="day-view">-->
+<!--      <div *ngFor="let hour of hours" class="hour-row">-->
+<!--        <div class="hour-label">{{ hour }}</div>-->
+<!--        <div class="events">-->
+<!--          <div *ngFor="let event of getEventsForHour(hour)" [style.background]="event.color" class="event">-->
+<!--            {{ event.title }}-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--    <div *ngIf="view === 'week'" class="week-view">-->
+<!--      <div *ngFor="let hour of hours" class="hour-row">-->
+<!--        <div class="hour-label">{{ hour }}</div>-->
+<!--        <div class="events">-->
+<!--          <div *ngFor="let event of getEventsForHour(hour)" [style.background]="event.color" class="event">-->
+<!--            {{ event.title }}-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--    <div *ngIf="view === 'month'" class="month-view">-->
+<!--      <div *ngFor="let hour of hours" class="hour-row">-->
+<!--        <div class="hour-label">{{ hour }}</div>-->
+<!--        <div class="events">-->
+<!--          <div *ngFor="let event of getEventsForHour(hour)" [style.background]="event.color" class="event">-->
+<!--            {{ event.title }}-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--    <div class="day-view">-->
+<!--      <div *ngFor="let hour of hours" class="hour-row">-->
+<!--        <div class="hour-label">{{ hour }}</div>-->
+<!--        <div class="events">-->
+<!--          <div *ngFor="let event of getEventsForHour(hour)" [style.background]="event.color" class="event">-->
+<!--            {{ event.title }}-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->
+<div class="calendar-container">
+  <div class="date-selector">
+    <p class="date">17 October 2023</p>
+    <div class="view-options">
+      <button class="view-option">Day</button>
+      <button class="view-option">Week</button>
+      <button class="view-option">Month</button>
+    </div>
+  </div>
+  <div class="calendar">
+    <div class="time-slots">
+      <div class="time-slot">9:00 AM</div>
+      <div class="time-slot">10:00 AM</div>
+      <div class="time-slot">11:00 AM</div>
+      <div class="time-slot">12:00 PM</div>
+      <div class="time-slot">1:00 PM</div>
+      <div class="time-slot">2:00 PM</div>
+      <div class="time-slot">3:00 PM</div>
+      <div class="time-slot">4:00 PM</div>
+      <div class="time-slot">5:00 PM</div>
+    </div>
+    <div class="events">
+      <div *ngFor="let event of events" [ngClass]="getEventClass(event)">
+        {{ event.task }}
+      </div>
+    </div>
+  </div>
+</div>

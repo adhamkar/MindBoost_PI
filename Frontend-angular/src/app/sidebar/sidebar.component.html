@@ -1,16 +1,14 @@
 <div class="navbar">
-  <div class="top">
-    <mat-icon>notifications_none</mat-icon>
-  </div>
+
 
   <div class="user " *ngIf="authService.isAuthtenticated">
-    <img src="/assets/user (4).png" style="margin-left: 45px">
+    <img src="/assets/mindBoost1.png" style="margin-left: 10px;width: 100%">
     <h4 class="name" style="margin-left: 45px; margin-top: 10px">{{ this.authService.username }}</h4>
 
   </div>
   <div class="menu">
     <div class="menu-head">
-      <span>Mind___Boost</span>
+      <span></span>
     </div>
     <div class="menu-item">
       <button mat-button class="menu-button" routerLink="/user/my-posts"><mat-icon style="color:white">article</mat-icon><span>My posts</span></button>
@@ -18,8 +16,6 @@
       <button mat-button class="menu-button" routerLink="/user/profile"><mat-icon style="color:white">persone</mat-icon><span>My profile</span></button>
       <button mat-button class="menu-button" routerLink="/user/to-do-list"><mat-icon style="color:white">format_list_bulleted</mat-icon><span>To do list</span></button>
       <button mat-button class="menu-button" routerLink="/user/planning"><mat-icon style="color:white">event</mat-icon><span>Planning</span></button>
-
-
     </div>
 
   </div>

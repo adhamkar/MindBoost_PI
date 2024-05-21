@@ -63,7 +63,12 @@ export class PostDetailsComponent implements OnInit{
         title: 'Create Post',
         postId: postId
       }
-    })
+    });
+    this.matDialog.afterAllClosed.subscribe(
+      data=>{
+        this.getAllComments()
+      }
+    )
   }
 
   deleteComment(id: number) {

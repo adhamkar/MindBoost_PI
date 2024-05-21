@@ -34,6 +34,7 @@ constructor(@Inject(MAT_DIALOG_DATA) public data:any ,private ref:MatDialogRef<C
       this.postService.createPatientPost(this.post).subscribe(
         (data)=>{
           this.post=data;
+          this.close();
         },
         (error) => {
           console.error('Error creating post:', error);

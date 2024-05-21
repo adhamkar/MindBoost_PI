@@ -17,17 +17,25 @@ import {PlanningComponent} from "./planning/planning.component";
 import {ToDoListComponent} from "./to-do-list/to-do-list.component";
 import {NotesComponent} from "./notes/notes.component";
 import {AuthenticationGuard} from "./guards/authentication.guard";
+import {CalendarComponent} from "./calendar/calendar.component";
+import {ChatbotComponent} from "./chatbot/chatbot.component";
 
 
 const routes: Routes = [
 
   {path : "",redirectTo:"/login" ,pathMatch:"full"},
+  { path: 'upcoming', component: ToDoListComponent },
+  { path: 'today', component: ToDoListComponent },
+  { path: 'calendar', component: CalendarComponent },
 
   {path : "login", component : LoginComponent},
-  {path : "home", component : HomeComponent},
+  // {path : "home", component : HomeComponent},
   {path : "user_role", component : UserRoleComponent},
   {path : "signup", component : RegisterComponent},
+  // {path : "All", component : UserTemplateComponent,children:[ {path : "home", component : HomeComponent}]},
   {path : "user", component : UserTemplateComponent ,canActivate:[AuthenticationGuard],children:[
+      {path : "home", component : HomeComponent},
+      {path : "chatbot", component : ChatbotComponent},
       {path : "posts", component : PostComponent},
       { path: 'posts/add', component: CreatePostComponent},
       { path: 'posts/:id', component: PostDetailsComponent,},

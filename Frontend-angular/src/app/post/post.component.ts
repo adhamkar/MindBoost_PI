@@ -70,7 +70,12 @@ export class PostComponent implements OnInit{
       data:{
         title: 'Create Post'
       }
-    })
+    });
+    this.matDialog.afterAllClosed.subscribe(
+      data=>{
+        this.getAllPosts()
+      }
+    )
   }
   DeletePost(id:any):void {
     this.postService.deletePost(id).subscribe(
