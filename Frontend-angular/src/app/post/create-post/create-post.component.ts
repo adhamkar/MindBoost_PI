@@ -1,4 +1,4 @@
-import {Component, Inject, OnInit} from '@angular/core';
+import {Component, EventEmitter, Inject, OnInit, Output} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import {PostService} from "../../services/post.service";
 import {Router} from "@angular/router";
@@ -16,6 +16,7 @@ export class CreatePostComponent implements OnInit{
   inputData:any;
   post:any;
   public postForm!: FormGroup;
+
 constructor(@Inject(MAT_DIALOG_DATA) public data:any ,private ref:MatDialogRef<CreatePostComponent>,
             private postService:PostService, private router: Router,
             private formBuilder: FormBuilder,public authService:AuthService){
@@ -34,14 +35,15 @@ constructor(@Inject(MAT_DIALOG_DATA) public data:any ,private ref:MatDialogRef<C
       this.postService.createPatientPost(this.post).subscribe(
         (data)=>{
           this.post=data;
+          this.close();
         },
         (error) => {
           console.error('Error creating post:', error);
           this.close();
-          // Handle error response
         }
       );
       }
+
     close(){
           this.ref.close();
     }
