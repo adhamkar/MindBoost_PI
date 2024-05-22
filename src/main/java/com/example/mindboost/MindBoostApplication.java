@@ -32,7 +32,7 @@ public class MindBoostApplication {
         return new BCryptPasswordEncoder();
     }
     //@Bean
-    CommandLineRunner clRunner(UserService userService) {
+/*    CommandLineRunner clRunner(UserService userService) {
         return args -> {
             AdminDTO adminDTO = new AdminDTO();
             adminDTO.setUserName("admin");
@@ -40,11 +40,17 @@ public class MindBoostApplication {
             adminDTO.setEmail("admin@gmail.com");
             userService.SaveAdmin(adminDTO);
         };
-    }
-    //Bean
+    }*/
+    @Bean
     CommandLineRunner commandLineRunner(UserService userService) {
 
         return args -> {
+            AdminDTO adminDTO = new AdminDTO();
+            adminDTO.setUserName("admin");
+            adminDTO.setPassword("12345");
+            adminDTO.setEmail("admin@gmail.com");
+            userService.SaveAdmin(adminDTO);
+
             Random random = new Random();
             Gender[] genders = Gender.values();
             Role[] roles = Role.values();
@@ -93,7 +99,7 @@ public class MindBoostApplication {
             Stream.of("Ikram", "Meryem", "Sara").forEach(name -> {
                 TherapistDTO therapistDTO = new TherapistDTO();
                 therapistDTO.setUserName(name);
-                therapistDTO.setPassword(name + random.nextInt(1000) + 1);
+                therapistDTO.setPassword(name + 1234);
                 therapistDTO.setEmail(name + "@gmail.com");
                 int i = random.nextInt(genders.length);
                 therapistDTO.setGender(genders[i]);
@@ -150,7 +156,7 @@ public class MindBoostApplication {
 
             });
 
-            PatientDTO patientDTO = userService.getpatient(1L);
+            PatientDTO patientDTO = userService.getpatient(2L);
             TherapistDTO therapistDTO = userService.getTherapist(6L);
             if (therapistDTO.getAviability()) {
                 TherapieSessionDTO therapieSessionDTO = new TherapieSessionDTO();
