@@ -1,4 +1,6 @@
 @import '../node_modules/@syncfusion/ej2-material-theme/styles/material.css';
+@import '@fortawesome/fontawesome-free/css/all.css';
+
 /* You can add global styles to this file, and also import other style files */
 /*@import 'bulma/css/bulma.css';*/
 html, body { height: 100%; }

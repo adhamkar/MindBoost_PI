@@ -1,0 +1,22 @@
+<div class="container">
+  <div class="content">
+    <div class="notes-section">
+      <div class="notes">
+        <div class="note" *ngFor="let post of posts; let i = index">
+          <span class="edit-icon" (click)="editPost(i)">✎</span>
+          <span class="delete-icon" (click)="deletePost(i)">🗑️</span>
+          <div class="note-header">
+            <h3>Post {{i}}</h3>
+          </div>
+          <p>{{ post.content }}</p>
+          <div class="note-footer">
+            <span><i class="date-icon">📅</i> {{ post.createdDate | date:'dd MMM yyyy' }}</span>
+            <span><i class="time-icon">⏰</i> {{ post.createdDate | date:'hh:mm a, EEEE' }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+

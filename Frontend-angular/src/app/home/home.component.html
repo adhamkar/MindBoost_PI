@@ -1,53 +1,124 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--  <meta charset="UTF-8">-->
+<!--  <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+<!--  <title>Mental Health Consultancy</title>-->
+<!--</head>-->
+<!--<body>-->
+<!--<div class="container">-->
+<!--  <div class="text-content">-->
+<!--    <h1>Healthy Minds <span>Happy Lives </span></h1>-->
+<!--    <p>"Empower your mind, transform your life: Explore the intersection of student psychology, mental health, and organizational strategies to unlock your full potential and thrive academically and personally."</p>-->
+<!--    <button class="get-started-btn">Get Started</button>-->
+<!--  </div>-->
+<!--  <div class="image-content">-->
+<!--    <img src="assets/withoutpng.png" alt="Meditation Illustration">-->
+<!--  </div>-->
+<!--</div>-->
+<!--</body>-->
+<!--</html>-->
 
-<mat-toolbar color="primary">
-  <button mat-icon-button (click)="myDrawer.toggle()">
-    <mat-icon>menu</mat-icon>
-    MindBoost
-  </button>
-  <span  style="flex: auto"></span>
-  <button mat-button routerLink="/home">Home</button>
-  <button mat-button routerLink="/user/home">ChatBot</button>
-  <button mat-button routerLink="/user/posts">Posts</button>
-  <button mat-button routerLink="/user/aboutUs">About Us</button>
-  <button mat-button routerLink="/user/needHelp">Need Help?</button>
-  <button mat-raised-button color="accent" >Logout</button>
-</mat-toolbar>
-<mat-drawer-container>
-  <mat-drawer #myDrawer opened="true" mode="side" position="start">
+<div class="container">
+  <div class="text-content">
+    <h1>Healthy Minds <span>Happy Lives</span></h1>
+    <p>"Empower your mind, transform your life: Explore the intersection of student psychology, mental health, and organizational strategies to unlock your full potential and thrive academically and personally."</p>
+    <button class="get-started-btn">Get Started</button>
+  </div>
+  <div class="image-content">
+    <img src="assets/withoutpng.png" alt="Meditation Illustration">
+  </div>
+</div>
 
-    <mat-list>
-      <mat-list-item>
-        <mat-icon>person</mat-icon>
-        <button mat-button routerLink="/admin/dashboard">Profile</button>
-      </mat-list-item>
-      <mat-list-item>
-        <mat-icon></mat-icon>
-        <button mat-button routerLink="/admin/students">My Posts</button>
-      </mat-list-item>
-      <mat-list-item>
-        <mat-icon>note</mat-icon>
-        <button mat-button routerLink="/admin/payments">My Notes</button>
-      </mat-list-item>
-    </mat-list>
-
-  </mat-drawer>
-  <mat-drawer-content>
-    <div style="min-height: 600px">
-      <router-outlet>
-        <!--le contenu de app-->
-      </router-outlet>
-
+<div class="why-choose-us">
+  <h2> Your mental health<span> Is more important
+    than your Academic Career.</span>   <div class="subheading">Take care of yourself first.</div></h2>
+  <div class="cards">
+    <div class="card">
+      <img src="assets/demi lovato.jpg" alt="Chat with Expert">
+      <h3>DEMI LOVATO</h3>
+      <p>66 You don't have to
+        struggle in silence.
+        You can be un-silent. You can live well with
+        a mental health condition, as long as you
+        open up to somebody about it. 66</p>
     </div>
-  </mat-drawer-content>
-</mat-drawer-container>
+    <div class="card highlighted">
+      <img src="assets/GREENJOHN.jpeg" alt="Anonymous Identity">
+      <h3>GREEN JOHN</h3>
+      <p>66
+        There is hope,
+        even when your
+        brain tells you
+        there isn't.66</p>
+    </div>
+    <div class="card">
+      <img src="assets/HAIGMATT.jpg" alt="Visit Hospitals">
+      <h3>HAIG MATT</h3>
+      <p>66 Mental health problems
+        don't define who you are.
+        They are something you
+        experience. You walk in the
+        rain and you feel the rain,
+        but you are not the rain.66</p>
+    </div>
+  </div>
+</div>
+<div class="about-us-section">
+  <div class="image-container">
+    <img src="assets/img_2.png" alt="About Us Image" class="about-image">
+  </div>
+  <div class="text-contenu">
+    <h3>About Us</h3>
+    <h1>Discover the Faces Behind Our <span>Mental Health</span></h1>
+    <p>MindBoost is a platform designed to support your mental health and help you organize and manage your life effectively.</p>
+    <button class="explore-btn">Get Started</button>
+  </div>
+</div>
 
-
-
-
-
-
-
-
+<footer class="footer">
+  <div class="footer-container">
+    <div class="footer-section logo">
+      <img src="assets/logo.png" alt="MindBoost Logo">
+      <p>You’ve reached the end, but it’s not the end! Remember, you’re not alone. Reach out, seek support, and prioritize your mental well-being.</p>
+    </div>
+    <div class="footer-section services">
+      <h4>MentelHealth Services</h4>
+      <ul>
+        <li>Psychologist</li>
+        <li>Consulting Support</li>
+        <li>Journaling</li>
+        <li>Blog Experience</li>
+      </ul>
+    </div>
+    <div class="footer-section contact">
+      <h4>Organisation Services</h4>
+      <ul>
+        <li>Planning</li>
+        <li>Todo List</li>
+        <li>Stocking Document</li>
+      </ul>
+    </div>
+    <div class="footer-section links">
+      <h4>Links</h4>
+      <ul>
+        <p><i class="fas fa-phone"></i> +06 52 48 73 85</p>
+        <p><i class="fas fa-envelope"></i> MindBoost.com</p>
+        <p><i class="fas fa-map-marker-alt"></i> MoHaMMeDiA</p>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>copyright 2024 &#64; MindBoost all rights reserved</p>
+    <div class="socials">
+      <a href="#"><i class="fab fa-instagram"></i></a>
+      <a href="#"><i class="fab fa-facebook-f"></i></a>
+      <a href="#"><i class="fab fa-youtube"></i></a>
+      <a href="#"><i class="fab fa-twitter"></i></a>
+      <a href="#"><i class="fab fa-linkedin-in"></i></a>
+    </div>
+  </div>
+</footer>
 
 
 

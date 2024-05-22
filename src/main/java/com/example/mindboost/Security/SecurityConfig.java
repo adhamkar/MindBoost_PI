@@ -1,3 +1,4 @@
+
 package com.example.mindboost.Security;
 
 import com.example.mindboost.Security.Service.UserDetailService;
@@ -90,7 +91,7 @@ public class SecurityConfig {
     CorsConfigurationSource corsConfigurationSource(){
         CorsConfiguration corsConfiguration=new CorsConfiguration();
         corsConfiguration.addAllowedOrigin("http://localhost:4200");
-        //corsConfiguration.addAllowedOrigin("*");
+        corsConfiguration.addAllowedOrigin("*");
         corsConfiguration.addAllowedMethod("*");
         corsConfiguration.addAllowedHeader("*");
         corsConfiguration.setExposedHeaders(List.of("x-auth-token"));
@@ -100,3 +101,4 @@ public class SecurityConfig {
     }
 
 }
+

@@ -1,4 +1,4 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {MatDialog} from "@angular/material/dialog";
 import {CreatePostComponent} from "./create-post/create-post.component";
 import {Router} from "@angular/router";
@@ -13,12 +13,42 @@ import {AuthService} from "../services/auth.service";
 })
 export class PostComponent implements OnInit{
   posts: Post[] = [];
-  @Output() postCreated = new EventEmitter<any>();
+  /*public posts:any= [
+    {
+      id: 1,
+      date: '2024-12-12',
+      content:  'Lorem Ipsum is simply dummy text of the printing and typesetting industry.' +
+        'Lorem Ipsum is simply dummy text of the printing and typesetting industry' +
+        'Lorem Ipsum is simply dummy text of the printing and typesetting industry..'
+    },
+    {
+      id: 2,
+      date: '2024-12-12',
+      content: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.' +
+        'Lorem Ipsum is simply dummy text of the printing and typesetting industry' +
+        'Lorem Ipsum is simply dummy text of the printing and typesetting industry..'
+    },
+    {
+      id: 3,
+      date: '2024-12-12',
+      content:  'Lorem Ipsum is simply dummy text of the printing and typesetting industry.' +
+        'Lorem Ipsum is simply dummy text of the printing and typesetting industry' +
+        'Lorem Ipsum is simply dummy text of the printing and typesetting industry..'
+    },
+    {
+      id: 4,
+      date: '2024-12-12',
+      content:  'Lorem Ipsum is simply dummy text of the printing and typesetting industry.' +
+        'Lorem Ipsum is simply dummy text of the printing and typesetting industry' +
+        'Lorem Ipsum is simply dummy text of the printing and typesetting industry..'
+    },
+  ]*/
   constructor(private matDialog:MatDialog, private router:Router,private postService: PostService,public authService:AuthService) {
   }
 
   ngOnInit(): void {
       this.getAllPosts();
+
   }
 
   getAllPosts(): void {
@@ -42,10 +72,10 @@ export class PostComponent implements OnInit{
       }
     });
     this.matDialog.afterAllClosed.subscribe(
-       (data)=>{
-          this.getAllPosts();
-        }
-      )
+      data=>{
+        this.getAllPosts()
+      }
+    )
   }
   DeletePost(id:any):void {
     this.postService.deletePost(id).subscribe(

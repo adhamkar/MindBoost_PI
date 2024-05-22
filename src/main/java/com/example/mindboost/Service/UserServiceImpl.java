@@ -1,3 +1,4 @@
+
 package com.example.mindboost.Service;
 
 import com.example.mindboost.DTOs.*;
@@ -39,7 +40,7 @@ public class UserServiceImpl implements UserService {
         return mapper.FromUser(userSaved);
     }
     @Override
-   public UserDTO LoadUserByUserName(String userName) {
+    public UserDTO LoadUserByUserName(String userName) {
         User user = userRepo.findByUserName(userName);
         UserDTO userDTO = mapper.FromUser(user);
         userDTO.setRole(user.getRole());

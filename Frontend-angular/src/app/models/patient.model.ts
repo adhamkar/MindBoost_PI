@@ -1,8 +1,8 @@
 import { Post } from './post.model';
 import { Comment } from './comment.model';
-import { NotePad } from './note-pad.model';
 import { TherapieSession } from './therapie-session.model';
 import {User} from "./user.model";
+import {Note} from "./note";
 
 export class Patient extends User{
   //id!: number;
@@ -13,6 +13,6 @@ export class Patient extends User{
   medicalHistory!: string;
   posts!: Post[];
   comments!: Comment[];
-  notePads!: NotePad[];
+  notePads!: Note[];
   therapieSessions!: TherapieSession[];
 }

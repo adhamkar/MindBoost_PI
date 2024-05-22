@@ -65,8 +65,8 @@ export class PostDetailsComponent implements OnInit{
       }
     });
     this.matDialog.afterAllClosed.subscribe(
-      (data)=>{
-        this.getAllComments();
+      data=>{
+        this.getAllComments()
       }
     )
   }

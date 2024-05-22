@@ -1,0 +1,127 @@
+/*.calendar-container {*/
+/*  display: flex;*/
+/*  flex-direction: column;*/
+/*  height: 100%;*/
+/*}*/
+
+/*.mat-toolbar {*/
+/*  justify-content: space-between;*/
+/*}*/
+
+/*.spacer {*/
+/*  flex: 1 1 auto;*/
+/*}*/
+
+/*.calendar-view {*/
+/*  flex: 1;*/
+/*  display: flex;*/
+/*  flex-direction: column;*/
+/*}*/
+
+/*.date-view {*/
+/*  display: flex;*/
+/*  justify-content: flex-end;*/
+/*  padding: 10px;*/
+/*}*/
+
+/*.day-view {*/
+/*  display: flex;*/
+/*  flex-direction: column;*/
+/*  flex: 1;*/
+/*}*/
+
+/*.hour-row {*/
+/*  display: flex;*/
+/*  border-bottom: 1px solid #ccc;*/
+/*}*/
+
+/*.hour-label {*/
+/*  width: 50px;*/
+/*  padding: 10px;*/
+/*  text-align: center;*/
+/*}*/
+
+/*.events {*/
+/*  flex: 1;*/
+/*  display: flex;*/
+/*  flex-direction: column;*/
+/*  padding: 10px;*/
+/*}*/
+
+/*.event {*/
+/*  margin: 5px 0;*/
+/*  padding: 5px;*/
+/*  border-radius: 3px;*/
+/*  color: #fff;*/
+/*}*/
+.calendar-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.date-selector {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.date {
+  font-size: 24px;
+}
+
+.view-options {
+  display: flex;
+  gap: 10px;
+}
+
+.view-option {
+  background-color: #f4f4f4;
+  border: 1px solid #ccc;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.calendar {
+  display: flex;
+}
+
+.time-slots {
+  width: 100px;
+  display: flex;
+  flex-direction: column;
+}
+
+.time-slot {
+  height: 60px;
+  border-bottom: 1px solid #ddd;
+  line-height: 60px;
+}
+
+.events {
+  flex-grow: 1;
+  position: relative;
+}
+
+.event {
+  position: absolute;
+  left: 0;
+  right: 0;
+  padding: 10px;
+  border-radius: 5px;
+  color: #fff;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.event-work {
+  background-color: #87ceeb;
+}
+
+.event-personal {
+  background-color: #ffcccb;
+}
+
+.event-study {
+  background-color: #d3a4fc;
+}

@@ -1,0 +1,184 @@
+.container {
+  display: flex;
+  justify-content: center; /* Centre horizontalement */
+  align-items: center; /* Centre verticalement */
+  height: 100vh; /* Hauteur de la page */
+  background-color: #f0f0f0; /* Couleur de fond de la page */
+}
+
+.profile-container {
+  width: 70%;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: flex; /* Utiliser flexbox pour aligner les éléments enfants */
+  flex-direction: column; /* Disposer les éléments enfants en colonne */
+  transition: transform 0.3s ease-in-out;
+}
+.profile-container:hover {
+  transform: translateY(-5px);
+}
+
+
+/* Appliquer une largeur de 100% à tous les enfants de .profile-container */
+.profile-container > * {
+  width: 100%;
+}
+
+/* Ajouter des marges entre les enfants de .profile-container si nécessaire */
+.profile-container {
+  margin-top: 25%;
+}
+
+.welcome-head-container {
+  background: #eeeded;
+  color: #556ee6;
+  font-size: 16px;
+  display: flex;
+  flex-wrap: wrap;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+  width: 100%; /* Prend la largeur totale de .profile-container */
+}
+
+.welcome-head-container .col-left {
+  flex: 0 0 auto;
+  width: 50%; /* Prend 50% de la largeur de .welcome-head-container */
+}
+
+.welcome-head-container .col-left p {
+  font-size: 14px;
+  margin-top: 7px;
+  font-weight: normal;
+}
+
+.welcome-head-container .col-right {
+  flex: 0 0 auto;
+  width: 50%; /* Prend 50% de la largeur de .welcome-head-container */
+}
+
+.welcome-head-container .col-right img {
+  width: 65%;
+  height: auto;
+}
+
+.welcome-card {
+  border-radius: 0.25rem;
+  max-width: 100%;
+}
+
+.welcome-body-container {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%; /* Prend la largeur totale de .profile-container */
+}
+
+.welcome-body-container .col-left {
+  flex: 0 0 auto;
+  width: 50%; /* Prend 50% de la largeur de .welcome-body-container */
+}
+
+.welcome-body-container .col-left .avatar {
+  margin-top: -36px;
+  margin-bottom: 1.5rem;
+  height: 4.5rem;
+  width: 4.5rem;
+}
+
+.welcome-body-container .col-left .avatar img {
+  border-radius: 50%;
+  padding: 0.25rem;
+  background-color: #f8f8fb;
+  border: 1px solid #f6f6f6;
+  max-width: 100%;
+  height: auto;
+}
+
+.welcome-body-container .col-left .name {
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: .5rem;
+}
+
+.welcome-body-container .col-left p {
+  color: #74788d;
+  font-size: 14px;
+}
+
+.welcome-body-container .col-right {
+  flex: 0 0 auto;
+  width: 50%; /* Prend 50% de la largeur de .welcome-body-container */
+}
+
+.welcome-body-container .col-right .performance-container .performance {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  font-size: 14px;
+  font-weight: 400;
+  color: #74788d;
+}
+
+.welcome-body-container .col-right .performance-container .progress {
+  display: flex;
+  height: 7px;
+  overflow: hidden;
+  font-size: .75rem;
+  background-color: #e9ecef;
+  border-radius: 0.25rem;
+}
+
+.welcome-body-container .col-right .performance-container .progress .progress-bar {
+  width: 80%;
+  background-color: rgb(50, 248, 60);
+}
+
+.welcome-body-container .col-right .view-profile {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: flex-end; /* Aligner vers la droite */
+  width: 100%;
+}
+
+.welcome-body-container .col-right .view-profile button {
+  cursor: pointer;
+  border: none;
+  outline: 0;
+  color: #fff;
+  background: linear-gradient(-135deg, #c850c0, #4158d0);
+  padding: 12px 17px;
+  border-radius: 5px;
+  margin-left: auto;
+}
+
+
+.welcome-body-container .col-right .view-profile button .fa-arrow-right {
+  margin-right: 10px;
+}
+.info-card {
+  margin-bottom: 20px;
+}
+
+.info-card:first-child  > * + * {
+  margin-top: 1%;
+}
+.info-card mat-icon {
+  vertical-align: middle; /* Aligner l'icône verticalement avec le texte */
+  margin-right: 5px; /* Ajouter un espace à droite de l'icône */
+  font-size: 20px; /* Changer la taille de l'icône */
+}
+
+.info-card mat-card-content {
+  font-size: 16px; /* Changer la taille du texte */
+  color: #333; /* Changer la couleur du texte */
+}
+
+
+
+
+
+
+
+
+

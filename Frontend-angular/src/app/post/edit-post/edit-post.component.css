@@ -1,0 +1,77 @@
+
+
+.new-note {
+  background-color: #fff;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.new-note h3 {
+  margin-top: 0;
+  font-weight: 500;
+  font-size: 1.2em;
+  margin-bottom: 10px;
+}
+
+.new-note form {
+  display: flex;
+  flex-direction: column;
+}
+
+.new-note .form-control {
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 1em;
+}
+
+.new-note .add-note-btn {
+  padding: 10px;
+  background: linear-gradient(135deg, #1A7373, #ADDCBE 90%);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1em;
+  transition: background-color 0.2s;
+}
+
+.new-note .add-note-btn:hover {
+  background-color: #45a049;
+}
+
+
+.form-control {
+  width: 100%;
+  padding: 10px;
+  margin: 5px 0;
+  box-sizing: border-box;
+  font-size: 16px;
+}
+
+textarea.form-control {
+  height: 150px;
+}
+
+.button-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.add-note-btn,
+.cancel-edit-btn {
+  flex: 1;
+}
+.cancel-edit-btn{
+  padding: 10px;
+  margin-left: 10px;
+  background: #8ea3a4;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1em;
+  transition: background-color 0.2s;
+}

@@ -1,0 +1,256 @@
+.container {
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  background: #F5F5F5;
+  color: #333;
+  border-radius: 10px;
+}
+
+.header {
+  background: #ADDCBE;
+  color: #ffffff;
+  padding: 10px;
+  text-align: center;
+  border-radius: 5px;
+}
+
+.header h1 {
+  margin: 0;
+}
+
+.content {
+  display: flex;
+  margin-top: 20px;
+}
+
+.notes-section {
+  flex: 2;
+  margin-right: 20px;
+  background: url('../../assets/img_1.png') no-repeat center center;
+  background-size: cover;
+  border-radius: 10px;
+  padding: 20px;
+}
+
+.sidebar {
+  flex: 1;
+}
+
+.quick-notes {
+  background-color: #fff;
+  padding: 12px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 15px;
+}
+
+.quick-notes h3 {
+  margin-top: 0;
+  font-weight: 500;
+  font-size: 1.2em;
+  margin-bottom: 8px;
+}
+
+.quick-notes ul {
+  list-style: none;
+  padding: 0;
+}
+
+.quick-notes li {
+  background: #e0f7fa;
+ /* padding: 10px;*/
+  margin-bottom: 5px;
+  border-radius: 5px;
+  position: relative;
+  padding: 5px 30px 5px 5px;
+  border-bottom: 1px solid #ccc;
+}
+
+
+.delete-note-btn {
+  position: absolute;
+  right: 5px;
+  top: 50%;
+  transform: translateY(-50%);
+  border: none;
+  background: none;
+  color: #8ea3a4;
+  cursor: pointer;
+}
+
+.delete-note-btn i {
+  font-size: 16px;
+}
+.add-note-btn1 {
+  padding: 10px;
+  background: linear-gradient(135deg, #1A7373, #ADDCBE 90%);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1em;
+  transition: background-color 0.2s;
+  width:100%;
+}
+
+.add-note-btn1 :hover {
+  background-color: #45a049;
+}
+
+
+.quick-notes-icon,
+.new-note-icon {
+  margin-right: 8px;
+}
+
+.quick-notes-icon,
+.new-note-icon {
+  font-size: 1.2em;
+}
+
+.notes {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 10px;
+}
+
+.note {
+  background-color: rgba(193, 250, 213, 0.35);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.2s;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.note:hover {
+  transform: scale(1.05);
+}
+
+.note-header {
+  margin-bottom: 10px;
+  position: relative;
+}
+
+.note-header h3 {
+  font-weight: 400;
+  margin: 0;
+  font-size: 1em;
+}
+
+.edit-icon,
+.delete-icon {
+  position: absolute;
+  top: 10px;
+  font-size: 1.5em;
+  cursor: pointer;
+  color: #555;
+}
+
+.edit-icon {
+  right: 35px;
+}
+
+.delete-icon {
+  right: 10px;
+}
+
+
+.note p {
+  margin: 20px 0;
+  line-height: 1.6;
+}
+
+.note-footer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  font-size: 0.9em;
+  color: #666;
+}
+
+.note-footer .date-icon,
+.note-footer .time-icon {
+  margin-right: 5px;
+}
+
+.new-note {
+  background-color: #fff;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.new-note h3 {
+  margin-top: 0;
+  font-weight: 500;
+  font-size: 1.2em;
+  margin-bottom: 10px;
+}
+
+.new-note form {
+  display: flex;
+  flex-direction: column;
+}
+
+.new-note .form-control {
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 1em;
+}
+
+.new-note .add-note-btn {
+  padding: 10px;
+  background: linear-gradient(135deg, #1A7373, #ADDCBE 90%);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1em;
+  transition: background-color 0.2s;
+}
+
+.new-note .add-note-btn:hover {
+  background-color: #45a049;
+}
+
+
+.form-control {
+  width: 100%;
+  padding: 10px;
+  margin: 5px 0;
+  box-sizing: border-box;
+  font-size: 16px;
+}
+
+textarea.form-control {
+  height: 150px;
+}
+
+.button-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.add-note-btn,
+.cancel-edit-btn {
+  flex: 1;
+}
+.cancel-edit-btn{
+  padding: 10px;
+  margin-left: 10px;
+  background: #8ea3a4;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1em;
+  transition: background-color 0.2s;
+}
+

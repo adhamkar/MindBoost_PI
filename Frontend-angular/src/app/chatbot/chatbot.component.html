@@ -1,0 +1,26 @@
+<div class="content-wrapper">
+  <div class="therapy-container">
+    <div class="therapy-header">let's figure it out together</div>
+    <div class="therapy-title">Unlocking the <span>power of your mind</span></div>
+    <div class="therapy-image">
+      <img src="assets/psy.jpg" alt="Person Thinking">
+    </div>
+    <div class="therapy-footer">&#64;YourPsychologist</div>
+  </div>
+  <div class="chat-container">
+    <div class="chat-header">
+      <img src="assets/chatbot.png" alt="Profile Picture" class="message-icon">
+      <div class="user-info">
+        <div class="user-name">Psychologist</div>
+        <div class="user-status">Online</div>
+      </div>
+    </div>
+    <div class="chat-body" id="chat-body">
+      <!-- Chat messages will appear here -->
+    </div>
+    <div class="chat-footer">
+      <input type="text" id="chat-input" placeholder="Type your message here..." (keypress)="handleKeyPress($event)">
+      <button (click)="sendMessage()"><i class="fas fa-paper-plane"></i></button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,173 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f0f0f0;
+}
+
+.content-wrapper {
+  display: flex;
+  align-items: flex-start;
+  margin-top: 50px;
+  margin-left: 0px;
+}
+
+.therapy-container {
+  background-color: #fff8f0;
+  border-radius: 20px;
+  padding: 40px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  max-width: 400px;
+  font-family: 'Arial', sans-serif;
+  margin-top: 80px;
+  margin-right: 50px;
+
+}
+
+.therapy-header {
+  font-size: 14px;
+  color: #8d8d8d;
+  margin-bottom: 20px;
+}
+
+.therapy-title {
+  font-size: 20px;
+  color: #4caf50;
+  margin: 0;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  letter-spacing: 1px;
+}
+
+.therapy-image {
+  margin: 20px 0;
+}
+
+.therapy-image img {
+  width: 250px;
+  height: 100px;
+  border-radius: 50%;
+}
+
+.therapy-footer {
+  font-size: 12px;
+  color: #4caf50;
+  margin-top: 20px;
+}
+
+.chat-container {
+  width: 600px;
+  max-width: 100%;
+  height: 80vh;
+  background: #1e1e1e;
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.chat-header {
+  display: flex;
+  align-items: center;
+  background: #333;
+  padding: 10px;
+  color: white;
+}
+
+.profile-pic {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.user-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.user-name {
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.user-status {
+  font-size: 14px;
+  color: #7f7f7f;
+}
+
+::ng-deep .chat-body {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+  background: #1e1e1e;
+  height: calc(100% - 100px);
+  border-top: 1px solid #ccc;
+}
+
+::ng-deep .chat-message-container {
+  display: flex;
+  align-items: flex-end;
+  margin-bottom: 10px;
+}
+
+::ng-deep .chat-message {
+  padding: 10px;
+  border-radius: 5px;
+  max-width: 70%;
+}
+
+::ng-deep .chat-message.user {
+  background: #4caf50;
+  color: white;
+  margin-left: auto;
+}
+
+::ng-deep .chat-message.bot {
+  background: #333;
+  color: white;
+  margin-right: auto;
+}
+
+::ng-deep .message-icon {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  margin: 0 10px;
+}
+
+.chat-footer {
+  display: flex;
+  background: #333;
+  padding: 10px;
+  align-items: center;
+}
+
+.chat-footer input {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  margin-right: 10px;
+  background: #2a2a2a;
+  color: white;
+}
+
+.chat-footer button {
+  background: #4caf50;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+}
+
+.chat-footer button i {
+  font-size: 16px;
+}

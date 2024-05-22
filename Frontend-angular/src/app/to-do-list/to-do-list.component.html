@@ -1,0 +1,146 @@
+<!--<div class="container">-->
+<!--  <div class="menu">-->
+<!--    <h2>Menu</h2>-->
+<!--    <div class="search">-->
+<!--      <input type="text" placeholder="Search...">-->
+<!--    </div>-->
+<!--    <div class="tasks">-->
+<!--      <h3>Tasks</h3>-->
+<!--      <ul>-->
+<!--        <li><button (click)="navigateTo('upcoming')">Upcoming</button></li>-->
+<!--        <li><button (click)="navigateTo('today')">Today</button></li>-->
+<!--        <li><button (click)="navigateTo('calendar')">Calendar</button></li>-->
+<!--&lt;!&ndash;        <li><button (click)="navigateTo('stickyWall')">Sticky Wall</button></li>&ndash;&gt;-->
+<!--      </ul>-->
+<!--    </div>-->
+<!--    <div class="lists">-->
+<!--      <h3>Lists</h3>-->
+<!--      <ul>-->
+<!--        <li><span class="dot work"></span> Work</li>-->
+<!--        <li><span class="dot personal"></span> Personal</li>-->
+<!--        <li><span class="dot study"></span> Study</li>-->
+<!--        <li><button>Add new list</button></li>-->
+<!--      </ul>-->
+<!--    </div>-->
+<!--  </div>-->
+
+<!--  <div class="main-content">-->
+<!--    <h2>Upcoming </h2>-->
+<!--    <div class="todo-section">-->
+<!--      <h3>Today</h3>-->
+<!--      <div class="add-task">-->
+<!--        <input type="text" placeholder="Add new task" #newTaskToday>-->
+<!--        <button (click)="addTask(newTaskToday.value, 'today')">Add</button>-->
+<!--      </div>-->
+<!--      <ul>-->
+<!--        <li *ngFor="let todo of getTodosByDate('today')">-->
+<!--          <input type="checkbox" [checked]="todo.completed" (change)="toggleCompletion(todo.id)">-->
+<!--          {{todo.task}}-->
+<!--        </li>-->
+<!--      </ul>-->
+<!--    </div>-->
+
+<!--    <div class="todo-section">-->
+<!--      <h3>Tomorrow</h3>-->
+<!--      <div class="add-task">-->
+<!--        <input type="text" placeholder="Add new task" #newTaskTomorrow>-->
+<!--        <button (click)="addTask(newTaskTomorrow.value, 'tomorrow')">Add</button>-->
+<!--      </div>-->
+<!--      <ul>-->
+<!--        <li *ngFor="let todo of getTodosByDate('tomorrow')">-->
+<!--          <input type="checkbox" [checked]="todo.completed" (change)="toggleCompletion(todo.id)">-->
+<!--          {{todo.task}}-->
+<!--        </li>-->
+<!--      </ul>-->
+<!--    </div>-->
+
+<!--    <div class="todo-section">-->
+<!--      <h3>This Week</h3>-->
+<!--      <div class="add-task">-->
+<!--        <input type="text" placeholder="Add new task" #newTaskWeek>-->
+<!--        <button (click)="addTask(newTaskWeek.value, 'thisWeek')">Add</button>-->
+<!--      </div>-->
+<!--      <ul>-->
+<!--        <li *ngFor="let todo of getTodosByDate('thisWeek')">-->
+<!--          <input type="checkbox" [checked]="todo.completed" (change)="toggleCompletion(todo.id)">-->
+<!--          {{todo.task}}-->
+<!--        </li>-->
+<!--      </ul>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->
+<div class="container">
+  <div class="menu">
+    <h2>Menu</h2>
+    <div class="search">
+      <input type="text" placeholder="Search...">
+    </div>
+    <div class="tasks">
+      <h3>Tasks</h3>
+      <ul>
+        <li><button (click)="navigateTo('upcoming')">Upcoming</button></li>
+        <li><button (click)="navigateTo('today')">Today</button></li>
+        <li><button (click)="showCalendar()">Calendar</button></li>
+        <!-- <li><button (click)="navigateTo('stickyWall')">Sticky Wall</button></li> -->
+      </ul>
+    </div>
+    <div class="lists">
+      <h3>Lists</h3>
+      <ul>
+        <li><span class="dot work"></span> Work</li>
+        <li><span class="dot personal"></span> Personal</li>
+        <li><span class="dot study"></span> Study</li>
+        <li><button>Add new list</button></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="main-content" *ngIf="!showingCalendar">
+    <h2>Upcoming </h2>
+    <div class="todo-section">
+      <h3>Today</h3>
+      <div class="add-task">
+        <input type="text" placeholder="Add new task" #newTaskToday>
+        <button (click)="addTask(newTaskToday.value, 'today')">Add</button>
+      </div>
+      <ul>
+        <li *ngFor="let todo of getTodosByDate('today')">
+          <input type="checkbox" [checked]="todo.completed" (change)="toggleCompletion(todo.id)">
+          {{todo.task}}
+        </li>
+      </ul>
+    </div>
+
+    <div class="todo-section">
+      <h3>Tomorrow</h3>
+      <div class="add-task">
+        <input type="text" placeholder="Add new task" #newTaskTomorrow>
+        <button (click)="addTask(newTaskTomorrow.value, 'tomorrow')">Add</button>
+      </div>
+      <ul>
+        <li *ngFor="let todo of getTodosByDate('tomorrow')">
+          <input type="checkbox" [checked]="todo.completed" (change)="toggleCompletion(todo.id)">
+          {{todo.task}}
+        </li>
+      </ul>
+    </div>
+
+    <div class="todo-section">
+      <h3>This Week</h3>
+      <div class="add-task">
+        <input type="text" placeholder="Add new task" #newTaskWeek>
+        <button (click)="addTask(newTaskWeek.value, 'thisWeek')">Add</button>
+      </div>
+      <ul>
+        <li *ngFor="let todo of getTodosByDate('thisWeek')">
+          <input type="checkbox" [checked]="todo.completed" (change)="toggleCompletion(todo.id)">
+          {{todo.task}}
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div *ngIf="showingCalendar">
+    <app-calendar [todos]="todos"></app-calendar>
+  </div>
+</div>

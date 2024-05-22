@@ -1,0 +1,54 @@
+/* Espace entre les champs de formulaire dans la même ligne */
+
+.dialog-title {
+  text-align: center;
+  background: linear-gradient(to right, #064053, #26c6d7); /* Dégradé de couleur */
+  -webkit-background-clip: text; /* Permet de clipper le dégradé sur le texte */
+  color: transparent; /* Rend le texte transparent pour afficher le dégradé */
+  font-weight: bold;
+}
+
+mat-form-field {
+ margin-left: 5px;
+
+}
+
+/* Style des boutons */
+.mat-dialog-actions button {
+  margin-right: 10px;
+  border-radius: 5px;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+/* Style du bouton Cancel */
+.mat-dialog-actions button.mat-button[color="warn"] {
+  background-color: #f44336; /* Rouge */
+  color: white;
+}
+
+/* Style du bouton Save */
+.mat-dialog-actions button.mat-button[color="primary"] {
+  background-color: #2196f3; /* Bleu */
+  color: white;
+}
+.spacer {
+  flex-grow: 1; /* Faire en sorte que cet élément prenne tout l'espace disponible */
+}
+.mat-form-field-underline {
+  border-bottom-color: #164c56; /* Couleur de la ligne */
+  border-bottom-width: 2px; /* Épaisseur de la ligne */
+}
+.dialog-actions button{
+  color: white;
+}
+.dialog-actions button:hover {
+
+ /* Couleur du texte au survol */
+  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1); /* Ombre portée au survol */
+}
+.example-button-row button,
+.example-button-row a {
+  margin-right: 8px;
+}
+

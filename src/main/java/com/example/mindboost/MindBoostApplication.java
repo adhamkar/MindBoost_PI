@@ -32,7 +32,7 @@ public class MindBoostApplication {
         return new BCryptPasswordEncoder();
     }
     //@Bean
-/*    CommandLineRunner clRunner(UserService userService) {
+    CommandLineRunner clRunner(UserService userService) {
         return args -> {
             AdminDTO adminDTO = new AdminDTO();
             adminDTO.setUserName("admin");
@@ -40,17 +40,11 @@ public class MindBoostApplication {
             adminDTO.setEmail("admin@gmail.com");
             userService.SaveAdmin(adminDTO);
         };
-    }*/
+    }
     @Bean
     CommandLineRunner commandLineRunner(UserService userService) {
 
         return args -> {
-            AdminDTO adminDTO = new AdminDTO();
-            adminDTO.setUserName("admin");
-            adminDTO.setPassword("12345");
-            adminDTO.setEmail("admin@gmail.com");
-            userService.SaveAdmin(adminDTO);
-
             Random random = new Random();
             Gender[] genders = Gender.values();
             Role[] roles = Role.values();
@@ -99,7 +93,7 @@ public class MindBoostApplication {
             Stream.of("Ikram", "Meryem", "Sara").forEach(name -> {
                 TherapistDTO therapistDTO = new TherapistDTO();
                 therapistDTO.setUserName(name);
-                therapistDTO.setPassword(name + 1234);
+                therapistDTO.setPassword(name + random.nextInt(1000) + 1);
                 therapistDTO.setEmail(name + "@gmail.com");
                 int i = random.nextInt(genders.length);
                 therapistDTO.setGender(genders[i]);
@@ -186,16 +180,16 @@ public class MindBoostApplication {
     //@Bean
     CommandLineRunner commandLineRunner(AccountService accountService){
         return args -> {
-           accountService.AddRole("USER");
-           accountService.AddRole("ADMIN");
+            accountService.AddRole("USER");
+            accountService.AddRole("ADMIN");
 
-              accountService.AddUser("user1", "1234", "user1@gmail.com","1234");
-              accountService.AddUser("user2", "12345", "user2@gmail.com","12345");
-              accountService.AddUser("admin","1452","admin@gmail.com","1452");
-                accountService.AddRoleToUser("user1","USER");
-                accountService.AddRoleToUser("user2","USER");
-                accountService.AddRoleToUser("admin","ADMIN");
-                accountService.AddRoleToUser("admin","USER");
+            accountService.AddUser("user1", "1234", "user1@gmail.com","1234");
+            accountService.AddUser("user2", "12345", "user2@gmail.com","12345");
+            accountService.AddUser("admin","1452","admin@gmail.com","1452");
+            accountService.AddRoleToUser("user1","USER");
+            accountService.AddRoleToUser("user2","USER");
+            accountService.AddRoleToUser("admin","ADMIN");
+            accountService.AddRoleToUser("admin","USER");
         };
     }
 }
