@@ -47,7 +47,7 @@ Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTcxNTQ3N
 ###
 POST http://localhost:8085/patient_post
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJBZGhhbSIsImV4cCI6MTcxNTk5MzQwOSwiaWF0IjoxNzE1OTkyODA5LCJzY29wZSI6IlJPTEVfUGF0aWVudCJ9.YXuT_Xx3pKk2jh20EgEAJFj7T-TIwgY-pqbVMP4VBCfb7C-66y8vhXBqYzBVLzitubUd0hhqErrztKQXeLF4Wg
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJBZGhhbSIsImV4cCI6MTcxNjQwNDAwNywiaWF0IjoxNzE2NDAzNDA3LCJzY29wZSI6IlJPTEVfUGF0aWVudCJ9.jYNL-SOle21tldiDoUsP8zs8IoDHiUHdCBfjKadZDUsUnKgr4YHV6zcNBlMlJ6vqPCrfaHYIS6c-XIHy1_9c_Q
 
 {
     "title": "new post",
@@ -57,3 +57,31 @@ Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJBZGhhbSIsImV4cCI6MTcxNTk5M
 
 ###
 GET http://localhost:8085/posts
+
+###
+GET http://localhost:8085/notes/patient/Adham
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJBZGhhbSIsImV4cCI6MTcxNjQwMzM3MywiaWF0IjoxNzE2NDAyNzczLCJzY29wZSI6IlJPTEVfUGF0aWVudCJ9.mZpb_cv4SL-XLLsHhOqYR05jFIg9Af2aqe1w9p3lr__DCRB4gxhaEUBjtZcb7kK3hVBlJntdlAAcvDiORRSlng
+###
+POST http://localhost:8085/patient_note
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJBZGhhbSIsImV4cCI6MTcxNjQwNDAwNywiaWF0IjoxNzE2NDAzNDA3LCJzY29wZSI6IlJPTEVfUGF0aWVudCJ9.jYNL-SOle21tldiDoUsP8zs8IoDHiUHdCBfjKadZDUsUnKgr4YHV6zcNBlMlJ6vqPCrfaHYIS6c-XIHy1_9c_Q
+
+    {
+        "title": "new note",
+        "content": "new content"
+
+    }
+###
+DELETE http://localhost:8085/notes/user/
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJBZGhhbSIsImV4cCI6MTcxNjQwNTQzMCwiaWF0IjoxNzE2NDA0ODMwLCJzY29wZSI6IlJPTEVfUGF0aWVudCJ9.1xQPG8rL4788WDCdUUiapOLd3kup_juYMXLsITgsQWOzmtL2RVX3Ca94iBzl6vl5WxOxP6l7WTXvyQcHpobTpQ
+
+###
+PATCH http://localhost:8085/notes/3
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJBZGhhbSIsImV4cCI6MTcxNjQ4NDA5MiwiaWF0IjoxNzE2NDgzNDkyLCJzY29wZSI6IlJPTEVfUGF0aWVudCJ9.b1mmmCjS6jGP7UQtKSULCGq3RSH__keyE7ikV1IT_gMIQdfY6n8dtci8YdK1HUNhLNTMakbbTOqbs7rFt-I0pA
+
+    {
+        "title": "new note",
+        "content": "new content"
+
+    }

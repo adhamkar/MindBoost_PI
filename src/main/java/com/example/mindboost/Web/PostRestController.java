@@ -85,6 +85,7 @@ public class PostRestController {
 
     @DeleteMapping("/posts/{id}")
     public void DeletePost(@PathVariable(name = "id") Long id){
+
         userService.DeletePost(id);
     }
 

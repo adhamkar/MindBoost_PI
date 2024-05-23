@@ -2,16 +2,20 @@
   <div class="content">
     <div class="notes-section">
       <div class="notes">
-        <div class="note" *ngFor="let note of notes; let i = index">
-          <span class="edit-icon" (click)="editNote(i)">✎</span>
-          <span class="delete-icon" (click)="deleteNote(i)">🗑️</span>
+        <div class="note" *ngFor="let note of myNotes">
+          <span class="edit-icon" (click)="editNote(note.id)">✎</span>
+          <span class="delete-icon" (click)="deleteNote(note.id)">🗑️</span>
           <div class="note-header">
             <h3>{{ note.title }}</h3>
           </div>
           <p>{{ note.content }}</p>
-          <div class="note-footer">
-            <span><i class="date-icon">📅</i> {{ note.date }}</span>
-            <span><i class="time-icon">⏰</i> {{ note.time }}</span>
+          <div class="note-footer" *ngIf="!onEdit">
+            <span><i class="date-icon">📅</i> {{ note.createdDate  | date:'dd MMM yyyy'}}</span>
+            <span><i class="time-icon">⏰</i> {{ note.createdDate | date:'hh:mm a, EEEE'  }}</span>
+          </div>
+          <div class="note-footer" *ngIf="onEdit">
+            <span><i class="date-icon">📅</i> {{ note.updatedDate }}</span>
+            <span><i class="time-icon">⏰</i> {{ note.updatedDate | date:'shortTime' }}</span>
           </div>
         </div>
       </div>
@@ -35,13 +39,24 @@
       </div>
 
 
-      <div class="new-note">
+      <div class="new-note" *ngIf="!onEdit">
         <h3><span class="new-note-icon">📝</span>New Note</h3>
-        <form [formGroup]="noteForm" (ngSubmit)="save()">
-          <input type="text" placeholder="Title" class="form-control" formControlName="title" [(ngModel)]="editedNote.title">
-          <textarea placeholder="Content" class="form-control" formControlName="content" [(ngModel)]="editedNote.content"></textarea>
+        <form [formGroup]="noteForm" (ngSubmit)="SaveNotes()">
+          <input type="text" placeholder="Title" class="form-control" formControlName="title" >
+          <textarea placeholder="Content" class="form-control" formControlName="content" ></textarea>
           <div class="button-container">
-            <button  class="add-note-btn" type="submit">Add note</button>
+            <button  class="add-note-btn" type="submit" [disabled]="!noteForm.valid">Add note</button>
+            <button type="button" class="cancel-edit-btn" (click)="cancelEdit()">Cancel</button>
+          </div>
+        </form>
+      </div>
+      <div class="new-note" *ngIf="onEdit">
+        <h3><span class="new-note-icon">📝</span>Update Note</h3>
+        <form [formGroup]="EditForm" (ngSubmit)="updateNote()">
+          <input type="text" placeholder="Title" class="form-control" formControlName="title" >
+          <textarea placeholder="Content" class="form-control" formControlName="content" ></textarea>
+          <div class="button-container">
+            <button  class="add-note-btn" type="submit" [disabled]="!EditForm.valid">Update note</button>
             <button type="button" class="cancel-edit-btn" (click)="cancelEdit()">Cancel</button>
           </div>
         </form>
@@ -49,4 +64,3 @@
     </div>
   </div>
 </div>
-

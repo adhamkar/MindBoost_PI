@@ -20,6 +20,9 @@ export class PostService {
   public getPost(id:string):Observable<Post> {
     return this.http.get<Post>(`${this.baseUrl}`+"/"+id);
   }
+  public getPatientPosts(name:string):Observable<Post[]> {
+    return this.http.get<Post[]>(`${this.url}`+"/user/"+name+"/posts");
+  }
 
   public getComments(id:string):Observable<Comment[]> {
     return this.http.get<Comment[]>(`${this.baseUrl}`+"/"+id+"/comments");
@@ -42,7 +45,10 @@ export class PostService {
   public deletePost(id:string): Observable<Object> {
     return this.http.delete<Post>(`${this.baseUrl}`+"/"+id);
   }
-  /*
-  /posts/{id}
-  */
+ public deletePatientPost(id:number): Observable<any> {
+    return this.http.delete(`${this.url}`+"/posts/"+id);
+  }
+  UpadatePost(post: Post): Observable<Post>{
+    return this.http.patch<Post>(`${this.baseUrl}/${post.id}`, post);
+  }
 }

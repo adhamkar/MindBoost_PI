@@ -284,6 +284,7 @@ public class UserServiceImpl implements UserService {
 
         Post existingPost = postRepo.findById(postDTO.getId())
                 .orElseThrow(() -> new IllegalArgumentException("Post not found with ID: " + postDTO.getId()));
+        existingPost.setTitle(postDTO.getTitle());
         existingPost.setContent(postDTO.getContent());
         existingPost.setUser_visibility(postDTO.getUser_visibility());
         existingPost.setUpdatedDate(new Date());
@@ -563,6 +564,28 @@ public class UserServiceImpl implements UserService {
     @Override
     public CommentDTO saveComment(CommentDTO commentDTO) {
        return null;
+    }
+
+    @Override
+    public PatientDTO getPatientByName(String name) {
+        Patient patient = patientRepo.findByUserName(name);
+        return mapper.FromPatient(patient);
+    }
+
+    @Override
+    public List<NotePadDTO> getNotePadByPatient(String name) {
+        Patient patient = patientRepo.findByUserName(name);
+        List<NotePad> notePads = notepadRepo.findAllByPatientId(patient.getId());
+        List<NotePadDTO> notePadDTOS = notePads.stream()
+                .map(notePad -> mapper.FromNotePad(notePad))
+                .collect(Collectors.toList());
+        return notePadDTOS;
+    }
+
+    @Override
+    public UserDTO getUserByName(String name) {
+        User user = userRepo.findByUserName(name);
+        return mapper.FromUser(user);
     }
 /*
  public CommentDTO SaveComment(CommentDTO commentDTO, Long Post_id) {

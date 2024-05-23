@@ -3,6 +3,8 @@ package com.example.mindboost.Web;
 import com.example.mindboost.DTOs.NotePadDTO;
 import com.example.mindboost.DTOs.PatientDTO;
 import com.example.mindboost.DTOs.PostDTO;
+import com.example.mindboost.DTOs.UserDTO;
+import com.example.mindboost.Repositories.UserRepo;
 import com.example.mindboost.Service.UserService;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
@@ -17,6 +19,7 @@ import java.util.List;
 @Slf4j
 @CrossOrigin("*")
 public class PatientRestController {
+    private final UserRepo userRepo;
     private UserService userService;
 
     @GetMapping("/patients")
@@ -46,6 +49,12 @@ public class PatientRestController {
     //@PreAuthorize("hasAuthority('SCOPE_ROLE_Admin')")
     public List<PostDTO> Patient_Posts(@PathVariable Long id){
         return userService.Post_LIST_PERPatient(id);
+    }
+    @GetMapping("/user/{name}/posts")
+    //@PreAuthorize("hasAuthority('SCOPE_ROLE_Admin')")
+    public List<PostDTO> PatientPosts(@PathVariable String name){
+        UserDTO userDTO = userService.getUserByName(name);
+        return userService.Post_LIST_PERPatient(userDTO.getId());
     }
 
     @GetMapping("/patients/{id}/notepad")

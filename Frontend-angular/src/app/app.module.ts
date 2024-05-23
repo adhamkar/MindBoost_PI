@@ -22,7 +22,13 @@ import {MatCardModule} from "@angular/material/card";
 import {MatButtonModule} from "@angular/material/button";
 import { UserTemplateComponent } from './user-template/user-template.component';
 import { CreatePostComponent } from './post/create-post/create-post.component';
-import {MatDialogActions, MatDialogClose, MatDialogContent, MatDialogTitle} from "@angular/material/dialog";
+import {
+  MatDialogActions,
+  MatDialogClose,
+  MatDialogContent,
+  MatDialogModule,
+  MatDialogTitle
+} from "@angular/material/dialog";
 import { PostDetailsComponent } from './post/post-details/post-details.component';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import { SidebarComponent } from './sidebar/sidebar.component';
@@ -45,7 +51,7 @@ import {PlanningComponent} from "./planning/planning.component";
 import {ToDoListComponent} from "./to-do-list/to-do-list.component";
 import {MatNativeDateModule, MatOptionModule} from "@angular/material/core";
 import {NgToastModule} from "ng-angular-popup";
-import {NgConfirmModule} from "ng-confirm-box";
+//import {NgConfirmModule} from "ng-confirm-box";
 import {MatTab, MatTabsModule} from "@angular/material/tabs";
 import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
 import {AppHttpInterceptor} from "./interceptors/app-http.interceptor";
@@ -57,7 +63,8 @@ import {MatGridListModule} from "@angular/material/grid-list";
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import {ChatbotComponent} from "./chatbot/chatbot.component";
 import {CalendarComponent} from "./calendar/calendar.component";
-
+import { RouterModule } from '@angular/router';
+import { EditNoteComponent } from './notes/edit-note/edit-note.component';
 
 @NgModule({
   declarations: [
@@ -81,6 +88,8 @@ import {CalendarComponent} from "./calendar/calendar.component";
     CalendarComponent,
     ChatbotComponent,
     EditPostComponent,
+    EditNoteComponent,
+
 
 
   ],
@@ -112,7 +121,7 @@ import {CalendarComponent} from "./calendar/calendar.component";
         FormsModule,
         MatSortModule,
         NgToastModule,
-        NgConfirmModule,
+        //NgConfirmModule,
         MatSelectModule,
         MatOptionModule,
         ScheduleModule,
@@ -123,7 +132,8 @@ import {CalendarComponent} from "./calendar/calendar.component";
       MatDatepickerModule,
       MatNativeDateModule,
       MatGridListModule,
-
+      RouterModule,
+      MatDialogModule
 
     ],
   providers: [

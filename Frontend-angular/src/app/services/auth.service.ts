@@ -57,6 +57,10 @@ export class AuthService {
       this.router.navigateByUrl("/user/posts");
     }
   }
+ getUserId(){
+    let decodedJwt:any=jwtDecode(this.accessToken);
+    return decodedJwt.sub;
+  }
 
 
 }

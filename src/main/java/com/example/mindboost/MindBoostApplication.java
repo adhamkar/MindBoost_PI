@@ -41,7 +41,7 @@ public class MindBoostApplication {
             userService.SaveAdmin(adminDTO);
         };
     }
-    @Bean
+    //@Bean
     CommandLineRunner commandLineRunner(UserService userService) {
 
         return args -> {

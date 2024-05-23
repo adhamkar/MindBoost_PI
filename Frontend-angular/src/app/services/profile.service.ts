@@ -22,6 +22,7 @@ export class ProfileService {
     return this.profileData;
   }
 
+
   updateProfileData(newData: any): void {
     this.profileData = newData;
   }

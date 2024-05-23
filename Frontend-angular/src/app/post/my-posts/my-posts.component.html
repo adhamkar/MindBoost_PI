@@ -2,11 +2,11 @@
   <div class="content">
     <div class="notes-section">
       <div class="notes">
-        <div class="note" *ngFor="let post of posts; let i = index">
-          <span class="edit-icon" (click)="editPost(i)">✎</span>
-          <span class="delete-icon" (click)="deletePost(i)">🗑️</span>
+        <div class="note" *ngFor="let post of posts">
+          <span class="edit-icon" (click)="editPost(post.id)">✎</span>
+          <span class="delete-icon" (click)="deletePost(post.id)" >🗑️</span>
           <div class="note-header">
-            <h3>Post {{i}}</h3>
+            <h3>{{ post.title }}</h3>
           </div>
           <p>{{ post.content }}</p>
           <div class="note-footer">
@@ -16,7 +16,28 @@
         </div>
       </div>
     </div>
-
-  </div>
+    <div class="new-note" *ngIf="!onEdit">
+      <h3><span class="new-note-icon">📝</span>New Post</h3>
+      <form [formGroup]="PostForm" (ngSubmit)="AddPost()">
+        <input type="text" placeholder="Title" class="form-control" formControlName="title" >
+        <textarea placeholder="Content" class="form-control" formControlName="content" ></textarea>
+        <div class="button-container">
+          <button  class="add-note-btn" type="submit" *ngIf="PostForm.valid">Add Post</button>
+          <button type="button" class="cancel-edit-btn" *ngIf="PostForm.valid">Cancel</button>
+        </div>
+      </form>
+    </div>
+        <div class="new-note" *ngIf="onEdit">
+          <h3><span class="new-note-icon">📝</span>Update Post</h3>
+          <form [formGroup]="EditForm" (ngSubmit)="UpdatePost()">
+            <input type="text" placeholder="Title" class="form-control" formControlName="title" >
+            <textarea placeholder="Content" class="form-control" formControlName="content" ></textarea>
+            <div class="button-container">
+              <button  class="add-note-btn" type="submit" *ngIf="EditForm.valid">Save changes</button>
+              <button type="button" class="cancel-edit-btn" (click)="cancelEdit()" *ngIf="EditForm.valid">Cancel</button>
+            </div>
+      </form>
+    </div>
+    </div>
 </div>
 
