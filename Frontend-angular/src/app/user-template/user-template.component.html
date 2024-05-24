@@ -8,7 +8,7 @@
         <mat-toolbar *ngIf="!isProfilePage">
             <mat-icon (click)="sidebar.toggle()" *ngIf="isAuth" >menu</mat-icon>
             <div class="box">
-              <button mat-button routerLink="/user/home"><mat-icon>home</mat-icon>Home</button>
+              <button mat-button [ngClass]="{'center': !isAuth}"  routerLink="/user/home" ><mat-icon>home</mat-icon>Home</button>
               <button mat-button routerLink="/user/aboutUs"><mat-icon>book_border</mat-icon>About Us</button>
               <button mat-button routerLink="/user/needHelp" *ngIf="isAuth"><mat-icon>help</mat-icon>Need Help?</button>
               <button mat-button routerLink="/user/chatbot" *ngIf="isAuth"><mat-icon>chat</mat-icon>ChatBot</button>

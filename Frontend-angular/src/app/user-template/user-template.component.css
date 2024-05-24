@@ -39,3 +39,7 @@ mat-toolbar {
   /*background: linear-gradient(100deg, #D6A2DE, #6A85D3);*/
   transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
 }
+
+.center{
+  margin-left: 36rem;
+}
