@@ -29,7 +29,7 @@ const routes: Routes = [
   { path: 'calendar', component: CalendarComponent },
 
   {path : "login", component : LoginComponent},
-  // {path : "home", component : HomeComponent},
+  //{path : "home", component : HomeComponent},
   {path : "user_role", component : UserRoleComponent},
   {path : "signup", component : RegisterComponent},
   // {path : "All", component : UserTemplateComponent,children:[ {path : "home", component : HomeComponent}]},

@@ -1,21 +1,23 @@
 <mat-sidenav-container class="container">
-  <mat-sidenav #sidebar mode="side" opened>
+  <mat-sidenav #sidebar mode="side" opened *ngIf="isAuth">
     <app-sidebar></app-sidebar>
   </mat-sidenav>
   <mat-sidenav-content>
     <div class="content">
       <div class="toolbar">
         <mat-toolbar *ngIf="!isProfilePage">
-            <mat-icon (click)="sidebar.toggle()">menu</mat-icon>
+            <mat-icon (click)="sidebar.toggle()" *ngIf="isAuth" >menu</mat-icon>
             <div class="box">
               <button mat-button routerLink="/user/home"><mat-icon>home</mat-icon>Home</button>
               <button mat-button routerLink="/user/aboutUs"><mat-icon>book_border</mat-icon>About Us</button>
-              <button mat-button routerLink="/user/needHelp"><mat-icon>help</mat-icon>Need Help?</button>
-              <button mat-button routerLink="/user/chatbot"><mat-icon>chat</mat-icon>ChatBot</button>
-              <button mat-button routerLink="/user/posts"><mat-icon>note</mat-icon>Posts</button>
+              <button mat-button routerLink="/user/needHelp" *ngIf="isAuth"><mat-icon>help</mat-icon>Need Help?</button>
+              <button mat-button routerLink="/user/chatbot" *ngIf="isAuth"><mat-icon>chat</mat-icon>ChatBot</button>
+              <button mat-button routerLink="/user/posts" *ngIf="isAuth"><mat-icon>note</mat-icon>Posts</button>
 
           </div>
-          <button mat-raised-button class="logoutButton" color="accent" ><mat-icon style="color:white">logout</mat-icon>Logout</button>
+          <button mat-raised-button class="logoutButton" color="accent" (click)="HandleLogout()" *ngIf="isAuth"><mat-icon style="color:white">logout</mat-icon>Logout</button>
+          <button mat-raised-button class="logoutButton" color="accent" routerLink="/login"  *ngIf="!isAuth"><mat-icon style="color:white">login</mat-icon>Login</button>
+
         </mat-toolbar>
 
 

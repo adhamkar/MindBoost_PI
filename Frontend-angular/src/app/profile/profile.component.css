@@ -8,7 +8,7 @@
 
 .profile-container {
   width: 70%;
-  padding: 20px;
+  padding: 10px;
   background-color: #ffffff;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -28,7 +28,7 @@
 
 /* Ajouter des marges entre les enfants de .profile-container si nécessaire */
 .profile-container {
-  margin-top: 25%;
+  margin-top: 10%;
 }
 
 .welcome-head-container {
@@ -174,11 +174,17 @@
   color: #333; /* Changer la couleur du texte */
 }
 
-
-
-
-
-
+.user-initial {
+  width: 50px;
+  height: 50px;
+  background:linear-gradient(-135deg, #c850c0, #4158d0);
+  color: #fff;
+  font-size: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
 
 
 

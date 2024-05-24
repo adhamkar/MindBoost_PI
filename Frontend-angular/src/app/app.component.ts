@@ -15,7 +15,7 @@ export class AppComponent implements OnInit{
 constructor(private authService:AuthService,private router:Router) {
 }
   ngOnInit(): void {
-    this.router.navigateByUrl('/');
+    this.router.navigateByUrl('/user/home');
     this.authService.LoadJwtTokenFromLocalStorage();
   }
 

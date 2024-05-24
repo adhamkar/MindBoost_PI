@@ -33,6 +33,11 @@ public class PatientRestController {
     public PatientDTO getpatient(@PathVariable(name = "id") Long patientId){
         return userService.getpatient(patientId);
     }
+    @GetMapping("/patients/profile/{name}")
+    //@PreAuthorize("hasAuthority('SCOPE_ROLE_Patient')")
+    public PatientDTO getpatient(@PathVariable(name = "name") String name){
+        return userService.getPatientByName(name);
+    }
 
     @PostMapping("/patients")
     //@PreAuthorize("hasAuthority('SCOPE_ROLE_Admin')")

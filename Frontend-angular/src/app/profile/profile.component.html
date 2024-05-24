@@ -14,25 +14,27 @@
           </div>
           <div class="card-body welcome-body-container">
             <div class="col-left">
-              <div class="avatar">
-                <img src='assets/user3.jpg' alt="">
+              <div class="avatar user-initial">
+                <div *ngIf="myProfil?.userName">
+                  {{ myProfil.userName.charAt(0).toUpperCase() }}
+                </div>
               </div>
-              <div class="name">{{profileData.name}}</div>
-              <p>{{profileData.role}}</p>
+              <div class="name">{{myProfil.userName}}</div>
+              <p>{{myProfil.role}}</p>
               <div style="padding-right: 10px">
                 <mat-card class="info-card">
-                  <mat-card-content> <mat-icon>person</mat-icon> {{profileData.gender}}</mat-card-content>
+                  <mat-card-content> <mat-icon>person</mat-icon> {{myProfil.gender}}</mat-card-content>
                 </mat-card>
               <mat-card class="info-card">
 
-                <mat-card-content><mat-icon>phone</mat-icon>{{profileData.phone}} </mat-card-content>
+                <mat-card-content><mat-icon>phone</mat-icon>{{myProfil.phone}} </mat-card-content>
               </mat-card>
                 <mat-card class="info-card">
-                  <mat-card-content><mat-icon>email</mat-icon> {{profileData.email}}</mat-card-content>
+                  <mat-card-content><mat-icon>email</mat-icon> {{myProfil.email}}</mat-card-content>
                 </mat-card>
               <mat-card class="info-card">
 
-                <mat-card-content><mat-icon>date_range</mat-icon> {{profileData.age}} years</mat-card-content>
+                <mat-card-content><mat-icon>date_range</mat-icon> {{myProfil.age}} years</mat-card-content>
               </mat-card>
 
               </div>
@@ -47,13 +49,13 @@
               </div>
               <div style="padding-left: 10px ;padding-top:55px">
               <mat-card class="info-card">
-                <mat-card-content><mat-icon>work</mat-icon> {{profileData.profession}}</mat-card-content>
+                <mat-card-content><mat-icon>work</mat-icon> {{myProfil.profession}}</mat-card-content>
               </mat-card>
               <mat-card class="info-card">
-                <mat-card-content><mat-icon>history</mat-icon> Medical History:{{profileData.history}} </mat-card-content>
+                <mat-card-content><mat-icon>history</mat-icon>{{myProfil.medicalHistory}} </mat-card-content>
               </mat-card>
               <mat-card class="info-card">
-                <mat-card-content><mat-icon>location_on</mat-icon> {{profileData.city}}</mat-card-content>
+                <mat-card-content><mat-icon>location_on</mat-icon> {{myProfil.city}}</mat-card-content>
               </mat-card>
               </div>
             </div>
