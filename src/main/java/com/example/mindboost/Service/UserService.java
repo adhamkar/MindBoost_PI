@@ -112,4 +112,5 @@ public interface UserService {
     List<NotePadDTO> getNotePadByPatient(String name);
 
     UserDTO getUserByName(String name);
+    List<TherapieSessionDTO> getSessionsByPatientId(String patientId);
 }

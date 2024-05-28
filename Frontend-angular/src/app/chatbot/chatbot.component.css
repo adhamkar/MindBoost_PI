@@ -12,36 +12,49 @@ body {
 .content-wrapper {
   display: flex;
   align-items: flex-start;
-  margin-top: 50px;
+  /*margin-top: 50px;*/
   margin-left: 0px;
 }
 
 .therapy-container {
-  background-color: #fff8f0;
-  border-radius: 20px;
+  /*background: linear-gradient(90deg, hsla(164, 38%, 18%, 1) 0%, hsla(158, 77%, 77%, 1) 100%);*/
+  border-radius: 58px;
   padding: 40px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #CDE8E5;
+  box-shadow: inset 0 4px 8px hsla(164, 38%, 18%, 1);
   text-align: center;
   max-width: 400px;
   font-family: 'Arial', sans-serif;
-  margin-top: 80px;
-  margin-right: 50px;
+  margin-top: 120px;
+  margin-left: 40px;
+  margin-right: 30px;
 
 }
 
 .therapy-header {
   font-size: 14px;
-  color: #8d8d8d;
+  color: black;
   margin-bottom: 20px;
+  font-weight: bold;
 }
 
 .therapy-title {
-  font-size: 20px;
-  color: #4caf50;
-  margin: 0;
-  font-weight: bold;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  /*font-size: 20px;*/
+  /*color: hsla(164, 38%, 18%, 1);*/
+  /*margin: 0;*/
+  /*font-weight: bold;*/
+  text-shadow: 2px 2px 4px hsla(164, 38%, 18%, 1);
   letter-spacing: 1px;
+  margin-bottom: 15px;
+  background: linear-gradient(90deg, hsla(164, 38%, 18%, 1) 0%, hsla(158, 77%, 77%, 1) 100%);
+  border: none;
+  border-radius: 25px;
+  color: #CDE8E5;
+  padding: 10px 20px;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 25px;
 }
 
 .therapy-image {
@@ -49,15 +62,19 @@ body {
 }
 
 .therapy-image img {
-  width: 250px;
-  height: 100px;
-  border-radius: 50%;
+  width: 300px;
+  height: 190px;
+  /*border-radius: 40%;*/
 }
 
 .therapy-footer {
   font-size: 12px;
-  color: #4caf50;
+  color: #CDE8E5;
   margin-top: 20px;
+  background: linear-gradient(90deg, hsla(164, 38%, 18%, 1) 0%, hsla(158, 77%, 77%, 1) 100%);
+  border: 4px hsla(164, 38%, 18%, 1);
+  border-radius: 50px;
+  width: auto;
 }
 
 .chat-container {
@@ -68,8 +85,11 @@ body {
   border-radius: 8px;
   overflow: hidden;
   display: flex;
+  margin-top: 50px;
+  margin-right: 10px;
+  /*margin-top: 60px;*/
   flex-direction: column;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 10px hsla(164, 38%, 18%, 1);
 }
 
 .chat-header {
@@ -124,7 +144,7 @@ body {
 }
 
 ::ng-deep .chat-message.user {
-  background: #4caf50;
+  background: linear-gradient(90deg, hsla(164, 38%, 18%, 1) 0%, hsla(158, 77%, 77%, 1) 100%);
   color: white;
   margin-left: auto;
 }
@@ -160,7 +180,7 @@ body {
 }
 
 .chat-footer button {
-  background: #4caf50;
+  background: linear-gradient(90deg, hsla(164, 38%, 18%, 1) 0%, hsla(158, 77%, 77%, 1) 100%);
   border: none;
   padding: 10px 15px;
   border-radius: 5px;

@@ -72,7 +72,6 @@ public class PostRestController {
       postDTO.setUser_visibility(true);
       postDTO.setCreatedDate(new Date());
       return userService.savePost(postDTO);
-
   }
     @PostMapping("/therapist_post")
     public PostDTO AddPostByTherapist(@RequestBody PostDTO postDTO,@RequestParam Long TherapsitID){

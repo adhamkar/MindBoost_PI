@@ -587,6 +587,16 @@ public class UserServiceImpl implements UserService {
         User user = userRepo.findByUserName(name);
         return mapper.FromUser(user);
     }
+
+    @Override
+    public List<TherapieSessionDTO> getSessionsByPatientId(String patientId) {
+        Patient patient = patientRepo.findByUserName(patientId);
+        List<TherapieSession> sessions = therapySessionRepo.findAllByPatientId(patient.getId());
+        List<TherapieSessionDTO> sessionDTOS = sessions.stream()
+                .map(session -> mapper.FromTherapySession(session))
+                .collect(Collectors.toList());
+        return sessionDTOS;
+    }
 /*
  public CommentDTO SaveComment(CommentDTO commentDTO, Long Post_id) {
         Post post = postRepo.findById(Post_id).orElseThrow(null);

@@ -6,7 +6,7 @@ export class TherapieSession {
   nameSession!: string;
   dateSession!: Date;
   patientName!: string;
-  therapistName!: string;
+  therapisteName!: string;
   patient!: Patient;
   therapist!: Therapist;
 }

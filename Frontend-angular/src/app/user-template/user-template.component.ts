@@ -14,8 +14,9 @@ export class UserTemplateComponent {
   @ViewChild('sidebar') sidebar!: MatSidenav;
   isAuth: boolean = false;
   isProfilePage: boolean = false;
+  isSidebarOpened = true;
 
-  constructor(private authService: AuthService, private router: Router) {
+  constructor(public authService: AuthService, private router: Router) {
   }
 
   ngOnInit() {

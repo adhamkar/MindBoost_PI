@@ -1,3 +1,4 @@
+
 <div class="container">
   <div class="content">
     <div class="notes-section">
@@ -27,17 +28,16 @@
         </div>
       </form>
     </div>
-        <div class="new-note" *ngIf="onEdit">
-          <h3><span class="new-note-icon">📝</span>Update Post</h3>
-          <form [formGroup]="EditForm" (ngSubmit)="UpdatePost()">
-            <input type="text" placeholder="Title" class="form-control" formControlName="title" >
-            <textarea placeholder="Content" class="form-control" formControlName="content" ></textarea>
-            <div class="button-container">
-              <button  class="add-note-btn" type="submit" *ngIf="EditForm.valid">Save changes</button>
-              <button type="button" class="cancel-edit-btn" (click)="cancelEdit()" *ngIf="EditForm.valid">Cancel</button>
-            </div>
+    <div class="new-note" *ngIf="onEdit">
+      <h3><span class="new-note-icon">📝</span>Update Post</h3>
+      <form [formGroup]="EditForm" (ngSubmit)="UpdatePost()">
+        <input type="text" placeholder="Title" class="form-control" formControlName="title" >
+        <textarea placeholder="Content" class="form-control" formControlName="content" ></textarea>
+        <div class="button-container">
+          <button  class="add-note-btn" type="submit" *ngIf="EditForm.valid">Save changes</button>
+          <button type="button" class="cancel-edit-btn" (click)="cancelEdit()" *ngIf="EditForm.valid">Cancel</button>
+        </div>
       </form>
     </div>
-    </div>
+  </div>
 </div>
-

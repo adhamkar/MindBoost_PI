@@ -7,6 +7,15 @@ Content-Type: application/x-www-form-urlencoded
 
 username=Adham&password=Adham1234
 ###
+POST http://localhost:8085/sessions/Adham/8/mysession
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJBZGhhbSIsImV4cCI6MTcxNjkzMDk0NSwiaWF0IjoxNzE2OTMwMzQ1LCJzY29wZSI6IlJPTEVfUGF0aWVudCJ9.yKpMVk8t2yUVtSx7nlN7eS4D0xdPBCF2mLcOwK9aSfIoVTACI9j9BDJ_A_jfWV_0wuwRJz5haWfGGV1LSagSLA
+
+{
+  "nameSession": "session2",
+  "DateSession": "2021-03-25 00:00:00"
+}
+###
 POST http://localhost:8085/auth/signup
 Content-Type: application/json
 
@@ -85,3 +94,19 @@ Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJBZGhhbSIsImV4cCI6MTcxNjQ4N
         "content": "new content"
 
     }
+###
+POST http://localhost:8085/therapistes
+Content-Type: application/json
+Authorization: bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTcxNjczMjIxNCwiaWF0IjoxNzE2NzMxNjE0LCJzY29wZSI6IlJPTEVfQWRtaW4ifQ.cyQrSq3k6_SBuBnevTCQfYZJ2kn34INt__1AjHQ9cUYRZW20aOV-Wr5C5egSrhMqPrCqVKMpLxibjBghVrZtzg
+
+{
+    "userName": "simohamed",
+    "email": "simo99@gmail.com",
+    "password": "simohamed1234",
+  "phone": "0612341012",
+  "gender": "Male",
+  "therapistRole": "Pedopsychiatre",
+  "price": 200,
+  "localAddress": "Tanger",
+  "aviability": true
+}

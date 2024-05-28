@@ -5,6 +5,7 @@ import {Router} from "@angular/router";
 import {PostService} from "../services/post.service";
 import {Post} from "../models/post.model";
 import {AuthService} from "../services/auth.service";
+import {UserTemplateComponent} from "../user-template/user-template.component";
 
 @Component({
   selector: 'app-post',
@@ -43,7 +44,10 @@ export class PostComponent implements OnInit{
         'Lorem Ipsum is simply dummy text of the printing and typesetting industry..'
     },
   ]*/
-  constructor(private matDialog:MatDialog, private router:Router,private postService: PostService,public authService:AuthService) {
+  isSidebarOpened!: boolean;
+  constructor(private userTemplate: UserTemplateComponent,private matDialog:MatDialog, private router:Router,private postService: PostService,public authService:AuthService) {
+    this.isSidebarOpened = !this.userTemplate.isSidebarOpened;
+
   }
 
   ngOnInit(): void {

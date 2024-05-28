@@ -65,6 +65,17 @@ import {ChatbotComponent} from "./chatbot/chatbot.component";
 import {CalendarComponent} from "./calendar/calendar.component";
 import { RouterModule } from '@angular/router';
 import { EditNoteComponent } from './notes/edit-note/edit-note.component';
+import { ManageTaskComponent } from './manage-task/manage-task.component';
+import { TaskDetailsComponent } from './task-details/task-details.component';
+import { TaskSchedulerComponent } from './task-scheduler/task-scheduler.component';
+import { AddTherapistComponent } from './add-therapist/add-therapist.component';
+import { CallComponent } from './call/call.component';
+import { NeedHelpComponent } from './need-help/need-help.component';
+import { ReservationSessionComponent } from './reservation-session/reservation-session.component';
+import { SessionByPatientComponent } from './session-by-patient/session-by-patient.component';
+import { PatientsComponent } from './patients/patients.component';
+import {MatRadioButton} from "@angular/material/radio";
+
 
 @NgModule({
   declarations: [
@@ -89,6 +100,17 @@ import { EditNoteComponent } from './notes/edit-note/edit-note.component';
     ChatbotComponent,
     EditPostComponent,
     EditNoteComponent,
+    ManageTaskComponent,
+    TaskDetailsComponent,
+    TaskSchedulerComponent,
+    AddTherapistComponent,
+    CallComponent,
+    NeedHelpComponent,
+    ReservationSessionComponent,
+    SessionByPatientComponent,
+    PatientsComponent,
+
+
 
 
 
@@ -129,11 +151,12 @@ import { EditNoteComponent } from './notes/edit-note/edit-note.component';
         MatTabsModule,
         FontAwesomeModule,
         CommonModule,
-      MatDatepickerModule,
-      MatNativeDateModule,
-      MatGridListModule,
-      RouterModule,
-      MatDialogModule
+        MatDatepickerModule,
+        MatNativeDateModule,
+        MatGridListModule,
+        RouterModule,
+        MatDialogModule,
+        MatRadioButton
 
     ],
   providers: [

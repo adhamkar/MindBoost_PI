@@ -34,17 +34,42 @@ public class MindBoostApplication {
     //@Bean
     CommandLineRunner clRunner(UserService userService) {
         return args -> {
-            AdminDTO adminDTO = new AdminDTO();
-            adminDTO.setUserName("admin");
-            adminDTO.setPassword("12345");
-            adminDTO.setEmail("admin@gmail.com");
-            userService.SaveAdmin(adminDTO);
+            TherapistDTO therapistDTO = new TherapistDTO();
+            therapistDTO.setUserName("Ahmed");
+            therapistDTO.setPassword("Ahmed" +1234);
+            therapistDTO.setEmail("Ahmed" + "@gmail.com");
+            therapistDTO.setGender(Gender.Male);
+            therapistDTO.setTherapistRole(TherapistRole.Pedopsychiatre);
+            therapistDTO.setPhone("0612337459");
+            therapistDTO.setAviability(true);
+            therapistDTO.setPrice(150);
+            therapistDTO.setLocalAddress("Ahmed" + "'s local address");
+            userService.SaveTherapist(therapistDTO);
+
+            PatientDTO patientDTO = userService.getpatient(2L);
+            TherapistDTO therapist = userService.getTherapist(7L);
+
+            TherapieSessionDTO therapieSessionDTO = new TherapieSessionDTO();
+            therapieSessionDTO.setTherapistDTO(therapist);
+            therapieSessionDTO.setPatientDTO(patientDTO);
+            therapieSessionDTO.setDateSession(new Date());
+            therapieSessionDTO.setPatientName(patientDTO.getUserName());
+            therapieSessionDTO.setTherapisteName(therapist.getUserName());
+            therapieSessionDTO.setNameSession("sessiono 1");
+            userService.SaveTherapieSession(therapieSessionDTO);
+            System.out.println("Therapist available, Session saved");
         };
     }
     //@Bean
     CommandLineRunner commandLineRunner(UserService userService) {
 
         return args -> {
+            AdminDTO adminDTO = new AdminDTO();
+            adminDTO.setUserName("admin");
+            adminDTO.setPassword("12345");
+            adminDTO.setEmail("admin@gmail.com");
+            userService.SaveAdmin(adminDTO);
+
             Random random = new Random();
             Gender[] genders = Gender.values();
             Role[] roles = Role.values();
@@ -93,7 +118,7 @@ public class MindBoostApplication {
             Stream.of("Ikram", "Meryem", "Sara").forEach(name -> {
                 TherapistDTO therapistDTO = new TherapistDTO();
                 therapistDTO.setUserName(name);
-                therapistDTO.setPassword(name + random.nextInt(1000) + 1);
+                therapistDTO.setPassword(name +1234);
                 therapistDTO.setEmail(name + "@gmail.com");
                 int i = random.nextInt(genders.length);
                 therapistDTO.setGender(genders[i]);

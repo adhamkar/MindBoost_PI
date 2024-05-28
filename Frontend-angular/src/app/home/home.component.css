@@ -63,25 +63,37 @@ body {
   margin: 0;
   padding: 0;
 }
-
+/*display: flex;*/
+/*justify-content: space-between;*/
+/*align-items: center;*/
+/*margin: 40px 10px;*/
+/*background: white;*/
+/*box-shadow: 0 0 10px hsla(164, 38%, 18%, 1);*/
+/*border-radius: 30px;*/
+/*overflow: hidden;*/
 .container {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  max-width: 1200px;
-  margin: 40px auto;
+  /*margin: 40px 10px;*/
+  /*box-shadow: 0 0 10px hsla(164, 38%, 18%, 1);*/
+  border-radius: 20px;
+  /*overflow: hidden;*/
+  max-width: 1500px;
+  /*width:auto;*/
+  /*margin: 40px auto;*/
 }
 
 
 .text-content {
-  max-width: 50%;
+  max-width: 60%;
   margin-top: 0;
-  /*margin-left: 40px;*/
+  margin-left: 60px;
 
 }
 
 .text-content h1 {
-  font-size: 30px;
+  font-size: 20px;
   font-weight: bold;
   color: black;
   /*margin-left: 20px;*/
@@ -89,7 +101,7 @@ body {
 }
 
 .text-content h1 span {
-  color: #00a9b8;
+  color: #4a9b7f;
 
 }
 
@@ -101,18 +113,23 @@ body {
 }
 
 .get-started-btn {
-  background: linear-gradient(to right, #00a9b8, #007a88);
+  background: linear-gradient(90deg, hsla(164, 38%, 18%, 1) 0%, hsla(158, 77%, 77%, 1) 100%);
   border: none;
-  border-radius: 25px;
+  border-radius: 50px;
   color: white;
   padding: 10px 20px;
+  font-weight: bold;
   font-size: 16px;
   cursor: pointer;
   margin-top: 20px;
+  width: 100%;
 }
 
 .image-content img {
-  max-width: 110%;
+  width: auto;
+  height: 500px;
+  /*background-size: cover;*/
+  /*border-radius: 50%;*/
 }
 
 .why-choose-us {
@@ -128,7 +145,7 @@ body {
 }
 
 .why-choose-us h2 span {
-  color: #00a9b8;
+  color: #4a9b7f;
 }
 
 .cards {
@@ -142,7 +159,7 @@ body {
 .card {
   background: #fff;
   border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 8px #4a9b7f;
   padding: 20px;
   text-align: center;
   width: 250px;
@@ -154,16 +171,17 @@ body {
   margin-bottom: 20px;
   margin-left: 35px;
   border-radius: 50%;
-  border: 5px solid #1c6772; /* Adjust the color and width as needed */
+  border: 1px solid  #4a9b7f ; /* Adjust the color and width as needed */
   /*box-shadow: inset 0 0 10px #1c6772 ; !* Adjust the offset, blur, and color as needed *!*/
 }
 
 
 .card h3 {
   font-size: 18px;
-  color: #1c6772;
+  font-weight: bold;
+  color: #4a9b7f;
   margin: 10px 0;
-  font-weight: 600; /* Makes the text slightly bolder */
+  /*font-weight: 600; !* Makes the text slightly bolder *!*/
   line-height: 1.5; /* Improves readability */
   letter-spacing: 0.5px; /* Adds a bit of spacing between letters */
   /*text-shadow: 1px 1px 4px #3A7734; !* Adds a subtle shadow *!*/
@@ -176,7 +194,8 @@ body {
 }
 
 .card.highlighted {
-  background: linear-gradient(to bottom, #00a9b8, #007a88);
+  /*background: linear-gradient(to bottom, #00a9b8, #007a88);*/
+  background: linear-gradient(90deg, hsla(164, 38%, 18%, 1) 0%, hsla(158, 77%, 77%, 1) 100%);
   color: white;
 }
 
@@ -237,7 +256,7 @@ body {
 }
 
 .text-contenu h1 span {
-  color: #00a9b8;
+  color: #4a9b7f;
 }
 
 .text-contenu p {
@@ -247,15 +266,15 @@ body {
   margin-bottom: 20px;
 }
 
-.explore-btn {
-  background: linear-gradient(to right, #00a9b8, #007a88);
-  border: none;
-  border-radius: 25px;
-  color: white;
-  padding: 10px 20px;
-  font-size: 16px;
-  cursor: pointer;
-}
+/*.explore-btn {*/
+/*  background: linear-gradient(to right, #00a9b8, #007a88);*/
+/*  border: none;*/
+/*  border-radius: 25px;*/
+/*  color: white;*/
+/*  padding: 10px 20px;*/
+/*  font-size: 16px;*/
+/*  cursor: pointer;*/
+/*}*/
 
 /* Responsive Design */
 @media (max-width: 768px) {
@@ -285,7 +304,8 @@ body {
 
 
 .footer {
-  background-color: #f2faff;
+  /*background-color: #;*/
+  background: linear-gradient(90deg, hsla(164, 38%, 18%, 1) 0%, hsla(158, 77%, 77%, 1) 100%);
   padding: 40px 0;
   color: #333;
   text-align: center;
@@ -303,12 +323,17 @@ body {
 .footer-section {
   flex: 1;
   margin: 20px;
+  /*margin-top: 20px;*/
 }
-
+.footer-section services{
+  margin-top: 40px;
+}
 .footer-section h4 {
   font-size: 18px;
-  color: #1c6772;
+  color: hsla(158, 77%, 77%, 1);
   margin-bottom: 10px;
+  margin-top: 20px;
+  font-weight: bold;
 }
 
 .footer-section ul {
@@ -331,7 +356,7 @@ body {
 
 .footer-section p {
   font-size: 14px;
-  color: #666;
+  color: white;
 }
 
 .footer-bottom {
@@ -376,6 +401,7 @@ body {
 
   .text-content, .image-content, .cards, .footer-section {
     max-width: 100%;
+
   }
 
   .footer-section {

@@ -19,15 +19,23 @@ import {NotesComponent} from "./notes/notes.component";
 import {AuthenticationGuard} from "./guards/authentication.guard";
 import {CalendarComponent} from "./calendar/calendar.component";
 import {ChatbotComponent} from "./chatbot/chatbot.component";
+import {ManageTaskComponent} from "./manage-task/manage-task.component";
+import {SessionByPatientComponent} from "./session-by-patient/session-by-patient.component";
+import {AddTherapistComponent} from "./add-therapist/add-therapist.component";
+import {NeedHelpComponent} from "./need-help/need-help.component";
+import {ReservationSessionComponent} from "./reservation-session/reservation-session.component";
+import {CallComponent} from "./call/call.component";
+import {PatientsComponent} from "./patients/patients.component";
 
 
 const routes: Routes = [
 
   {path : "",redirectTo:"/login" ,pathMatch:"full"},
   { path: 'upcoming', component: ToDoListComponent },
+  {path : "call", component : CallComponent},
+
   { path: 'today', component: ToDoListComponent },
   { path: 'calendar', component: CalendarComponent },
-
   {path : "login", component : LoginComponent},
   //{path : "home", component : HomeComponent},
   {path : "user_role", component : UserRoleComponent},
@@ -35,12 +43,22 @@ const routes: Routes = [
   // {path : "All", component : UserTemplateComponent,children:[ {path : "home", component : HomeComponent}]},
   {path : "user", component : UserTemplateComponent ,canActivate:[AuthenticationGuard],children:[
       {path : "home", component : HomeComponent},
+      {path : "AddTherapist", component : AddTherapistComponent},
+      {path : "Mysession", component : SessionByPatientComponent},
+      {path : "needHelp", component : NeedHelpComponent},
+      {path : "aboutUs", component : PatientsComponent},
+      {path : "Reservation/:therapistId", component : ReservationSessionComponent},
+
       {path : "chatbot", component : ChatbotComponent},
       {path : "posts", component : PostComponent},
       { path: 'posts/add', component: CreatePostComponent},
       { path: 'posts/:id', component: PostDetailsComponent,},
       { path: 'posts/:id/add', component: CreateCommentComponent },
+      { path:'task', component: ManageTaskComponent,children:[
+          { path: 'task-details', component: ManageTaskComponent },
+          { path: 'task-scheduler', component: ManageTaskComponent },
 
+        ]},
       {path : "my-posts", component : MyPostsComponent},
       {path : "profile", component : ProfileComponent},
       {path : "planning", component : PlanningComponent},

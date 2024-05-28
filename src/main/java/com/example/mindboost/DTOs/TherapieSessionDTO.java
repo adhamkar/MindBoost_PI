@@ -14,7 +14,7 @@ import java.util.Date;
 public class TherapieSessionDTO {
     private Long id;
     private String nameSession;
-    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(pattern="yyyy-MM-dd")
     private Date DateSession;
     private String patientName;
     private String TherapisteName;
