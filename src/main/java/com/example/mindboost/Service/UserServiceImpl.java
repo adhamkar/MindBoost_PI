@@ -597,6 +597,16 @@ public class UserServiceImpl implements UserService {
                 .collect(Collectors.toList());
         return sessionDTOS;
     }
+
+    @Override
+    public List<TherapieSessionDTO> getSessionsByTherapist(String therapistName) {
+        Therapist therapist = therapistRepo.findByUserName(therapistName);
+        List<TherapieSession> sessions = therapySessionRepo.findAllByTherapistId(therapist.getId());
+        List<TherapieSessionDTO> sessionDTOS = sessions.stream()
+                .map(session -> mapper.FromTherapySession(session))
+                .collect(Collectors.toList());
+        return sessionDTOS;
+    }
 /*
  public CommentDTO SaveComment(CommentDTO commentDTO, Long Post_id) {
         Post post = postRepo.findById(Post_id).orElseThrow(null);

@@ -94,6 +94,12 @@ public class SessionsRestController {
         }
         return null;
     }
+    @GetMapping("/sessions/therapist/{therapist_name}")
+    public List<TherapieSessionDTO> getSessionsByTherapist(@PathVariable(name = "therapist_name") String therapist_name) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        therapist_name = authentication.getName();
+        return userService.getSessionsByTherapist(therapist_name);
+    }
     @PatchMapping("/sessions/{id}")
     public TherapieSessionDTO updateSession(@PathVariable(name = "id") Long Id, @RequestBody TherapieSessionDTO session){
         session.setId(Id);

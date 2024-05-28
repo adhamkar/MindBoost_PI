@@ -5,7 +5,12 @@ Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTcxNTgwM
 POST http://localhost:8085/auth/login
 Content-Type: application/x-www-form-urlencoded
 
-username=Adham&password=Adham1234
+username=Sara&password=Sara1234
+###
+###
+GET http://localhost:8085/sessions/therapist/Sara
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJTYXJhIiwiZXhwIjoxNzE2OTM3NTMxLCJpYXQiOjE3MTY5MzY5MzEsInNjb3BlIjoiUk9MRV9UaGVyYXBpc3QifQ.RuoYAfv-KjcpNOpIG3P3z8bJFAUt_OJgWFXg8YrGsT8FU6EP-_3yIG3skORlf_N6QWTY2zIcV4sFn2jrShylxw
+
 ###
 POST http://localhost:8085/sessions/Adham/8/mysession
 Content-Type: application/json

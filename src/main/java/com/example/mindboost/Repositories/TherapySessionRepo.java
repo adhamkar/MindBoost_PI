@@ -12,4 +12,6 @@ public interface TherapySessionRepo extends JpaRepository<TherapieSession,Long> 
     List<TherapieSession> searchByNameSession(String nameSession);
 
     List<TherapieSession> findAllByPatientId(Long id);
+
+    List<TherapieSession> findAllByTherapistId(Long id);
 }

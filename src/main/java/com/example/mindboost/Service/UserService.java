@@ -113,4 +113,6 @@ public interface UserService {
 
     UserDTO getUserByName(String name);
     List<TherapieSessionDTO> getSessionsByPatientId(String patientId);
+
+    List<TherapieSessionDTO> getSessionsByTherapist(String therapistName);
 }

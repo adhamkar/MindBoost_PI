@@ -9,4 +9,6 @@ import java.util.List;
 
 public interface TherapistRepo extends JpaRepository<Therapist,Long> {
     List<Therapist> searchTherapistByUserName(String name);
+
+    Therapist findByUserName(String therapistName);
 }
