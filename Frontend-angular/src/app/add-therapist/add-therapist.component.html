@@ -1,0 +1,77 @@
+<div class="container">
+  <div class="login-section">
+    <h1>Add New Therapist</h1>
+    <form [formGroup]="formTherapist" (ngSubmit)="SaveTherapist()" >
+
+      <div *ngIf="formTherapist.controls['userName'].invalid && (formTherapist.controls['userName'].dirty || formTherapist.controls['userName'].touched)" class="alert alert-danger">
+        Username is required.
+      </div>
+      <label for="userName">Username</label>
+      <input type="text" id="userName" name="userName" placeholder="username" formControlName="userName">
+
+     <div *ngIf="formTherapist.controls['email'].invalid && (formTherapist.controls['email'].dirty || formTherapist.controls['email'].touched)" class="alert alert-danger">
+        Email is required and must be a valid email address.
+      </div>
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" placeholder="email@example.com" formControlName="email">
+
+      <div *ngIf="formTherapist.controls['phone'].invalid && (formTherapist.controls['phone'].dirty || formTherapist.controls['phone'].touched)" class="alert alert-danger">
+        Phone number is required.
+      </div>
+      <label for="phone">Phone Number</label>
+      <input type="tel" id="phone" name="phone" formControlName="phone">
+      <div *ngIf="formTherapist.controls['gender'].invalid && (formTherapist.controls['gender'].dirty || formTherapist.controls['gender'].touched)" class="alert alert-danger">
+        Gender is required.
+      </div>
+      <label for="gender">Gender</label>
+      <select id="gender" name="gender" formControlName="gender">
+        <option value="" disabled>Select Gender</option>
+        <option value="Male">Male</option>
+        <option value="Female">Female</option>
+      </select>
+      <div *ngIf="formTherapist.controls['password'].invalid && (formTherapist.controls['password'].dirty || formTherapist.controls['password'].touched)" class="alert alert-danger">
+        Password is required .
+      </div>
+      <label for="password">Password</label>
+      <input type="password" id="password" name="password" formControlName="password">
+
+
+      <div *ngIf="formTherapist.controls['therapistRole'].invalid && (formTherapist.controls['therapistRole'].dirty || formTherapist.controls['therapistRole'].touched)" class="alert alert-danger">
+        Therapist Specialty is required.
+      </div>
+      <label for="therapistRole">Specialty</label>
+      <select id="therapistRole" name="therapistRole" formControlName="therapistRole">
+        <option value="" disabled>Select a role</option>
+        <option value="Psychologue">Psychologue</option>
+        <option value="Psychiatre">Psychiatre</option>
+        <option value="Pedopsychiatre">PedoPsychiatre</option>
+        <option value="Psychomotricien">Psychomotricien</option>
+        <!-- Add other roles as needed -->
+      </select>
+
+      <div class="form-group">
+        <label for="aviability">Availability</label>
+        <input type="checkbox" id="aviability" name="availability" formControlName="aviability"    >
+      </div>
+
+      <div *ngIf="formTherapist.controls['price'].invalid && (formTherapist.controls['price'].dirty || formTherapist.controls['price'].touched)" class="alert alert-danger">
+        Price is required and must be a non-negative number.
+      </div>
+      <label for="price" >Price</label>
+      <input type="number" id="price" name="price" formControlName="price" >
+
+      <div *ngIf="formTherapist.controls['localAddress'].invalid && (formTherapist.controls['localAddress'].dirty || formTherapist.controls['localAddress'].touched)" class="alert alert-danger">
+        Local Address is required.
+      </div>
+      <label for="localAddress">Local Address</label>
+      <input type="text" id="localAddress" name="localAddress" formControlName="localAddress" >
+
+      <button type="submit" class="login-button" [disabled]="!formTherapist.valid || formTherapist.pristine" >Add Therapist</button>
+
+    </form>
+  </div>
+  <div class="welcome-section">
+    <img src="assets/img_19.png" alt="Illustration" class="illustration">
+  </div>
+</div>
+```

@@ -1,0 +1,8 @@
+<div *ngIf="localStream">
+  <video #localVideo [srcObject]="localStream" autoplay muted></video>
+</div>
+<div *ngIf="remoteStream">
+  <video #remoteVideo [srcObject]="remoteStream" autoplay></video>
+</div>
+
+<button (click)="joinCall()">Join Call</button>

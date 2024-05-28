@@ -1,0 +1,19 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-4" *ngFor="let session of Sessions">
+      <div class="profile-card">
+        <h3>{{session.patientName}}</h3>
+        <p>{{session.nameSession}}</p>
+        <h5>{{session.dateSession}}</h5>
+        <button (click)="startSession(session)" class="email">Start Session</button>
+        <button *ngIf="activeSession && activeSession.id === session.id" (click)="endSession()" class="email-">End Session</button>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="localStream">
+    <video #localVideo [srcObject]="localStream" autoplay muted></video>
+  </div>
+  <div *ngIf="remoteStream">
+    <video #remoteVideo [srcObject]="remoteStream" autoplay></video>
+  </div>
+</div>

@@ -1,0 +1,39 @@
+<div class="container1">
+  <div class="text-content">
+    <h1>Get The Best <span>Consulting</span></h1>
+    <p>"Your mental health then think about other things, Get the best sessions with our psychiatrist"</p>
+  </div>
+  <div class="image-content">
+    <img src="assets/the.png" alt="Meditation Illustration">
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="collaborators">
+      <p>OUR COLLABORATORS</p>
+    </div>
+    <div class="col-md-4" *ngFor="let therapist of therapists">
+      <div class="profile-card">
+        <header [ngStyle]="{'background-image': 'url(assets/img_17.png)'}"></header>>
+        <img src="assets/doctor.png" alt="Profile Image" class="avatar">
+        <h3>{{ therapist.userName }}</h3>
+        <h5>{{ therapist.therapistRole }}</h5>
+        <!--        <p>Price: {{ therapist.price }} USD</p>-->
+        <p>Availability: {{ therapist.aviability ? 'Available' : 'Not Available' }}</p>
+        <p *ngIf="therapist.aviability">Phone: {{ therapist.phone}}</p>
+        <p>Location: {{ therapist.localAddress }}</p>
+
+          <a [routerLink]="['/user/Reservation', therapist.id]" class="email" *ngIf="therapist.aviability">Get Session</a>
+
+        <div class="social-icons">
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <!--          <a href="#"><i class="fab fa-behance"></i></a>-->
+          <a href="#"><i class="fab fa-linkedin"></i></a>
+          <!--          <a href="#"><i class="fab fa-dev"></i></a>-->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,19 @@
+<!-- src/app/edit-note-dialog/edit-note-dialog.component.html -->
+<h1 mat-dialog-title>Edit Note</h1>
+<div mat-dialog-content>
+  <form [formGroup]="noteForm" (ngSubmit)="saveChanges()">
+    <mat-form-field>
+      <mat-label>Title</mat-label>
+      <input matInput formControlName="title">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Content</mat-label>
+      <textarea matInput formControlName="content"></textarea>
+    </mat-form-field>
+    <div mat-dialog-actions>
+      <button mat-button (click)="onNoClick()">Cancel</button>
+      <button mat-button type="submit" [disabled]="!noteForm.valid">Save</button>
+    </div>
+  </form>
+</div>
+

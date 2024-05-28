@@ -1,0 +1,30 @@
+<div class="therapy-container">
+  <div class="chat-container">
+    <div class="chat-header">
+      <img src="assets/img_12.png" alt="Profile Picture" class="message-icon">
+      <!--      <div class="user-info">-->
+      <div class="user-name">Taking the first step towards speaking with a therapist or psychiatrist is a powerful act of self-care that can lead to profound healing and personal growth.</div>
+      <!--      </div>-->
+    </div>
+  </div>
+  <div class="form-container">
+    <div class="form-header">
+      <h1>Get Your Therapy Session</h1>
+      <p>Provide session details below</p>
+    </div>
+    <div class="form-body">
+      <form [formGroup]="sessionForm" (ngSubmit)="AddSession()">
+        <div class="form-group">
+          <label for="nameSession">Session Subject</label>
+          <input type="text" id="nameSession" formControlName="nameSession" placeholder="Enter session Subject">
+        </div>
+        <div class="form-group">
+          <label for="dateSession">Session Date</label>
+          <input type="date" id="dateSession" formControlName="dateSession">
+        </div>
+
+        <button type="submit" class="submit-button">Submit</button>
+      </form>
+    </div>
+  </div>
+</div>

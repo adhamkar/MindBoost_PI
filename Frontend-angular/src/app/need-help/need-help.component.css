@@ -1,0 +1,127 @@
+body {
+  background-color: #d6bdf0;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.container1 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 40px 10px;
+  background: white;
+  box-shadow: 0 0 10px hsla(164, 38%, 18%, 1);
+  border-radius: 30px;
+  overflow: hidden;
+}
+
+.text-content {
+  max-width: 50%;
+  margin-top: 0;
+  margin-left: 40px;
+}
+
+.text-content h1 {
+  font-size: 30px;
+  font-weight: bold;
+  color: black;
+}
+
+.text-content h1 span {
+  color: #99f2d1;
+}
+
+.text-content p {
+  font-size: 16px;
+  color: #666666;
+  line-height: 1.5;
+}
+
+.image-content img {
+  width: 300px;
+  height: 250px;
+
+}
+
+.collaborators {
+  font-weight: bold;
+  font-size: 16px;
+  text-align: center;
+}
+
+.profile-card {
+  background: white;
+  color: black;
+  padding: 20px;
+  margin: 20px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+}
+
+.profile-card header {
+  /*background-image: url('../src/assets/img_17.png');*/
+  background-size: cover;
+  background-position: center;
+  height: 130px;
+}
+
+.profile-card .avatar {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: 5px solid white;
+  position: absolute;
+  top: 92px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.profile-card h3 {
+  margin-top: 50px;
+  font-size: 1.5em;
+}
+
+.profile-card h5 {
+  font-size: 1.2em;
+  color: #666;
+}
+
+.profile-card p {
+  margin: 5px 0;
+  font-size: 0.9em;
+  color: #333;
+}
+
+.profile-card .email {
+  display: block;
+  background: linear-gradient(90deg, hsla(164, 38%, 18%, 1) 0%, hsla(158, 77%, 77%, 1) 100%);
+  color: white;
+  font-weight: bold;
+  padding: 10px;
+  border-radius: 5px;
+  text-decoration: none;
+  margin-top: 10px;
+}
+
+.profile-card .email:hover {
+  background: linear-gradient(90deg, hsla(0, 0%, 37%, 1) 0%, hsla(59, 30%, 49%, 1) 100%);
+
+}
+
+.profile-card .social-icons {
+  margin-top: 10px;
+}
+
+.profile-card .social-icons a {
+  margin: 0 5px;
+  color: #666;
+  text-decoration: none;
+}
+
+.profile-card .social-icons a:hover {
+  color: #002080;
+}

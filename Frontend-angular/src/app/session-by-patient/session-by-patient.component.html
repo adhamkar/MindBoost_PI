@@ -1,0 +1,21 @@
+<div class="container">
+  <div class="row">
+    <div class="collaborators">
+      <p style="color: #2E3D3A; font-size: 24px; font-weight: bold;">MY SESSIONS</p>
+    </div>
+    <div class="col-md-4" *ngFor="let sessionspatient of sessions">
+      <div class="profile-card" style="border: 1px solid #E2E2E2; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); overflow: hidden;">
+        <header [ngStyle]="{'background-image': 'url(assets/img_26.png)', 'height': '150px', 'background-size': 'cover'}"></header>
+        <img src="assets/img_7.png" alt="Profile Image" class="avatar" style="width: 100px; height: 100px; border-radius: 50%; border: 3px solid #FFFFFF; margin: -50px auto 10px; display: block;">
+        <div style="padding: 20px; text-align: center;">
+          <h3 style="color: #2E3D3A; font-size: 18px; margin: 10px 0;">{{ sessionspatient.nameSession }}</h3>
+          <p style="color: #7F8C8D; font-size: 14px; margin: 5px 0;">{{ sessionspatient.dateSession }}</p>
+          <p style="color: #2E3D3A; font-size: 16px; margin: 5px 0;"><span>Therapist: </span> {{ sessionspatient.therapisteName }}</p>
+          <p style="color: #2E3D3A; font-size: 16px; margin: 5px 0;"><span>Patient: </span>{{ sessionspatient.patientName }}</p>
+          <a routerLink="/call" class="email" style="display: inline-block; padding: 10px 20px; margin-top: 10px; background-color: #27AE60; color: #FFFFFF; border-radius: 5px; text-decoration: none; font-weight: bold;">Join Call</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+```
